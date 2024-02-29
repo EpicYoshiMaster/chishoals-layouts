@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "eventName": {
+            "type": "string",
+            "description": "The current event name.",
+            "default": "SquidWest Chi-Shoals"
+        },
+        "eventLocation": {
+            "type": "string",
+            "description": "The Location the event is taking place.",
+            "default": "Chicago Harold Washington Library"
+        },
+        "eventNumber": {
+            "type": "number",
+            "description": "The current event number.",
+            "default": 22
+        }
+    },
+    "required": ["eventName", "eventLocation", "eventNumber"]
+}
