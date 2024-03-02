@@ -2,43 +2,40 @@ import React, { useState, useEffect, useMemo } from 'react';
 import styled from 'styled-components'
 import { CarouselComponent } from './components/CarouselComponent';
 import { GithubLogo, DiscordLogo, TwitterLogo  } from "@phosphor-icons/react";
-import { EventData } from '../types/schemas/eventData';
-
-//Event Info
-//Event Name
-//Event Location
-//Event Number (If applicable)
-
-//Setup and Teardown
-//Dynamic array of volunteers
-
-//Commentary
-//Dynamic array of volunteers
-
-//SquidWest TOs and Staff
-//Dynamic array
-
-//Event TO
-//Dynamic Array
-
-//Next Event Info - Event Name, Location, Number (if applicable)
+import { EventData } from '../types/EventData';
+import { useReplicant } from '../hooks/use-replicant';
+import { createRoot } from 'react-dom/client';
 
 export function Credits() {
-    const [eventData] = useState(nodecg.Replicant<EventData>('eventData'));
+    const [eventData, setEventData] = useReplicant<EventData>('eventData');
 
-	const [eventName, setEventName] = useState("Fake Event");
-	const [eventLocation, setEventLocation] = useState("Test");
+	const [eventName, setEventName] = useState("");
+	const [eventLocation, setEventLocation] = useState("");
 	const [eventNumber, setEventNumber] = useState(0);
+	const [nextEventName, setNextEventName] = useState("");
+	const [nextEventLocation, setNextEventLocation] = useState("");
+	const [nextEventNumber, setNextEventNumber] = useState(0);
+	const [nextEventDate, setNextEventDate] = useState("");
+	const [setupTeam, setSetupTeam] = useState([""]);
+	const [commentaryTeam, setCommentaryTeam] = useState([""]);
+	const [staffTeam, setStaffTeam] = useState([""]);
+	const [eventTeam, setEventTeam] = useState([""]);
 
 	useEffect(() => {
-		eventData.on('change', newVal => {
-			if(!newVal) return;
-
-			setEventName(newVal.eventName);
-			setEventLocation(newVal.eventLocation);
-			setEventNumber(newVal.eventNumber);
-		})
-	}, []);
+		if(!eventData) return;
+   
+		setEventName(eventData.eventName);
+		setEventLocation(eventData.eventLocation);
+		setEventNumber(eventData.eventNumber);
+		setNextEventName(eventData.nextEventName);
+		setNextEventLocation(eventData.nextEventLocation);
+		setNextEventNumber(eventData.nextEventNumber);
+		setNextEventDate(eventData.nextEventDate);
+		setSetupTeam(eventData.setupTeam);
+		setCommentaryTeam(eventData.commentaryTeam);
+		setStaffTeam(eventData.staffTeam);
+		setEventTeam(eventData.eventTeam);
+	}, [eventData]);
 
 	return (
         <Background>
@@ -48,35 +45,49 @@ export function Credits() {
                 </CreditsRow>
                 <CreditsRow>
                     <HeaderText>Setup and Teardown Volunteers</HeaderText>
-                    <NameText>Joey</NameText>
-                    <NameText>Insert More Names Here</NameText>
-                    <NameText>Everyone who helps out after stream!</NameText>
+                    {
+                        setupTeam.map((name, index) => {
+                            return (
+                                <NameText key={index}>{name}</NameText>
+                            )
+                        })
+                    }
                 </CreditsRow>
                 <CreditsRow>
                     <HeaderText>Commentary</HeaderText>
-                    <NameText>Commentary #1</NameText>
-                    <NameText>Commentary #2</NameText>
-                    <NameText>Commentary #3</NameText>
+                    {
+                        commentaryTeam.map((name, index) => {
+                            return (
+                                <NameText key={index}>{name}</NameText>
+                            )
+                        })
+                    }
                 </CreditsRow>
                 <CreditsRow>
                     <LogoRow>
                         <HeaderText>SquidWest TOs and Staff</HeaderText>
                         <SWLogo src="/bundles/chishoals-layouts/images/SW_Logo_bg.png" />
                     </LogoRow>
-                    <NameText>Fuchsia</NameText>
-                    <NameText>Swannie</NameText>
-                    <NameText>Carrot</NameText>
-                    <NameText>Brandeska</NameText>
-                    <NameText>Froppy</NameText>
-                    <NameText>Chino</NameText>
-                    <NameText>Kaito</NameText>
+                    {
+                        staffTeam.map((name, index) => {
+                            return (
+                                <NameText key={index}>{name}</NameText>
+                            )
+                        })
+                    }
                 </CreditsRow>
                 <CreditsRow>
                     <LogoRow>
                         <HeaderText>Event TO</HeaderText>
                         <Logo src="/bundles/chishoals-layouts/images/Chi-Shoals_Logo_Transparent_Green.png" />
                     </LogoRow>
-                    <NameText>Froppy</NameText>
+                    {
+                        eventTeam.map((name, index) => {
+                            return (
+                                <NameText key={index}>{name}</NameText>
+                            )
+                        })
+                    }
                 </CreditsRow>
                 <CreditsRow>
                     <HeaderText>Stream Overlays and Design</HeaderText>
@@ -120,9 +131,9 @@ export function Credits() {
                     <NameText>We hope you enjoyed</NameText>
                 </CreditsRow>
                 <CreditsRow>
-                    <TitleText>SquidWest Chi-Shoals #23</TitleText>
-                    <NameText>Harold Washington Library</NameText>
-                    <NameText>April 1, 2024</NameText>
+                    <TitleText>{nextEventName} {nextEventNumber > 0 ? '#' + nextEventNumber  : ''}</TitleText>
+                    <NameText>{nextEventLocation}</NameText>
+                    <NameText>{nextEventDate}</NameText>
                     <NameText>See you there!</NameText>
                 </CreditsRow>
             </CarouselComponent>
@@ -232,3 +243,6 @@ const Divider = styled.div`
     width: 100%;
     height: 10%;
 `
+
+const root = createRoot(document.getElementById('root')!);
+root.render(<Credits />);

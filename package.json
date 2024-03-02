@@ -22,10 +22,10 @@
     "compatibleRange": "^2.0.0",
     "dashboardPanels": [
       {
-        "name": "panel",
-        "title": "Panel",
+        "name": "eventinformation",
+        "title": "Event Information",
         "width": 3,
-        "file": "panel.html",
+        "file": "eventinformation.html",
         "workspace": "SquidWest",
         "headerColor": "#525F78"
       }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import styled from 'styled-components'
+import { createRoot } from 'react-dom/client';
 import { Omnibar } from './components/Omnibar';
 
 //Theme:
@@ -76,3 +77,6 @@ const Feed = styled.div`
 	border: 8px solid #f04888;
 	background-color: #eae6f3;
 `;
+
+const root = createRoot(document.getElementById('root')!);
+root.render(<Intermission />);

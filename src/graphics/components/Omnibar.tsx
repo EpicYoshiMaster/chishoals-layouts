@@ -2,24 +2,23 @@ import React, { useState, useEffect, useMemo } from 'react'
 import styled from 'styled-components'
 import { CarouselComponent } from './CarouselComponent';
 import { YoutubeLogo, DiscordLogo, TwitterLogo  } from "@phosphor-icons/react";
-import { EventData } from '../../types/schemas';
+import { EventData } from '../../types/EventData';
+import { useReplicant } from '../../hooks/use-replicant';
 
 export const Omnibar: React.FC = () => {
-	const [eventData] = useState(nodecg.Replicant<EventData>('eventData'));
+	const [eventData, setEventData] = useReplicant<EventData>('eventData');
 
-	const [eventName, setEventName] = useState("Fake Event");
-	const [eventLocation, setEventLocation] = useState("Test");
+	const [eventName, setEventName] = useState("");
+	const [eventLocation, setEventLocation] = useState("");
 	const [eventNumber, setEventNumber] = useState(0);
 
 	useEffect(() => {
-		eventData.on('change', newVal => {
-			if(!newVal) return;
-
-			setEventName(newVal.eventName);
-			setEventLocation(newVal.eventLocation);
-			setEventNumber(newVal.eventNumber);
-		})
-	}, []);
+		if(!eventData) return;
+   
+		setEventName(eventData.eventName);
+		setEventLocation(eventData.eventLocation);
+		setEventNumber(eventData.eventNumber);
+	}, [eventData]);
 
     const [time, setTime] = useState(new Date());
 
