@@ -119,7 +119,10 @@ export function Credits() {
                     <NameText>Equipment, support, and collaboration</NameText>
                 </CreditsRow>
                 <CreditsRow>
-                    <HeaderText>Harold Washington Library Staff</HeaderText>
+                    <LogoRow>
+                        <LibraryText>Harold Washington Library Staff</LibraryText>
+                        <LibraryLogo src="/bundles/chishoals-layouts/images/CPL_Logo.png" />
+                    </LogoRow>
                     <NameText>Location and support</NameText>
                 </CreditsRow>
                 <CreditsRow>
@@ -185,6 +188,9 @@ const HeaderText = styled.div`
     font-size: 100px;
 `;
 
+const LibraryText = styled(HeaderText)`
+`;
+
 const NameText = styled.div`
     font-weight: normal;
     font-size: 50px;
@@ -217,6 +223,12 @@ const SWLogo = styled(Logo)`
 const IPGLogo = styled(Logo)`
     width: 25%;
 `
+
+const LibraryLogo = styled(Logo)`
+    margin-left: 20px;
+    border: 5px solid white;
+    width: 20%;
+`;
 
 const StyledGithubLogo = styled(GithubLogo)`
 	width: 1em;
