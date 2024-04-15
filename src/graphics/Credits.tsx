@@ -189,6 +189,7 @@ const HeaderText = styled.div`
 `;
 
 const LibraryText = styled(HeaderText)`
+    font-size: 80px;
 `;
 
 const NameText = styled.div`
