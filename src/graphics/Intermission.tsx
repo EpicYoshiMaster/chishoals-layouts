@@ -2,53 +2,43 @@ import React, { useState, useEffect, useMemo } from 'react';
 import styled from 'styled-components'
 import { createRoot } from 'react-dom/client';
 import { Omnibar } from './components/Omnibar';
+import { Background } from './components/Background';
 
 //Theme:
 //#f04888
 //#eae6f3
 
 export function Intermission() {
-
-	let bgOptions = ['/bundles/chishoals-layouts/images/bg_ika.png', '/bundles/chishoals-layouts/images/bg_octo.png', '/bundles/chishoals-layouts/images/bg_ika_octo.png'];
-	const [option] = useState(Math.floor(Math.random() * (bgOptions.length)))
-
 	return (
-		<Background src={bgOptions[option]}>
-			<TopRow>
-				<Feed />
-				<Feed />
-			</TopRow>
-			<MiddleRow>
-				<Feed />
-			</MiddleRow>
-			<Omnibar />
-		</Background>
+		<StyledIntermission>
+			<Background />
+			<Content>
+				<TopRow>
+					<Feed />
+					<Feed />
+				</TopRow>
+				<MiddleRow>
+					<Feed />
+				</MiddleRow>
+				<Omnibar />
+			</Content>
+		</StyledIntermission>
 	);
 }
 
-const Background = styled.div<{src: string}>`
+const StyledIntermission = styled.div`
+	position: relative;
 	width: 1920px;
 	height: 1080px;
-	padding: 0px;
+`;
 
-	background-size: 10%; //10%
-	background-repeat: repeat;
-	background-image: url(${props => props.src});
-	background-color: #eae6f3;
-	background-attachment: scroll;
-
+const Content = styled.div`
+	position: relative;
+	width: 100%;
+	height: 100%;
+	
 	display: grid;
 	grid-template-rows: 0.5fr 0.35fr 0.15fr;
-    animation: scrolling 90s linear infinite;
-
-	@keyframes scrolling {
-  	from{
-      	background-position: 1920px 1920px;
-  	}
-  	to{
-      	background-position: 0 0;
-  	}
-	}
 `;
 
 const TopRow = styled.div`
