@@ -2,11 +2,14 @@ import React, { useState, useEffect, useMemo } from 'react'
 import styled from 'styled-components'
 import { CarouselComponent } from './CarouselComponent';
 import { YoutubeLogo, DiscordLogo, TwitterLogo  } from "@phosphor-icons/react";
-import { EventData } from '../../types/schemas';
+import { EventData, Socials } from '../../types/schemas';
 import { useReplicant } from '@nodecg/react-hooks';
+import { IntermissionData } from '../../types/schemas/intermissionData';
 
 export const Omnibar: React.FC = () => {
 	const [eventData, setEventData] = useReplicant<EventData>('eventData');
+	const [socials] = useReplicant<Socials>('socials');
+	const [intermissionData] = useReplicant<IntermissionData>('intermission');
 
 	const [eventName, setEventName] = useState("");
 	const [eventLocation, setEventLocation] = useState("");
@@ -44,46 +47,54 @@ export const Omnibar: React.FC = () => {
 
     return (
         <OmnibarWrapper>
-            <TimeDate $border={true}>
-				<TimeDisplay>
-					{formatTimeHM(memoTime)}
-				</TimeDisplay>
-				<DateDisplay>
-					{formatTimeMDY(memoTime)}
-				</DateDisplay>
-			</TimeDate>
-			<EventSection $border={true}>
-				<Logo src='/bundles/chishoals-layouts/images/Chi-Shoals_Logo_Transparent.png' alt="Chi-Shoals Logo" />
-				{eventNumber > 0 && (
-				<EventNumberText>
-                	#{eventNumber}
-            	</EventNumberText>)}
-			</EventSection>
-			{eventLocation !== '' && (
-			<LocationWrapper $border={true}>
-				<LocationText>
-                	{eventLocation}
-            	</LocationText>
-			</LocationWrapper>
-			)}
-			<TourneyWrapper $border={true}>
-				<TourneyPlaceholder>
-					See the current standings with !bracket
-				</TourneyPlaceholder>
-			</TourneyWrapper>
+			<OmnibarItem $show={intermissionData ? intermissionData.showTime : true}>
+				<TimeDate $border={true}>
+					<TimeDisplay>
+						{formatTimeHM(memoTime)}
+					</TimeDisplay>
+					<DateDisplay>
+						{formatTimeMDY(memoTime)}
+					</DateDisplay>
+				</TimeDate>
+			</OmnibarItem>
+			<OmnibarItem $show={intermissionData ? intermissionData.showEvent : true}>
+				<EventSection $border={true}>
+					<Logo src='/bundles/chishoals-layouts/images/Chi-Shoals_Logo_Transparent.png' alt="Chi-Shoals Logo" />
+					{eventNumber > 0 && (
+					<EventNumberText>
+            	    	#{eventNumber}
+            		</EventNumberText>)}
+				</EventSection>
+			</OmnibarItem>
+			<TextOmnibarItem $show={intermissionData ? intermissionData.showLocation : true} $maxWidth="24rem">
+				{eventLocation !== '' && (
+				<LocationWrapper $border={true}>
+					<LocationText>
+            	    	{eventLocation}
+            		</LocationText>
+				</LocationWrapper>
+				)}
+			</TextOmnibarItem>
+			<TextOmnibarItem $show={intermissionData ? intermissionData.showFlavorText : true} $maxWidth="20rem">
+				<TourneyWrapper $border={true}>
+					<TourneyPlaceholder>
+						{intermissionData ? intermissionData.flavorText : ""}
+					</TourneyPlaceholder>
+				</TourneyWrapper>
+			</TextOmnibarItem>
             <CarouselWrapper $border={true}>
 				<CarouselComponent speed={5000} transitionSpeed={1000} indexRelative={2}>
 					<CarouselRow>
                         <StyledYoutubeLogo />
-                        <LogoText>@SquidWestLANs</LogoText>
+                        <LogoText>{socials ? socials.youtube : ""}</LogoText>
 					</CarouselRow>
 					<CarouselRow>
                         <StyledTwitterLogo />
-                        <LogoText>@SquidWest</LogoText>
+                        <LogoText>{socials ? socials.twitter : ""}</LogoText>
 					</CarouselRow>
 					<CarouselRow>
                         <StyledDiscordLogo />
-                        <LogoText>discord.gg/trdHY59F2u</LogoText>
+                        <LogoText>{socials ? socials.discord : ""}</LogoText>
 					</CarouselRow>
 				</CarouselComponent>
 			</CarouselWrapper>
@@ -103,7 +114,17 @@ const OmnibarWrapper = styled.div`
   	margin: 20px;
 `;
 
+const OmnibarItem = styled.div<{ $show: boolean }>`
+	position: relative;
+	display: ${({ $show }) => $show ? 'block' : 'none'};
+`;
+
+const TextOmnibarItem = styled(OmnibarItem)<{ $maxWidth: string }>`
+	max-width: ${({$maxWidth}) => $maxWidth};
+`;
+
 const OmnibarElement = styled.div<{$border?: boolean}>`
+	position: relative;
 	padding: 10px;
 	color: #ffffff;
 	font-size: 20pt;
@@ -111,47 +132,53 @@ const OmnibarElement = styled.div<{$border?: boolean}>`
 `;
 
 const TimeDate = styled(OmnibarElement)`
+	position: relative;
+	width: 100%;
+	height: 100%;
+
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 `;
 
 const TimeDisplay = styled.div`
+	position: relative;
 	margin: auto;
 	color: #ffffff;
 	font-size: 35pt;
 `;
 
 const DateDisplay = styled.div`
+	position: relative;
 	margin: auto;
 	color: #ffffff;
 	font-size: 20pt;
 `;
 
 const EventSection = styled(OmnibarElement)`
+	position: relative;
 	display: flex;
 	flex-direction: row;
-	max-width: 12%;
-	height: 100%;
 	align-items: center;
+	height: 100%;
 `;
 
 const EventNumberText = styled.div`
-	margin: auto 8px;
+	margin: 8px;
 	font-size: 30pt;
 `;
 
 const Logo = styled.img`
-    max-height: 100%;
+    height: 7rem;
     object-fit: contain;
 `;
 
 const LocationWrapper = styled(OmnibarElement)`
 	display: flex;
 	flex-direction: column;
+	width: 100%;
 	height: 100%;
 	align-items: center;
-	max-width: 20%; //20%
 `;
 
 const LocationText = styled.div`
@@ -163,9 +190,9 @@ const TourneyWrapper = styled(OmnibarElement)`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	height: 100%;
 	align-items: center;
-	max-width: 17%;
+	width: 100%;
+	height: 100%;
 `
 
 const TourneyPlaceholder = styled.div`

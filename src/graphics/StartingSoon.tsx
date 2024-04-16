@@ -4,12 +4,13 @@ import { createRoot } from 'react-dom/client';
 import { Background } from './components/Background';
 import { YoutubeLogo, DiscordLogo, TwitterLogo  } from "@phosphor-icons/react";
 import { useReplicant } from '@nodecg/react-hooks';
-import { EventData } from '../types/schemas';
+import { EventData, Socials } from '../types/schemas';
 import { CarouselComponent } from './components/CarouselComponent';
 
 export function StartingSoon() {
 
-	const [eventData, setEventData] = useReplicant<EventData>('eventData');
+	const [eventData] = useReplicant<EventData>('eventData');
+	const [socials] = useReplicant<Socials>('socials');
 
 	const [eventName, setEventName] = useState("");
 	const [eventNumber, setEventNumber] = useState(0);
@@ -20,7 +21,6 @@ export function StartingSoon() {
 		setEventName(eventData.eventName);
 		setEventNumber(eventData.eventNumber);
 	}, [eventData]);
-
 
 	return (
 		<StyledStartingSoon>
@@ -45,15 +45,15 @@ export function StartingSoon() {
 					<SocialsRow>
 						<SocialsItem>
 							<YoutubeLogo />
-							<SocialsText>@SquidWestLANs</SocialsText>
+							<SocialsText>{socials ? socials.youtube : ""}</SocialsText>
 						</SocialsItem>
 						<SocialsItem>
 							<TwitterLogo />
-							<SocialsText>@SquidWest</SocialsText>
+							<SocialsText>{socials ? socials.twitter : ""}</SocialsText>
 						</SocialsItem>
 						<SocialsItem>
 							<DiscordLogo />
-							<SocialsText>discord.gg/trdHY59F2u</SocialsText>
+							<SocialsText>{socials ? socials.discord : ""}</SocialsText>
 						</SocialsItem>
 					</SocialsRow>
 				</TextArea>

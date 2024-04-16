@@ -21,7 +21,7 @@ import { useReplicant } from '@nodecg/react-hooks'
 
 //Next Event Info - Event Name, Location, Number (if applicable)
 
-export function Panel() {
+export function EventInformation() {
 	const [eventData, setEventData] = useReplicant<EventData>('eventData');
 
 	const [eventName, setEventName] = useState("");
@@ -121,4 +121,4 @@ const PanelContainer = styled.div`
 `;
 
 const root = createRoot(document.getElementById('root')!);
-root.render(<Panel />);
+root.render(<EventInformation />);

@@ -55,6 +55,40 @@ export const InputButton = styled.button`
 	}
 `;
 
+export const InputCheckbox = styled.button<{ $checked: boolean }>`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 1.5rem;
+	height: 1.5rem;
+	margin: 3px;
+	padding: 15px;
+	border: solid 2px #d346fe;
+	border-radius: 0.5rem;
+
+	background-color: ${({ $checked }) => $checked ? '#d346fe' : 'transparent'};
+
+	&:not(:disabled):hover {
+		background-color: #5f2573;
+	}
+
+	&:not(:disabled):active {
+		background-color: #4c1d5c;
+	}
+
+	&:disabled {
+		opacity: 0.5;
+	}
+
+	&::after {
+		content: '✓';
+		display: ${({ $checked}) => $checked ? 'block' : 'none'};
+		color: #fff;
+		font-size: 1.5rem;
+	}
+`;
+
 export const InputButtonSmall = styled(InputButton)`
     font-size: 1.25rem;
     padding: 5px 25px;
