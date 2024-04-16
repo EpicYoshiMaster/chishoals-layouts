@@ -2,12 +2,25 @@ import React, { useState, useEffect, useMemo } from 'react';
 import styled from 'styled-components'
 import { createRoot } from 'react-dom/client';
 import { Background } from './components/Background';
-
-//Theme:
-//#f04888
-//#eae6f3
+import { YoutubeLogo, DiscordLogo, TwitterLogo  } from "@phosphor-icons/react";
+import { useReplicant } from '@nodecg/react-hooks';
+import { EventData } from '../types/schemas';
+import { CarouselComponent } from './components/CarouselComponent';
 
 export function StartingSoon() {
+
+	const [eventData, setEventData] = useReplicant<EventData>('eventData');
+
+	const [eventName, setEventName] = useState("");
+	const [eventNumber, setEventNumber] = useState(0);
+
+	useEffect(() => {
+		if(!eventData) return;
+   
+		setEventName(eventData.eventName);
+		setEventNumber(eventData.eventNumber);
+	}, [eventData]);
+
 
 	return (
 		<StyledStartingSoon>
@@ -17,11 +30,31 @@ export function StartingSoon() {
 					<SWLogo src="/bundles/chishoals-layouts/images/SW_Logo.png" alt="SquidWest Logo" />
 				</LogoArea>
 				<TextArea>
-					<TitleText>SquidWest</TitleText>
-					<SubtitleText>MidWest Splatoon Players</SubtitleText>
+					<CarouselWrapper>
+						<CarouselComponent speed={15000} transitionSpeed={3000} indexRelative={1}>
+							<CarouselItem>
+								<TitleText>SquidWest</TitleText>
+								<SubtitleText>MidWest Splatoon Players</SubtitleText>
+							</CarouselItem>
+							<CarouselItem>
+								<TitleText>{eventName} {eventNumber > 0 ? '#' + eventNumber  : ''}</TitleText>
+								<SubtitleText>Starting Soon!</SubtitleText>
+							</CarouselItem>
+						</CarouselComponent>
+					</CarouselWrapper>
 					<SocialsRow>
-						<SocialsText>@squidwest</SocialsText>
-						<SocialsText>discord.io/squidwest</SocialsText>
+						<SocialsItem>
+							<YoutubeLogo />
+							<SocialsText>@SquidWestLANs</SocialsText>
+						</SocialsItem>
+						<SocialsItem>
+							<TwitterLogo />
+							<SocialsText>@SquidWest</SocialsText>
+						</SocialsItem>
+						<SocialsItem>
+							<DiscordLogo />
+							<SocialsText>discord.gg/trdHY59F2u</SocialsText>
+						</SocialsItem>
 					</SocialsRow>
 				</TextArea>
 			</Content>
@@ -60,6 +93,14 @@ const TextArea = styled.div`
 	color: #fff;
 `;
 
+const CarouselWrapper = styled.div`
+	position: relative;	
+`;
+
+const CarouselItem = styled.div`
+	position: relative;
+`;
+
 const TitleText = styled.div`
 	font-size: 8rem;
 	color: #23eb00;
@@ -74,8 +115,6 @@ const SubtitleText = styled.div`
 `;
 
 const SocialsText = styled.div`
-	font-size: 5rem;
-	color: #f10059;
 	-webkit-text-stroke: 2px white;
 `;
 
@@ -84,6 +123,15 @@ const SocialsRow = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
+	font-size: 3.5rem;
+	color: #f10059;
+`;
+
+const SocialsItem = styled.div`
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
 `;
 
 const SWLogo = styled.img`

@@ -7,12 +7,13 @@ interface CarouselComponentProps {
     speed?: number;
     transitionSpeed?: number;
     once?: boolean;
+    indexRelative?: number; //Set the index of the item which should be set as relative (should be the largest present), 
 }
 
 const DEFAULT_SPEED = 5000;
 const DEFAULT_TRANSITION_SPEED = 1000;
 
-export const CarouselComponent: React.FC<CarouselComponentProps> = ({ children, speed, transitionSpeed, once }) => {
+export const CarouselComponent: React.FC<CarouselComponentProps> = ({ children, speed, transitionSpeed, once, indexRelative }) => {
     const [carouselIndex, setCarouselIndex] = useState(0);
     const carouselIntervalId = useRef<number | null>(null);
     const activeCarouselIndexRef = useRef(0);
@@ -44,7 +45,7 @@ export const CarouselComponent: React.FC<CarouselComponentProps> = ({ children, 
     return (
         <CarouselContainer>
             {React.Children.toArray(children).map((child, index) => (
-                <CarouselItem key={index} $active={index === carouselIndex} speed={(transitionSpeed ? transitionSpeed : DEFAULT_TRANSITION_SPEED) / 2}>
+                <CarouselItem key={index} $active={index === carouselIndex} $isRelative={indexRelative ? index === indexRelative : false} speed={(transitionSpeed ? transitionSpeed : DEFAULT_TRANSITION_SPEED) / 2}>
                     {child}
                 </CarouselItem>
             ))}
@@ -58,8 +59,8 @@ const CarouselContainer = styled.div`
     height: 100%;
 `;
 
-const CarouselItem = styled.div<{$active: boolean, speed: number}>`
-    position: absolute;
+const CarouselItem = styled.div<{$active: boolean, $isRelative: boolean, speed: number}>`
+    position: ${props => props.$isRelative ? `relative` : `absolute`};
     max-height: 100%;
 
     width: 100%;

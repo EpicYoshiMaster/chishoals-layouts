@@ -2,8 +2,8 @@ import React, { useState, useEffect, useMemo } from 'react'
 import styled from 'styled-components'
 import { CarouselComponent } from './CarouselComponent';
 import { YoutubeLogo, DiscordLogo, TwitterLogo  } from "@phosphor-icons/react";
-import { EventData } from '../../types/EventData';
-import { useReplicant } from '../../hooks/use-replicant';
+import { EventData } from '../../types/schemas';
+import { useReplicant } from '@nodecg/react-hooks';
 
 export const Omnibar: React.FC = () => {
 	const [eventData, setEventData] = useReplicant<EventData>('eventData');
@@ -72,7 +72,7 @@ export const Omnibar: React.FC = () => {
 				</TourneyPlaceholder>
 			</TourneyWrapper>
             <CarouselWrapper $border={true}>
-				<CarouselComponent speed={5000} transitionSpeed={1000}>
+				<CarouselComponent speed={5000} transitionSpeed={1000} indexRelative={2}>
 					<CarouselRow>
                         <StyledYoutubeLogo />
                         <LogoText>@SquidWestLANs</LogoText>

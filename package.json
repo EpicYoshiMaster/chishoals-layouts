@@ -83,6 +83,7 @@
     "generate-schema-types": "trash src/types/schemas && nodecg schema-types"
   },
   "dependencies": {
+    "@nodecg/react-hooks": "^1.0.3",
     "@phosphor-icons/react": "^2.0.15",
     "@types/react": "*",
     "@types/react-dom": "*",

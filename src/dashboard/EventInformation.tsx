@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components'
 import NodeCG from '@nodecg/types';
-import { useReplicant } from '../hooks/use-replicant';
-import { EventData } from '../types/EventData';
+import { EventData } from '../types/schemas';
 import { createRoot } from 'react-dom/client';
 import { NameList } from './components/NameList';
 import { InputButton, InputLabel, InputRow, InputSection, InputSubheader } from './components/Layout';
+import { useReplicant } from '@nodecg/react-hooks'
 
 //Setup and Teardown
 //Dynamic array of volunteers

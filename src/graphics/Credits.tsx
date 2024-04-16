@@ -2,9 +2,9 @@ import React, { useState, useEffect, useMemo } from 'react';
 import styled from 'styled-components'
 import { CarouselComponent } from './components/CarouselComponent';
 import { GithubLogo, DiscordLogo, TwitterLogo  } from "@phosphor-icons/react";
-import { EventData } from '../types/EventData';
-import { useReplicant } from '../hooks/use-replicant';
 import { createRoot } from 'react-dom/client';
+import { useReplicant } from '@nodecg/react-hooks';
+import { EventData } from '../types/schemas';
 
 export function Credits() {
     const [eventData, setEventData] = useReplicant<EventData>('eventData');
