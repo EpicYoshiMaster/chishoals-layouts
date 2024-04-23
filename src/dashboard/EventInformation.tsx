@@ -7,20 +7,6 @@ import { NameList } from './components/NameList';
 import { InputButton, InputLabel, InputRow, InputSection, InputSubheader } from './components/Layout';
 import { useReplicant } from '@nodecg/react-hooks'
 
-//Setup and Teardown
-//Dynamic array of volunteers
-
-//Commentary
-//Dynamic array of volunteers
-
-//SquidWest TOs and Staff
-//Dynamic array
-
-//Event TO
-//Dynamic Array
-
-//Next Event Info - Event Name, Location, Number (if applicable)
-
 export function EventInformation() {
 	const [eventData, setEventData] = useReplicant<EventData>('eventData');
 

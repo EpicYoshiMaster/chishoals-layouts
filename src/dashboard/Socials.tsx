@@ -6,7 +6,7 @@ import { createRoot } from 'react-dom/client';
 import { InputButton, InputLabel, InputRow, InputSection, InputSubheader } from './components/Layout';
 import { useReplicant } from '@nodecg/react-hooks'
 
-export function EventInformation() {
+export function SocialsInformation() {
 	const [socials, setSocials] = useReplicant<Socials>('socials');
 
 	const [youtube, setYoutube] = useState("");
@@ -61,4 +61,4 @@ const PanelContainer = styled.div`
 `;
 
 const root = createRoot(document.getElementById('root')!);
-root.render(<EventInformation />);
+root.render(<SocialsInformation />);

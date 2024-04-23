@@ -5,6 +5,7 @@ import { GithubLogo, DiscordLogo, TwitterLogo  } from "@phosphor-icons/react";
 import { createRoot } from 'react-dom/client';
 import { useReplicant } from '@nodecg/react-hooks';
 import { EventData } from '../types/schemas';
+import { Background } from './components/Background';
 
 export function Credits() {
     const [eventData, setEventData] = useReplicant<EventData>('eventData');
@@ -38,117 +39,126 @@ export function Credits() {
 	}, [eventData]);
 
 	return (
-        <Background>
-            <CarouselComponent speed={10000} transitionSpeed={3000} once={true}>
-                <CreditsRow>
-                    <TitleText>{eventName} {eventNumber > 0 ? '#' + eventNumber  : ''}</TitleText>
-                </CreditsRow>
-                <CreditsRow>
-                    <HeaderText>Setup and Teardown Volunteers</HeaderText>
-                    {
-                        setupTeam.map((name, index) => {
-                            return (
-                                <NameText key={index}>{name}</NameText>
-                            )
-                        })
-                    }
-                </CreditsRow>
-                <CreditsRow>
-                    <HeaderText>Commentary</HeaderText>
-                    {
-                        commentaryTeam.map((name, index) => {
-                            return (
-                                <NameText key={index}>{name}</NameText>
-                            )
-                        })
-                    }
-                </CreditsRow>
-                <CreditsRow>
-                    <LogoRow>
-                        <HeaderText>SquidWest TOs and Staff</HeaderText>
-                        <SWLogo src="/bundles/chishoals-layouts/images/SW_Logo_bg.png" />
-                    </LogoRow>
-                    {
-                        staffTeam.map((name, index) => {
-                            return (
-                                <NameText key={index}>{name}</NameText>
-                            )
-                        })
-                    }
-                </CreditsRow>
-                <CreditsRow>
-                    <LogoRow>
-                        <HeaderText>Event TO</HeaderText>
-                        <Logo src="/bundles/chishoals-layouts/images/Chi-Shoals_Logo_Transparent_Green.png" />
-                    </LogoRow>
-                    {
-                        eventTeam.map((name, index) => {
-                            return (
-                                <NameText key={index}>{name}</NameText>
-                            )
-                        })
-                    }
-                </CreditsRow>
-                <CreditsRow>
-                    <HeaderText>Stream Overlays and Design</HeaderText>
-                    <NameText>EpicYoshiMaster</NameText>
-                    <Divider />
-                    <NameText>Need stream overlays for your event?</NameText>
-                    <NameText>Contact me!</NameText>
-                    <LogoRow>
-                        <StyledDiscordLogo />
-                        <NameText>@epicyoshimaster</NameText>
-                    </LogoRow>
-                    <LogoRow>
-                        <StyledTwitterLogo />
-                        <NameText>@EpicYoshiMaster</NameText>
-                    </LogoRow>
-                    <LogoRow>
-                        <StyledGithubLogo />
+        <StyledCredits>
+            <Content>
+                <CarouselComponent speed={10000} transitionSpeed={3000} once={true}>
+                    <CreditsRow>
+                        <TitleText>{eventName} {eventNumber > 0 ? '#' + eventNumber  : ''}</TitleText>
+                    </CreditsRow>
+                    <CreditsRow>
+                        <HeaderText>Setup and Teardown Volunteers</HeaderText>
+                        {
+                            setupTeam.map((name, index) => {
+                                return (
+                                    <NameText key={index}>{name}</NameText>
+                                )
+                            })
+                        }
+                    </CreditsRow>
+                    <CreditsRow>
+                        <HeaderText>Commentary</HeaderText>
+                        {
+                            commentaryTeam.map((name, index) => {
+                                return (
+                                    <NameText key={index}>{name}</NameText>
+                                )
+                            })
+                        }
+                    </CreditsRow>
+                    <CreditsRow>
+                        <LogoRow>
+                            <HeaderText>SquidWest TOs and Staff</HeaderText>
+                            <SWLogo src="/bundles/chishoals-layouts/images/SW_Logo_bg.png" />
+                        </LogoRow>
+                        {
+                            staffTeam.map((name, index) => {
+                                return (
+                                    <NameText key={index}>{name}</NameText>
+                                )
+                            })
+                        }
+                    </CreditsRow>
+                    <CreditsRow>
+                        <LogoRow>
+                            <HeaderText>Event TO</HeaderText>
+                            <Logo src="/bundles/chishoals-layouts/images/Chi-Shoals_Logo_Transparent_Green.png" />
+                        </LogoRow>
+                        {
+                            eventTeam.map((name, index) => {
+                                return (
+                                    <NameText key={index}>{name}</NameText>
+                                )
+                            })
+                        }
+                    </CreditsRow>
+                    <CreditsRow>
+                        <HeaderText>Stream Overlays and Design</HeaderText>
                         <NameText>EpicYoshiMaster</NameText>
-                    </LogoRow>
-                </CreditsRow>
-                <CreditsRow>
-                    <HeaderText>Special Thanks</HeaderText>
-                </CreditsRow>
-                <CreditsRow>
-                    <LogoRow>
-                        <HeaderText>I Play Games!</HeaderText>
-                        <IPGLogo src="/bundles/chishoals-layouts/images/I_Play_Games.png" />
-                    </LogoRow>
-                    <NameText>Equipment, support, and collaboration</NameText>
-                </CreditsRow>
-                <CreditsRow>
-                    <LogoRow>
-                        <LibraryText>Harold Washington Library Staff</LibraryText>
-                        <LibraryLogo src="/bundles/chishoals-layouts/images/CPL_Logo.png" />
-                    </LogoRow>
-                    <NameText>Location and support</NameText>
-                </CreditsRow>
-                <CreditsRow>
-                    <HeaderText>Event Participants</HeaderText>
-                    <NameText>These events aren't possible without you</NameText>
-                </CreditsRow>
-                <CreditsRow>
-                    <HeaderText>Stream Viewers</HeaderText>
-                    <NameText>We hope you enjoyed</NameText>
-                </CreditsRow>
-                <CreditsRow>
-                    <TitleText>{nextEventName} {nextEventNumber > 0 ? '#' + nextEventNumber  : ''}</TitleText>
-                    <NameText>{nextEventLocation}</NameText>
-                    <NameText>{nextEventDate}</NameText>
-                    <NameText>See you there!</NameText>
-                </CreditsRow>
-            </CarouselComponent>
-        </Background>
+                        <Divider />
+                        <NameText>Need stream overlays for your event?</NameText>
+                        <NameText>Contact me!</NameText>
+                        <LogoRow>
+                            <StyledDiscordLogo />
+                            <NameText>@epicyoshimaster</NameText>
+                        </LogoRow>
+                        <LogoRow>
+                            <StyledTwitterLogo />
+                            <NameText>@EpicYoshiMaster</NameText>
+                        </LogoRow>
+                        <LogoRow>
+                            <StyledGithubLogo />
+                            <NameText>EpicYoshiMaster</NameText>
+                        </LogoRow>
+                    </CreditsRow>
+                    <CreditsRow>
+                        <HeaderText>Special Thanks</HeaderText>
+                    </CreditsRow>
+                    <CreditsRow>
+                        <LogoRow>
+                            <HeaderText>I Play Games!</HeaderText>
+                            <IPGLogo src="/bundles/chishoals-layouts/images/I_Play_Games.png" />
+                        </LogoRow>
+                        <NameText>Equipment, support, and collaboration</NameText>
+                    </CreditsRow>
+                    <CreditsRow>
+                        <LogoRow>
+                            <LibraryText>Harold Washington Library Staff</LibraryText>
+                            <LibraryLogo src="/bundles/chishoals-layouts/images/CPL_Logo.png" />
+                        </LogoRow>
+                        <NameText>Location and support</NameText>
+                    </CreditsRow>
+                    <CreditsRow>
+                        <HeaderText>Event Participants</HeaderText>
+                        <NameText>These events aren't possible without you</NameText>
+                    </CreditsRow>
+                    <CreditsRow>
+                        <HeaderText>Stream Viewers</HeaderText>
+                        <NameText>We hope you enjoyed</NameText>
+                    </CreditsRow>
+                    <CreditsRow>
+                        <TitleText>{nextEventName} {nextEventNumber > 0 ? '#' + nextEventNumber  : ''}</TitleText>
+                        <NameText>{nextEventLocation}</NameText>
+                        <NameText>{nextEventDate}</NameText>
+                        <NameText>See you there!</NameText>
+                    </CreditsRow>
+                </CarouselComponent>
+            </Content>
+        </StyledCredits>
     )
 }
 
-const Background = styled.div`
+const StyledCredits = styled.div`
     position: relative;
 
     width: 1920px;
-	height: 1080px;
+    height: 1080px;
+`;
+
+const Content = styled.div`
+    position: relative;
+
+    width: 100%;
+    height: 100%;
 
     color: #ffffff;
     background-color: #000000;
