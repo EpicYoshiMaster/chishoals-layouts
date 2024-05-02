@@ -19,6 +19,7 @@ export function EventInformation() {
 	const [nextEventDate, setNextEventDate] = useState("");
 	const [setupTeam, setSetupTeam] = useState([""]);
 	const [commentaryTeam, setCommentaryTeam] = useState([""]);
+	const [techTeam, setTechTeam] = useState([""]);
 	const [staffTeam, setStaffTeam] = useState([""]);
 	const [eventTeam, setEventTeam] = useState([""]);
 
@@ -34,6 +35,7 @@ export function EventInformation() {
 		setNextEventDate(eventData.nextEventDate);
 		setSetupTeam(eventData.setupTeam);
 		setCommentaryTeam(eventData.commentaryTeam);
+		setTechTeam(eventData.techTeam);
 		setStaffTeam(eventData.staffTeam);
 		setEventTeam(eventData.eventTeam);
 	}, [eventData]);
@@ -49,6 +51,7 @@ export function EventInformation() {
 			nextEventDate: nextEventDate,
 			setupTeam: setupTeam,
 			commentaryTeam: commentaryTeam,
+			techTeam: techTeam,
 			staffTeam: staffTeam,
 			eventTeam: eventTeam
 		};
@@ -91,6 +94,7 @@ export function EventInformation() {
 				</InputRow>
 				<NameList title="Setup and Teardown Volunteers" list={setupTeam} listUpdateHandler={setSetupTeam} />
 				<NameList title="Commentary" list={commentaryTeam} listUpdateHandler={setCommentaryTeam} />
+				<NameList title="Stream Technicians" list={techTeam} listUpdateHandler={setTechTeam} />
 				<NameList title="SquidWest TOs and Staff" list={staffTeam} listUpdateHandler={setStaffTeam} />
 				<NameList title="Event TO" list={eventTeam} listUpdateHandler={setEventTeam} />
 			</InputSection>

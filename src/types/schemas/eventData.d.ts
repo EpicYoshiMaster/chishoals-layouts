@@ -43,6 +43,10 @@ export interface EventData {
 	 */
 	commentaryTeam: string[];
 	/**
+	 * The list of Stream Technicians helping with the event.
+	 */
+	techTeam: string[];
+	/**
 	 * The list of SquidWest TOs and Staff.
 	 */
 	staffTeam: string[];

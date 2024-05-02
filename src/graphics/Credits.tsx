@@ -18,6 +18,7 @@ export function Credits() {
 	const [nextEventNumber, setNextEventNumber] = useState(0);
 	const [nextEventDate, setNextEventDate] = useState("");
 	const [setupTeam, setSetupTeam] = useState([""]);
+    const [techTeam, setTechTeam] = useState([""]);
 	const [commentaryTeam, setCommentaryTeam] = useState([""]);
 	const [staffTeam, setStaffTeam] = useState([""]);
 	const [eventTeam, setEventTeam] = useState([""]);
@@ -34,6 +35,7 @@ export function Credits() {
 		setNextEventDate(eventData.nextEventDate);
 		setSetupTeam(eventData.setupTeam);
 		setCommentaryTeam(eventData.commentaryTeam);
+        setTechTeam(eventData.techTeam);
 		setStaffTeam(eventData.staffTeam);
 		setEventTeam(eventData.eventTeam);
 	}, [eventData]);
@@ -59,6 +61,16 @@ export function Credits() {
                         <HeaderText>Commentary</HeaderText>
                         {
                             commentaryTeam.map((name, index) => {
+                                return (
+                                    <NameText key={index}>{name}</NameText>
+                                )
+                            })
+                        }
+                    </CreditsRow>
+                    <CreditsRow>
+                        <HeaderText>Stream Technicians</HeaderText>
+                        {
+                            techTeam.map((name, index) => {
                                 return (
                                     <NameText key={index}>{name}</NameText>
                                 )

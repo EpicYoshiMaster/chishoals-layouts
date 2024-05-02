@@ -50,6 +50,12 @@
             "description": "The list of Commentators helping with the event.",
             "default": ["Commentator #1", "Commentator #2", "Commentator #3"]
         },
+        "techTeam": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "The list of Stream Technicians helping with the event.",
+            "default": ["Technician #1"]
+        },
         "staffTeam": {
             "type": "array",
             "items": { "type": "string" },
@@ -63,5 +69,5 @@
             "default": ["Event TO Name"]
         }
     },
-    "required": ["eventName", "eventLocation", "eventNumber", "nextEventName", "nextEventLocation", "nextEventNumber", "nextEventDate", "setupTeam", "commentaryTeam", "staffTeam", "eventTeam"]
+    "required": ["eventName", "eventLocation", "eventNumber", "nextEventName", "nextEventLocation", "nextEventNumber", "nextEventDate", "setupTeam", "commentaryTeam", "techTeam", "staffTeam", "eventTeam"]
 }
