@@ -6,52 +6,12 @@
  */
 
 export interface EventData {
-	/**
-	 * The current event name.
-	 */
-	eventName: string;
-	/**
-	 * The Location the event is taking place.
-	 */
-	eventLocation: string;
-	/**
-	 * The current event number.
-	 */
-	eventNumber: number;
-	/**
-	 * The next event name.
-	 */
-	nextEventName: string;
-	/**
-	 * The Location the next event is taking place.
-	 */
-	nextEventLocation: string;
-	/**
-	 * The next event number.
-	 */
-	nextEventNumber: number;
-	/**
-	 * The next event date.
-	 */
-	nextEventDate: string;
-	/**
-	 * The list of Setup and Teardown volunteers helping with the event.
-	 */
-	setupTeam: string[];
-	/**
-	 * The list of Commentators helping with the event.
-	 */
-	commentaryTeam: string[];
-	/**
-	 * The list of Stream Technicians helping with the event.
-	 */
-	techTeam: string[];
-	/**
-	 * The list of SquidWest TOs and Staff.
-	 */
-	staffTeam: string[];
-	/**
-	 * The list of Event TOs for this event.
-	 */
-	eventTeam: string[];
+	currentEvent: EventInfo;
+	nextEvent: EventInfo;
+}
+export interface EventInfo {
+	name: string;
+	location: string;
+	number: number;
+	date: string;
 }

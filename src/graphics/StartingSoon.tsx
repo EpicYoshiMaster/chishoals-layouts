@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client';
 import { Background } from './components/Background';
 import { YoutubeLogo, DiscordLogo, TwitterLogo  } from "@phosphor-icons/react";
 import { useReplicant } from '@nodecg/react-hooks';
-import { EventData, Socials } from '../types/schemas';
+import { EventData, EventInfo, Socials } from '../types/schemas';
 import { CarouselComponent } from './components/CarouselComponent';
 
 export function StartingSoon() {
@@ -12,14 +12,12 @@ export function StartingSoon() {
 	const [eventData] = useReplicant<EventData>('eventData');
 	const [socials] = useReplicant<Socials>('socials');
 
-	const [eventName, setEventName] = useState("");
-	const [eventNumber, setEventNumber] = useState(0);
+	const [currentEvent, setCurrentEvent] = useState<EventInfo>({ name: "Current Event Name", location: "Event Location", number: 1, date: "Today" });
 
 	useEffect(() => {
 		if(!eventData) return;
    
-		setEventName(eventData.eventName);
-		setEventNumber(eventData.eventNumber);
+		setCurrentEvent(eventData.currentEvent);
 	}, [eventData]);
 
 	return (
@@ -37,7 +35,7 @@ export function StartingSoon() {
 								<SubtitleText>MidWest Splatoon Players</SubtitleText>
 							</CarouselItem>
 							<CarouselItem>
-								<TitleText>{eventName} {eventNumber > 0 ? '#' + eventNumber  : ''}</TitleText>
+								<TitleText>{currentEvent.name} {currentEvent.number > 0 ? '#' + currentEvent.number  : ''}</TitleText>
 								<SubtitleText>Starting Soon!</SubtitleText>
 							</CarouselItem>
 						</CarouselComponent>

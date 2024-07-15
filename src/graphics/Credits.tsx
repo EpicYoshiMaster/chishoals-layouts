@@ -4,19 +4,16 @@ import { CarouselComponent } from './components/CarouselComponent';
 import { GithubLogo, DiscordLogo, TwitterLogo  } from "@phosphor-icons/react";
 import { createRoot } from 'react-dom/client';
 import { useReplicant } from '@nodecg/react-hooks';
-import { EventData } from '../types/schemas';
-import { Background } from './components/Background';
+import { EventData, CreditsData, EventInfo } from '../types/schemas';
 
 export function Credits() {
     const [eventData, setEventData] = useReplicant<EventData>('eventData');
 
-	const [eventName, setEventName] = useState("");
-	const [eventLocation, setEventLocation] = useState("");
-	const [eventNumber, setEventNumber] = useState(0);
-	const [nextEventName, setNextEventName] = useState("");
-	const [nextEventLocation, setNextEventLocation] = useState("");
-	const [nextEventNumber, setNextEventNumber] = useState(0);
-	const [nextEventDate, setNextEventDate] = useState("");
+    const [currentEvent, setCurrentEvent] = useState<EventInfo>({ name: "Current Event Name", location: "Event Location", number: 1, date: "Today" });
+	const [nextEvent, setNextEvent] = useState<EventInfo>({ name: "Next Event Name", location: "Next Event Location", number: 2, date: "January 1, 2024" });
+
+    const [creditsData, setCreditsData] = useReplicant<CreditsData>('creditsData');
+
 	const [setupTeam, setSetupTeam] = useState([""]);
     const [techTeam, setTechTeam] = useState([""]);
 	const [commentaryTeam, setCommentaryTeam] = useState([""]);
@@ -25,27 +22,27 @@ export function Credits() {
 
 	useEffect(() => {
 		if(!eventData) return;
-   
-		setEventName(eventData.eventName);
-		setEventLocation(eventData.eventLocation);
-		setEventNumber(eventData.eventNumber);
-		setNextEventName(eventData.nextEventName);
-		setNextEventLocation(eventData.nextEventLocation);
-		setNextEventNumber(eventData.nextEventNumber);
-		setNextEventDate(eventData.nextEventDate);
-		setSetupTeam(eventData.setupTeam);
-		setCommentaryTeam(eventData.commentaryTeam);
-        setTechTeam(eventData.techTeam);
-		setStaffTeam(eventData.staffTeam);
-		setEventTeam(eventData.eventTeam);
+
+		setCurrentEvent(eventData.currentEvent);
+		setNextEvent(eventData.nextEvent);
 	}, [eventData]);
+
+    useEffect(() => {
+		if(!creditsData) return;
+   
+		setSetupTeam(creditsData.setupTeam);
+		setCommentaryTeam(creditsData.commentaryTeam);
+		setTechTeam(creditsData.techTeam);
+		setStaffTeam(creditsData.staffTeam);
+		setEventTeam(creditsData.eventTeam);
+	}, [creditsData]);
 
 	return (
         <StyledCredits>
             <Content>
                 <CarouselComponent speed={10000} transitionSpeed={3000} once={true}>
                     <CreditsRow>
-                        <TitleText>{eventName} {eventNumber > 0 ? '#' + eventNumber  : ''}</TitleText>
+                        <TitleText>{currentEvent.name} {currentEvent.number > 0 ? '#' + currentEvent.number  : ''}</TitleText>
                     </CreditsRow>
                     <CreditsRow>
                         <HeaderText>Setup and Teardown Volunteers</HeaderText>
@@ -148,9 +145,9 @@ export function Credits() {
                         <NameText>We hope you enjoyed</NameText>
                     </CreditsRow>
                     <CreditsRow>
-                        <TitleText>{nextEventName} {nextEventNumber > 0 ? '#' + nextEventNumber  : ''}</TitleText>
-                        <NameText>{nextEventLocation}</NameText>
-                        <NameText>{nextEventDate}</NameText>
+                        <TitleText>{nextEvent.name} {nextEvent.number > 0 ? '#' + nextEvent.number  : ''}</TitleText>
+                        <NameText>{nextEvent.location}</NameText>
+                        <NameText>{nextEvent.date}</NameText>
                         <NameText>See you there!</NameText>
                     </CreditsRow>
                 </CarouselComponent>

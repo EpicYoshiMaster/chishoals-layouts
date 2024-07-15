@@ -3,71 +3,21 @@
     "type": "object",
     "additionalProperties": false,
     "properties": {
-        "eventName": {
-            "type": "string",
-            "description": "The current event name.",
-            "default": "My Event Name"
-        },
-        "eventLocation": {
-            "type": "string",
-            "description": "The Location the event is taking place.",
-            "default": "My Event Location"
-        },
-        "eventNumber": {
-            "type": "number",
-            "description": "The current event number.",
-            "default": 1
-        },
-        "nextEventName": {
-            "type": "string",
-            "description": "The next event name.",
-            "default": "My Next Event Name"
-        },
-        "nextEventLocation": {
-            "type": "string",
-            "description": "The Location the next event is taking place.",
-            "default": "My Next Event Location"
-        },
-        "nextEventNumber": {
-            "type": "number",
-            "description": "The next event number.",
-            "default": 2
-        },
-        "nextEventDate": {
-            "type": "string",
-            "description": "The next event date.",
-            "default": "January 1, 2024"
-        },
-        "setupTeam": {
-            "type": "array",
-            "items": { "type": "string" },
-            "description": "The list of Setup and Teardown volunteers helping with the event.",
-            "default": ["Volunteer #1", "Volunteer #2", "Volunteer #3"]
-        },
-        "commentaryTeam": {
-            "type": "array",
-            "items": { "type": "string" },
-            "description": "The list of Commentators helping with the event.",
-            "default": ["Commentator #1", "Commentator #2", "Commentator #3"]
-        },
-        "techTeam": {
-            "type": "array",
-            "items": { "type": "string" },
-            "description": "The list of Stream Technicians helping with the event.",
-            "default": ["Technician #1"]
-        },
-        "staffTeam": {
-            "type": "array",
-            "items": { "type": "string" },
-            "description": "The list of SquidWest TOs and Staff.",
-            "default": ["Staff #1", "Staff #2", "Staff #3"]
-        },
-        "eventTeam": {
-            "type": "array",
-            "items": { "type": "string" },
-            "description": "The list of Event TOs for this event.",
-            "default": ["Event TO Name"]
+        "currentEvent": { "$ref": "#/$defs/eventInfo" },
+        "nextEvent": { "$ref": "#/$defs/eventInfo" }
+    },
+    "$defs": {
+        "eventInfo": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "name": { "type": "string", "default": "Event Name" },
+                "location": { "type": "string", "default": "Event Location" },
+                "number": { "type": "number", "default": 1 },
+                "date": { "type": "string", "default": "January 1, 2024" }
+            },
+            "required": ["name", "location", "number", "date"]
         }
     },
-    "required": ["eventName", "eventLocation", "eventNumber", "nextEventName", "nextEventLocation", "nextEventNumber", "nextEventDate", "setupTeam", "commentaryTeam", "techTeam", "staffTeam", "eventTeam"]
+    "required": ["currentEvent", "nextEvent"]
 }

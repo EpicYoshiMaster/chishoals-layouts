@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react'
 import styled from 'styled-components'
 import { CarouselComponent } from './CarouselComponent';
 import { YoutubeLogo, DiscordLogo, TwitterLogo  } from "@phosphor-icons/react";
-import { EventData, Socials } from '../../types/schemas';
+import { EventData, Socials, EventInfo } from '../../types/schemas';
 import { useReplicant } from '@nodecg/react-hooks';
 import { IntermissionData } from '../../types/schemas/intermissionData';
 
@@ -11,16 +11,12 @@ export const Omnibar: React.FC = () => {
 	const [socials] = useReplicant<Socials>('socials');
 	const [intermissionData] = useReplicant<IntermissionData>('intermission');
 
-	const [eventName, setEventName] = useState("");
-	const [eventLocation, setEventLocation] = useState("");
-	const [eventNumber, setEventNumber] = useState(0);
+	const [currentEvent, setCurrentEvent] = useState<EventInfo>({ name: "Current Event Name", location: "Event Location", number: 1, date: "Today" });
 
 	useEffect(() => {
 		if(!eventData) return;
    
-		setEventName(eventData.eventName);
-		setEventLocation(eventData.eventLocation);
-		setEventNumber(eventData.eventNumber);
+		setCurrentEvent(eventData.currentEvent);
 	}, [eventData]);
 
     const [time, setTime] = useState(new Date());
@@ -60,17 +56,17 @@ export const Omnibar: React.FC = () => {
 			<OmnibarItem $show={intermissionData ? intermissionData.showEvent : true}>
 				<EventSection $border={true}>
 					<Logo src='/bundles/chishoals-layouts/images/Chi-Shoals_Logo_Transparent.png' alt="Chi-Shoals Logo" />
-					{eventNumber > 0 && (
+					{currentEvent.number > 0 && (
 					<EventNumberText>
-            	    	#{eventNumber}
+            	    	#{currentEvent.number}
             		</EventNumberText>)}
 				</EventSection>
 			</OmnibarItem>
 			<TextOmnibarItem $show={intermissionData ? intermissionData.showLocation : true} $maxWidth="24rem">
-				{eventLocation !== '' && (
+				{currentEvent.location !== '' && (
 				<LocationWrapper $border={true}>
 					<LocationText>
-            	    	{eventLocation}
+            	    	{currentEvent.location}
             		</LocationText>
 				</LocationWrapper>
 				)}

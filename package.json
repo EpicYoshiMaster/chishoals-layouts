@@ -27,8 +27,16 @@
       {
         "name": "eventinformation",
         "title": "Event Information",
-        "width": 4,
+        "width": 3,
         "file": "eventinformation.html",
+        "workspace": "SquidWest",
+        "headerColor": "#525F78"
+      },
+      {
+        "name": "credits",
+        "title": "Credits",
+        "width": 3,
+        "file": "credits.html",
         "workspace": "SquidWest",
         "headerColor": "#525F78"
       },
@@ -43,7 +51,7 @@
       {
         "name": "intermission",
         "title": "Intermission Screen",
-        "width": 4,
+        "width": 3,
         "file": "intermission.html",
         "workspace": "SquidWest",
         "headerColor": "#525F78"
