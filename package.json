@@ -1,6 +1,9 @@
 {
   "name": "chishoals-layouts",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "chishoals": {
+    "month": "July 2024"
+  },
   "description": "Bundle with graphics and dashboards for SquidWest's Chi-Shoals Splatoon events.",
   "homepage": "",
   "author": {
@@ -44,6 +47,14 @@
         "file": "intermission.html",
         "workspace": "SquidWest",
         "headerColor": "#525F78"
+      },
+      {
+        "name": "commentators",
+        "title": "Commentators Information",
+        "width": 3,
+        "file": "commentators.html",
+        "workspace": "SquidWest",
+        "headerColor": "#525F78"
       }
     ],
     "graphics": [
@@ -61,6 +72,24 @@
       },
       {
         "file": "startingsoon.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      },
+      {
+        "file": "berightback.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      },
+      {
+        "file": "omnibaronly.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      },
+      {
+        "file": "commentators.html",
         "width": 1920,
         "height": 1080,
         "singleInstance": false

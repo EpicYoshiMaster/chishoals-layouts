@@ -2,6 +2,8 @@
 // @ts-ignore
 export * from './configschema';
 // @ts-ignore
+export * from './commentatorData';
+// @ts-ignore
 export * from './eventData';
 // @ts-ignore
 export * from './intermissionData';

@@ -1,8 +1,11 @@
 import { Configschema } from '../types/schemas/configschema';
 import NodeCG from '@nodecg/types';
+import Package from '../../package.json'
 //import { OBSControl } from './OBSControl';
 
 export = async (nodecg: NodeCG.ServerAPI<Configschema>) => {
+
+	console.log(`[HI FROPPY] You're using ${Package.name} Version ${Package.version} (${Package.chishoals.month})`);
 
 	/*
 	const obs = new OBSControl(nodecg);

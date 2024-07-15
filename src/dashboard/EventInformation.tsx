@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components'
 import NodeCG from '@nodecg/types';
 import { EventData } from '../types/schemas';
@@ -39,6 +39,32 @@ export function EventInformation() {
 		setStaffTeam(eventData.staffTeam);
 		setEventTeam(eventData.eventTeam);
 	}, [eventData]);
+
+	const onCommsCredits = useCallback(( value: string[] ) => {
+		if(!value) return;
+
+		let newCommentaryTeam = commentaryTeam.slice();
+
+		value.forEach((name) => {
+			const trimmed = name.trim();
+
+			if(name === "") return;
+
+			if(!newCommentaryTeam.includes(trimmed)) {
+				newCommentaryTeam.push(trimmed);
+			}
+		})
+
+		setCommentaryTeam(newCommentaryTeam);
+	}, [commentaryTeam, setCommentaryTeam]);
+
+	useEffect(() => {
+		nodecg.listenFor('commsCredits', onCommsCredits)
+
+		return () => {
+			nodecg.unlisten('commsCredits', onCommsCredits);
+		}
+	}, [onCommsCredits]);
 	
 	const updateEventData = () => {
 		let newEventData: EventData = {
