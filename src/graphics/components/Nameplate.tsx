@@ -1,5 +1,5 @@
 import styled, { keyframes, css } from "styled-components";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 interface NameplateProps {
 	show: boolean;
@@ -7,12 +7,6 @@ interface NameplateProps {
 	pronouns?: string;
 	tag?: string;
 }
-
-//if show is changed this should trigger an animation
-
-
-//show vs. visible?
-//animation time
 
 export const Nameplate: React.FC<NameplateProps> = ({ show, name, pronouns, tag }) => {
 
@@ -38,6 +32,19 @@ export const Nameplate: React.FC<NameplateProps> = ({ show, name, pronouns, tag 
 		}
 	}, [show, visible]);
 
+	const pronounsSplit = useMemo(() => {
+		if(!pronouns) return [];
+
+		let split = pronouns.split('/');
+
+		split = split.map((item, index) => {
+			return (index === split.length - 1) ? item : item + '/';
+		})
+
+		return split;
+
+	}, [pronouns]);
+
 	return (
 		<NameplateBox
 		$show={show}
@@ -47,12 +54,20 @@ export const Nameplate: React.FC<NameplateProps> = ({ show, name, pronouns, tag 
 			<Name>
 				{name}
 			</Name>
-			<Pronouns>
-				{pronouns}
-			</Pronouns>
+			{tag && (
 			<Tag>
 				{tag}
 			</Tag>
+			)}
+			{pronouns && (
+			<Pronouns>
+			{
+				pronounsSplit.map((item, index) => {
+					return <PronounsText key={index}>{item}</PronounsText>;
+				})
+			}
+			</Pronouns>
+			)}
 		</NameplateBox>
 	);
 }
@@ -61,20 +76,20 @@ const ShowNameplate = keyframes`
 	0% {
 		opacity: 1;
 		clip-path: polygon(
-			50% 0,
-			50% 0,
-			50% 100%,
-			50% 100%
+			50% -40%,
+			50% -40%,
+			50% 140%,
+			50% 140%
 		);
 	}
 
 	100% {
 		opacity: 1;
 		clip-path: polygon(
-			0 0,
-			100% 0,
-			100% 100%,
-			0 100%
+			-40% -40%,
+			140% -40%,
+			140% 140%,
+			-40% 140%
 		)
 	}
 `;
@@ -83,43 +98,47 @@ const HideNameplate = keyframes`
 	0% {
 		opacity: 1;
 		clip-path: polygon(
-			0 0,
-			100% 0,
-			100% 100%,
-			0 100%
+			-40% -40%,
+			140% -40%,
+			140% 140%,
+			-40% 140%
 		)
 	}
 
 	100% {
 		opacity: 1;
 		clip-path: polygon(
-			50% 0,
-			50% 0,
-			50% 100%,
-			50% 100%
+			50% -40%,
+			50% -40%,
+			50% 140%,
+			50% 140%
 		);
 	}
 `;
 
 const NameplateBox = styled.div<{ $show: boolean, $visible: boolean, $active: boolean }>`
 	position: relative;
-	display: grid;
+	display: flex;
+	flex-direction: column;
 
-	padding: 5px;
-	height: 150px;
-	width: 660px;
+	padding: 10px;
+	height: 160px;
+	width: 600px;
 
+	align-items: center;
+	justify-content: space-evenly;
 	text-align: center;
 
-	border: 8px solid #f04888;
-	background-color: #eae6f3;
+	background-image: url('/bundles/chishoals-layouts/images/Chi_Banner.png');
+	background-size: contain;
+	background-repeat: no-repeat;
 	color: #a72456;
 
 	${({$visible}) => $visible ? css`opacity: 1;` : css`opacity: 0;` };
 
 	${(props) => {
 		if(props.$active) {
-			return css`animation: 750ms ease-in 0s ${props.$show ? ShowNameplate : HideNameplate} forwards;`	
+			return css`animation: 1000ms linear 0s ${props.$show ? ShowNameplate : HideNameplate} forwards;`	
 		}
 		else {
 			return css`animation: none;`
@@ -128,13 +147,39 @@ const NameplateBox = styled.div<{ $show: boolean, $visible: boolean, $active: bo
 `;
 
 const Name = styled.div`
+	position: relative;
+	width: 100%;
 	font-size: 3rem;
 `;
 
 const Pronouns = styled.div`
-	font-size: 2rem;
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+
+	padding: 5px;
+
+	bottom: -50px;
+	right: -80px;
+	
+	justify-content: center;
+	align-items: center;
+
+	width: 167px;
+	height: 135px;
+	background-image: url('/bundles/chishoals-layouts/images/Splatter.png');
+	background-size: contain;
+	background-repeat: no-repeat;
+	color: #eae6f3;
+	font-size: 1.6rem;
 `;
 
 const Tag = styled.div`
-	font-size: 2rem;
+	position: relative;
+	width: 100%;
+	text-align: left;
+	font-size: 2.25rem;
+`;
+
+const PronounsText = styled.div`
 `;

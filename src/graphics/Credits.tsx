@@ -19,6 +19,7 @@ export function Credits() {
 	const [commentaryTeam, setCommentaryTeam] = useState([""]);
 	const [staffTeam, setStaffTeam] = useState([""]);
 	const [eventTeam, setEventTeam] = useState([""]);
+    const [artTeam, setArtTeam] = useState([""]);
 
 	useEffect(() => {
 		if(!eventData) return;
@@ -35,6 +36,7 @@ export function Credits() {
 		setTechTeam(creditsData.techTeam);
 		setStaffTeam(creditsData.staffTeam);
 		setEventTeam(creditsData.eventTeam);
+        setArtTeam(creditsData.artTeam);
 	}, [creditsData]);
 
 	return (
@@ -68,6 +70,16 @@ export function Credits() {
                         <HeaderText>Stream Technicians</HeaderText>
                         {
                             techTeam.map((name, index) => {
+                                return (
+                                    <NameText key={index}>{name}</NameText>
+                                )
+                            })
+                        }
+                    </CreditsRow>
+                    <CreditsRow>
+                        <HeaderText>Artists</HeaderText>
+                        {
+                            artTeam.map((name, index) => {
                                 return (
                                     <NameText key={index}>{name}</NameText>
                                 )

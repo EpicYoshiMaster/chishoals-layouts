@@ -15,6 +15,7 @@ export function Credits() {
 	const [techTeam, setTechTeam] = useState([""]);
 	const [staffTeam, setStaffTeam] = useState([""]);
 	const [eventTeam, setEventTeam] = useState([""]);
+	const [artTeam, setArtTeam] = useState([""]);
 
 	useEffect(() => {
 		if(!creditsData) return;
@@ -24,6 +25,7 @@ export function Credits() {
 		setTechTeam(creditsData.techTeam);
 		setStaffTeam(creditsData.staffTeam);
 		setEventTeam(creditsData.eventTeam);
+		setArtTeam(creditsData.artTeam);
 	}, [creditsData]);
 
 	const onCommsCredits = useCallback(( value: string[] ) => {
@@ -58,7 +60,8 @@ export function Credits() {
 			commentaryTeam: commentaryTeam,
 			techTeam: techTeam,
 			staffTeam: staffTeam,
-			eventTeam: eventTeam
+			eventTeam: eventTeam,
+			artTeam: artTeam
 		};
 
 		setCreditsData(newcreditsData);
@@ -70,6 +73,7 @@ export function Credits() {
 				<NameList title="Setup and Teardown Volunteers" list={setupTeam} listUpdateHandler={setSetupTeam} />
 				<NameList title="Commentary" list={commentaryTeam} listUpdateHandler={setCommentaryTeam} />
 				<NameList title="Stream Technicians" list={techTeam} listUpdateHandler={setTechTeam} />
+				<NameList title="Artists" list={artTeam} listUpdateHandler={setArtTeam} />
 				<NameList title="SquidWest TOs and Staff" list={staffTeam} listUpdateHandler={setStaffTeam} />
 				<NameList title="Event TO" list={eventTeam} listUpdateHandler={setEventTeam} />
 			</InputSection>

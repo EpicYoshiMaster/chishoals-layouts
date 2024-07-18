@@ -32,6 +32,12 @@
             "items": { "type": "string" },
             "description": "The list of Event TOs for this event.",
             "default": ["Event TO Name"]
+        },
+        "artTeam": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "The list of Artists contributing to the layouts or event.",
+            "default": ["Artist Name"]
         }
     },
     "$defs": {
@@ -48,5 +54,5 @@
             }
         }
     },
-    "required": ["setupTeam", "commentaryTeam", "techTeam", "staffTeam", "eventTeam"]
+    "required": ["setupTeam", "commentaryTeam", "techTeam", "staffTeam", "eventTeam", "artTeam"]
 }

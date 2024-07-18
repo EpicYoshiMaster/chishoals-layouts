@@ -26,4 +26,8 @@ export interface CreditsData {
 	 * The list of Event TOs for this event.
 	 */
 	eventTeam: string[];
+	/**
+	 * The list of Artists contributing to the layouts or event.
+	 */
+	artTeam: string[];
 }
