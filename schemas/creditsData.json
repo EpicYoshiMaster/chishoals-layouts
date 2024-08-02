@@ -25,19 +25,25 @@
             "type": "array",
             "items": { "type": "string" },
             "description": "The list of SquidWest TOs and Staff.",
-            "default": ["Staff #1", "Staff #2", "Staff #3"]
+            "default": ["Fuchsia", "Carrot", "Chino", "Brandeska", "Kaito", "Froppy"]
         },
-        "eventTeam": {
+        "headTO": {
             "type": "array",
             "items": { "type": "string" },
-            "description": "The list of Event TOs for this event.",
-            "default": ["Event TO Name"]
+            "description": "The Head TO for this event.",
+            "default": ["Head TO Name"]
+        },
+        "poolCaptains": {
+            "type": "array",
+            "items": { "type": "string" },
+            "description": "The list of Staff and Pool Captains for this event.",
+            "default": ["Pool Captain Name"]
         },
         "artTeam": {
             "type": "array",
             "items": { "type": "string" },
             "description": "The list of Artists contributing to the layouts or event.",
-            "default": ["Artist Name"]
+            "default": ["Xolo"]
         }
     },
     "$defs": {
@@ -54,5 +60,5 @@
             }
         }
     },
-    "required": ["setupTeam", "commentaryTeam", "techTeam", "staffTeam", "eventTeam", "artTeam"]
+    "required": ["setupTeam", "commentaryTeam", "techTeam", "staffTeam", "headTO", "poolCaptains", "artTeam"]
 }

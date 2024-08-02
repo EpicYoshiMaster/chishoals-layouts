@@ -7,6 +7,8 @@ import { useReplicant } from '@nodecg/react-hooks';
 import { CommentatorData, CommentatorInfo } from '../types/schemas/commentatorData';
 import { LoadState } from '../types/types';
 
+//TODO: Look into initial state problems (fixable for now with just saving)
+
 export function Commentators() {
 
 	const [show, setShow] = useState(false);

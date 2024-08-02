@@ -5,6 +5,7 @@ import { GithubLogo, DiscordLogo, TwitterLogo  } from "@phosphor-icons/react";
 import { createRoot } from 'react-dom/client';
 import { useReplicant } from '@nodecg/react-hooks';
 import { EventData, CreditsData, EventInfo } from '../types/schemas';
+import { CreditsNameRow } from './components/CreditsNameRow';
 
 export function Credits() {
     const [eventData, setEventData] = useReplicant<EventData>('eventData');
@@ -15,11 +16,12 @@ export function Credits() {
     const [creditsData, setCreditsData] = useReplicant<CreditsData>('creditsData');
 
 	const [setupTeam, setSetupTeam] = useState([""]);
-    const [techTeam, setTechTeam] = useState([""]);
 	const [commentaryTeam, setCommentaryTeam] = useState([""]);
+	const [techTeam, setTechTeam] = useState([""]);
 	const [staffTeam, setStaffTeam] = useState([""]);
-	const [eventTeam, setEventTeam] = useState([""]);
-    const [artTeam, setArtTeam] = useState([""]);
+	const [headTO, setHeadTO] = useState([""]);
+	const [poolCaptains, setPoolCaptains] = useState([""]);
+	const [artTeam, setArtTeam] = useState([""]);
 
 	useEffect(() => {
 		if(!eventData) return;
@@ -35,56 +37,29 @@ export function Credits() {
 		setCommentaryTeam(creditsData.commentaryTeam);
 		setTechTeam(creditsData.techTeam);
 		setStaffTeam(creditsData.staffTeam);
-		setEventTeam(creditsData.eventTeam);
-        setArtTeam(creditsData.artTeam);
+		setHeadTO(creditsData.headTO);
+		setPoolCaptains(creditsData.poolCaptains);
+		setArtTeam(creditsData.artTeam);
 	}, [creditsData]);
 
 	return (
         <StyledCredits>
             <Content>
-                <CarouselComponent speed={10000} transitionSpeed={3000} once={true}>
+                <CarouselComponent speed={10000} transitionSpeed={3000} once={true} startIndex={5}>
                     <CreditsRow>
                         <TitleText>{currentEvent.name} {currentEvent.number > 0 ? '#' + currentEvent.number  : ''}</TitleText>
                     </CreditsRow>
                     <CreditsRow>
-                        <HeaderText>Setup and Teardown Volunteers</HeaderText>
-                        {
-                            setupTeam.map((name, index) => {
-                                return (
-                                    <NameText key={index}>{name}</NameText>
-                                )
-                            })
-                        }
+                        <CreditsNameRow title="Setup and Teardown Volunteers" names={setupTeam} />
                     </CreditsRow>
                     <CreditsRow>
-                        <HeaderText>Commentary</HeaderText>
-                        {
-                            commentaryTeam.map((name, index) => {
-                                return (
-                                    <NameText key={index}>{name}</NameText>
-                                )
-                            })
-                        }
+                        <CreditsNameRow title="Commentary" names={commentaryTeam} />
                     </CreditsRow>
                     <CreditsRow>
-                        <HeaderText>Stream Technicians</HeaderText>
-                        {
-                            techTeam.map((name, index) => {
-                                return (
-                                    <NameText key={index}>{name}</NameText>
-                                )
-                            })
-                        }
+                        <CreditsNameRow title="Stream Technicians" names={techTeam} />
                     </CreditsRow>
                     <CreditsRow>
-                        <HeaderText>Artists</HeaderText>
-                        {
-                            artTeam.map((name, index) => {
-                                return (
-                                    <NameText key={index}>{name}</NameText>
-                                )
-                            })
-                        }
+                        <CreditsNameRow title="Artists" names={artTeam} />
                     </CreditsRow>
                     <CreditsRow>
                         <LogoRow>
@@ -101,16 +76,16 @@ export function Credits() {
                     </CreditsRow>
                     <CreditsRow>
                         <LogoRow>
-                            <HeaderText>Event TO</HeaderText>
                             <Logo src="/bundles/chishoals-layouts/images/Chi-Shoals_Logo_Transparent_Green.png" />
                         </LogoRow>
-                        {
-                            eventTeam.map((name, index) => {
-                                return (
-                                    <NameText key={index}>{name}</NameText>
-                                )
-                            })
-                        }
+                        <CreditsColumns>
+                            <Rows>
+                                <CreditsNameRow title="Head TO" names={headTO} />
+                            </Rows>
+                            <Rows>
+                                <CreditsNameRow title="Staff and Pool Captains" names={poolCaptains} />
+                            </Rows>
+                        </CreditsColumns>
                     </CreditsRow>
                     <CreditsRow>
                         <HeaderText>Stream Overlays and Design</HeaderText>
@@ -192,9 +167,11 @@ const TitleText = styled.div`
     font-size: 100px;
 `;
 
-const SubRow = styled.div<{}>`
+const CreditsRow = styled.div<{}>`
     position: relative;
-    margin: 20px 0;
+
+    width: 100%;
+    height: 100%;
 
     display: flex;
     flex-direction: column;
@@ -202,11 +179,18 @@ const SubRow = styled.div<{}>`
     align-items: center;
 `;
 
-const CreditsRow = styled.div<{}>`
+const CreditsColumns = styled.div`
     position: relative;
-
     width: 100%;
-    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: flex-start;
+`;
+
+const Rows = styled.div`
+    position: relative;
 
     display: flex;
     flex-direction: column;

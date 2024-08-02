@@ -23,9 +23,13 @@ export interface CreditsData {
 	 */
 	staffTeam: string[];
 	/**
-	 * The list of Event TOs for this event.
+	 * The Head TO for this event.
 	 */
-	eventTeam: string[];
+	headTO: string[];
+	/**
+	 * The list of Staff and Pool Captains for this event.
+	 */
+	poolCaptains: string[];
 	/**
 	 * The list of Artists contributing to the layouts or event.
 	 */

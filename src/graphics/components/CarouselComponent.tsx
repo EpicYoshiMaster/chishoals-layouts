@@ -7,15 +7,16 @@ interface CarouselComponentProps {
     transitionSpeed?: number;
     once?: boolean;
     indexRelative?: number; //Set the index of the item which should be set as relative (should be the largest present), 
+    startIndex?: number;
 }
 
 const DEFAULT_SPEED = 5000;
 const DEFAULT_TRANSITION_SPEED = 1000;
 
-export const CarouselComponent: React.FC<CarouselComponentProps> = ({ children, speed, transitionSpeed, once, indexRelative }) => {
+export const CarouselComponent: React.FC<CarouselComponentProps> = ({ children, speed, transitionSpeed, once, indexRelative, startIndex }) => {
     const [carouselIndex, setCarouselIndex] = useState(0);
     const carouselIntervalId = useRef<number | null>(null);
-    const activeCarouselIndexRef = useRef(0);
+    const activeCarouselIndexRef = useRef(startIndex || 0);
 
     useEffect(() => {
         let childElements = React.Children.toArray(children);

@@ -14,7 +14,8 @@ export function Credits() {
 	const [commentaryTeam, setCommentaryTeam] = useState([""]);
 	const [techTeam, setTechTeam] = useState([""]);
 	const [staffTeam, setStaffTeam] = useState([""]);
-	const [eventTeam, setEventTeam] = useState([""]);
+	const [headTO, setHeadTO] = useState([""]);
+	const [poolCaptains, setPoolCaptains] = useState([""]);
 	const [artTeam, setArtTeam] = useState([""]);
 
 	useEffect(() => {
@@ -24,7 +25,8 @@ export function Credits() {
 		setCommentaryTeam(creditsData.commentaryTeam);
 		setTechTeam(creditsData.techTeam);
 		setStaffTeam(creditsData.staffTeam);
-		setEventTeam(creditsData.eventTeam);
+		setHeadTO(creditsData.headTO);
+		setPoolCaptains(creditsData.poolCaptains);
 		setArtTeam(creditsData.artTeam);
 	}, [creditsData]);
 
@@ -60,7 +62,8 @@ export function Credits() {
 			commentaryTeam: commentaryTeam,
 			techTeam: techTeam,
 			staffTeam: staffTeam,
-			eventTeam: eventTeam,
+			headTO: headTO,
+			poolCaptains: poolCaptains,
 			artTeam: artTeam
 		};
 
@@ -75,7 +78,8 @@ export function Credits() {
 				<NameList title="Stream Technicians" list={techTeam} listUpdateHandler={setTechTeam} />
 				<NameList title="Artists" list={artTeam} listUpdateHandler={setArtTeam} />
 				<NameList title="SquidWest TOs and Staff" list={staffTeam} listUpdateHandler={setStaffTeam} />
-				<NameList title="Event TO" list={eventTeam} listUpdateHandler={setEventTeam} />
+				<NameList title="Head TO" list={headTO} listUpdateHandler={setHeadTO} />
+				<NameList title="Staff and Pool Captains" list={poolCaptains} listUpdateHandler={setPoolCaptains} />
 			</InputSection>
 			<InputButton onClick={() => { updateCreditsData(); }}>Save</InputButton>
 		</PanelContainer>
