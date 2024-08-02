@@ -45,7 +45,7 @@ export function Credits() {
 	return (
         <StyledCredits>
             <Content>
-                <CarouselComponent speed={10000} transitionSpeed={3000} once={true} startIndex={5}>
+                <CarouselComponent speed={10000} transitionSpeed={3000} once={true}>
                     <CreditsRow>
                         <TitleText>{currentEvent.name} {currentEvent.number > 0 ? '#' + currentEvent.number  : ''}</TitleText>
                     </CreditsRow>
