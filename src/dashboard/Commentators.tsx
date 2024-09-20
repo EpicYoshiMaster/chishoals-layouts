@@ -43,6 +43,13 @@ export function Commentators() {
 		setComms(newCommentators);
 	}, [commentatorOne, commentatorTwo, autoShow, delay, autoHide, lifetime, setComms]);
 
+	const swapCommentators = useCallback(() => {
+		const commOne = commentatorOne;
+
+		setCommentatorOne(commentatorTwo);
+		setCommentatorTwo(commOne);
+	}, [commentatorOne, commentatorTwo]);
+
 	const addToCredits = useCallback(() => {
 		nodecg.sendMessage('commsCredits', [commentatorOne.name || "", commentatorTwo.name || ""]);
 	}, [commentatorOne, commentatorTwo]);
@@ -63,6 +70,7 @@ export function Commentators() {
 				<InputSubheader>Commentator #2</InputSubheader>
 				<Commentator comm={commentatorTwo} setCommentator={setCommentatorTwo} />
 			</InputSection>
+			<InputButton onClick={() => { swapCommentators(); }}>Swap Commentators</InputButton>
 			<InputButton onClick={() => { addToCredits(); }}>Add to Credits</InputButton>
 			<InputSection>
 				<InputSubheader>Configuration</InputSubheader>
