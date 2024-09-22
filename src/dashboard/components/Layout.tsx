@@ -55,6 +55,20 @@ export const InputButton = styled.button`
 	}
 `;
 
+export const CollapseButton = styled.button`
+    margin: 0;
+    padding: 0;
+    font-size: 2rem;
+    font-weight: 800;
+    color: white;
+    background: transparent;
+    border: transparent;
+
+    :hover {
+        cursor: pointer;
+    }
+`;
+
 export const InputCheckbox = styled.button<{ $checked: boolean }>`
 	display: flex;
 	flex-direction: column;
