@@ -7,7 +7,7 @@ import { InputButton, InputLabel, InputRow, InputSection, InputSubheader } from 
 import { useReplicant } from '@nodecg/react-hooks'
 
 export function SocialsInformation() {
-	const [socials, setSocials] = useReplicant<Socials>('socials');
+	const [socials, setSocials] = useReplicant<Socials>('socials', { defaultValue: { youtube: "", twitter: "", discord: "" }});
 
 	const [youtube, setYoutube] = useState("");
 	const [twitter, setTwitter] = useState("");

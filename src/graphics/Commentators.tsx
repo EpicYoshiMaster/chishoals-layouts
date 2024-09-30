@@ -7,16 +7,26 @@ import { useReplicant } from '@nodecg/react-hooks';
 import { CommentatorData, CommentatorInfo } from '../types/schemas/commentatorData';
 import { LoadState } from '../types/types';
 
-//TODO: Look into initial state problems (fixable for now with just saving)
+const defaultCommentator: CommentatorInfo = { name: "Commentator Name", pronouns: "any/all", tag: "@TagName" }
+const AnimationDuration = 1000;
 
 export function Commentators() {
 
 	const [show, setShow] = useState(false);
 	const [loaded, setLoaded] = useState<LoadState>(LoadState.LS_NotLoaded);
-	const [comms, setComms] = useReplicant<CommentatorData>('commentators');
+	const [comms, setComms] = useReplicant<CommentatorData>('commentators', {
+		defaultValue: { 
+			commentatorOne: defaultCommentator, 
+			commentatorTwo: defaultCommentator,
+			autoShow: true,
+			delay: 3000,
+			autoHide: true,
+			lifetime: 5000
+		}
+	});
 
-	const [commentatorOne, setCommentatorOne ] = useState<CommentatorInfo>({ name: "Commentator Name", pronouns: "any/all", tag: "@TagName" });
-	const [commentatorTwo, setCommentatorTwo ] = useState<CommentatorInfo>({ name: "Commentator Name", pronouns: "any/all", tag: "@TagName" });
+	const [commentatorOne, setCommentatorOne ] = useState<CommentatorInfo>(defaultCommentator);
+	const [commentatorTwo, setCommentatorTwo ] = useState<CommentatorInfo>(defaultCommentator);
 
 	const [ autoShow, setAutoShow ] = useState<boolean>(false);
 	const [ delay, setDelay ] = useState<number>(3000);
@@ -38,22 +48,25 @@ export function Commentators() {
 		}
 	}, [comms]);
 
-	const onCommsControl = useCallback(( value: boolean ) => {
-		setShow(value);
-	}, [setShow]);
-
 	const onAutoHide = useCallback(() => {
 		setShow(false);
 	}, [setShow]);
 
-	const onAutoShow = useCallback(() => {
-		setShow(true);
-
-		if(autoHide) {
-			window.setTimeout(onAutoHide, lifetime);
+	const setCurrentShow = useCallback((newShow: boolean) => {
+		if(newShow && autoHide) {
+			window.setTimeout(onAutoHide, Math.max(AnimationDuration + lifetime, AnimationDuration));
 		}
-		
-	}, [onAutoHide, setShow, autoHide, lifetime]);
+
+		setShow(newShow);
+	}, [setShow, onAutoHide, autoHide, lifetime])
+
+	const onAutoShow = useCallback(() => {
+		setCurrentShow(true);
+	}, [setCurrentShow]);
+
+	const onCommsControl = useCallback(( value: boolean ) => {
+		setCurrentShow(value);
+	}, [setCurrentShow]);
 
 	useEffect(() => {
 		nodecg.listenFor('commsControl', onCommsControl)
@@ -63,11 +76,10 @@ export function Commentators() {
 		}
 	}, [onCommsControl]);
 
-
 	useEffect(() => {
 		if(loaded === LoadState.LS_Loaded) {
 			if(autoShow) {
-				window.setTimeout(onAutoShow, delay);
+				window.setTimeout(onAutoShow, Math.max(delay, 0));
 			}
 
 			setLoaded(LoadState.LS_Done);
@@ -83,14 +95,16 @@ export function Commentators() {
 						show={show} 
 						name={commentatorOne.name}
 						pronouns={commentatorOne.pronouns}
-						tag={commentatorOne.tag} />
+						tag={commentatorOne.tag}
+						animationLength={AnimationDuration} />
 					</NameplateLeft>
 					<NameplateRight>
 						<Nameplate 
 						show={show}
 						name={commentatorTwo.name}
 						pronouns={commentatorTwo.pronouns}
-						tag={commentatorTwo.tag} />
+						tag={commentatorTwo.tag}
+						animationLength={AnimationDuration} />
 					</NameplateRight>
 				</LowerThirds>
 			</Content>

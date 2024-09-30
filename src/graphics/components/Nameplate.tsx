@@ -6,20 +6,27 @@ interface NameplateProps {
 	name?: string;
 	pronouns?: string;
 	tag?: string;
+	animationLength?: number;
 }
 
-export const Nameplate: React.FC<NameplateProps> = ({ show, name, pronouns, tag }) => {
+export const Nameplate: React.FC<NameplateProps> = ({ show, name, pronouns, tag, animationLength }) => {
 
 	const [ visible, setVisible ] = useState<boolean>(false);
 	const [ active, setActive ] = useState<boolean>(false);
 	
 	let onAnimEnd = useCallback((animName: string) => {
-		if(animName === HideNameplate.getName()) {
+		if(animName === ShowNameplate.getName()) {
+			if(!show) {
+				setActive(true);
+				return;
+			}
+		}
+		else if(animName === HideNameplate.getName()) {
 			setVisible(false);
 		}
 
 		setActive(false);
-	}, []);
+	}, [show]);
 
 	useEffect(() => {
 		if(show && !visible) {
@@ -50,6 +57,7 @@ export const Nameplate: React.FC<NameplateProps> = ({ show, name, pronouns, tag 
 		$show={show}
 		$visible={visible}
 		$active={active} 
+		$animLength={animationLength || 1000}
 		onAnimationEnd={(event) => { onAnimEnd(event.animationName); }}>
 			<Name>
 				{name}
@@ -116,7 +124,7 @@ const HideNameplate = keyframes`
 	}
 `;
 
-const NameplateBox = styled.div<{ $show: boolean, $visible: boolean, $active: boolean }>`
+const NameplateBox = styled.div<{ $show: boolean, $visible: boolean, $active: boolean, $animLength: number }>`
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -138,7 +146,7 @@ const NameplateBox = styled.div<{ $show: boolean, $visible: boolean, $active: bo
 
 	${(props) => {
 		if(props.$active) {
-			return css`animation: 1000ms linear 0s ${props.$show ? ShowNameplate : HideNameplate} forwards;`	
+			return css`animation: ${props.$animLength}ms linear 0s ${props.$show ? ShowNameplate : HideNameplate} forwards;`	
 		}
 		else {
 			return css`animation: none;`

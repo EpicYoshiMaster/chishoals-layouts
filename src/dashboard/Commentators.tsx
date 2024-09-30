@@ -8,11 +8,21 @@ import { InputButton, InputCheckbox, InputLabel, InputRow, InputSection, InputSu
 import { useReplicant } from '@nodecg/react-hooks'
 import { Commentator } from './components/Commentator';
 
-export function Commentators() {
-	const [comms, setComms] = useReplicant<CommentatorData>('commentators');
+const defaultCommentator: CommentatorInfo = { name: "Commentator Name", pronouns: "any/all", tag: "@TagName" }
 
-	const [commentatorOne, setCommentatorOne ] = useState<CommentatorInfo>({ name: "Commentator Name", pronouns: "any/all", tag: "@TagName" });
-	const [commentatorTwo, setCommentatorTwo ] = useState<CommentatorInfo>({ name: "Commentator Name", pronouns: "any/all", tag: "@TagName" });
+export function Commentators() {
+	const [comms, setComms] = useReplicant<CommentatorData>('commentators', { 
+		defaultValue: { 
+			commentatorOne: defaultCommentator, 
+			commentatorTwo: defaultCommentator,
+			autoShow: true,
+			delay: 3000,
+			autoHide: true,
+			lifetime: 5000
+		}});
+
+	const [commentatorOne, setCommentatorOne ] = useState<CommentatorInfo>(defaultCommentator);
+	const [commentatorTwo, setCommentatorTwo ] = useState<CommentatorInfo>(defaultCommentator);
 
 	const [ autoShow, setAutoShow ] = useState<boolean>(true);
 	const [ delay, setDelay ] = useState<number>(3000);
