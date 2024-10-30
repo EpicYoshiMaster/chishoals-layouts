@@ -22,7 +22,20 @@ export const InputSubheader = styled.div`
     font-size: 1.25rem;
     font-weight: 700;
     margin: 0.75rem 0;
-`
+`;
+
+export const InputText = styled.div`
+    grid-column: 1 / -1;
+    font-size: 1rem;
+	margin-bottom: 0.75rem;
+`;
+
+export const ErrorText = styled.div`
+	font-weight: 700;
+	font-size: 1.25rem;
+	margin: 0.5rem 0;
+	text-align: center;
+`;
 
 export const InputLabel = styled.div`
 	display: flex;

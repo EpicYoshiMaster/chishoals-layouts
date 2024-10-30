@@ -15,7 +15,7 @@ type Background = { image: string, size?: string }
 
 const BACKGROUND_CATS: Category[] = [
 	{
-		weight: 0.8,
+		weight: 0.7,
 		backgrounds: [
 			{ image: 'bg_ika.png' },
 			{ image: 'bg_octo.png' },
@@ -23,7 +23,7 @@ const BACKGROUND_CATS: Category[] = [
 		]
 	},
 	{
-		weight: 0.2,
+		weight: 0.3,
 		backgrounds: [
 			{ image: 'bg_pixelnpc.png', size: '50%' },
 			{ image: 'bg_jelleton.png', size: '50%' },

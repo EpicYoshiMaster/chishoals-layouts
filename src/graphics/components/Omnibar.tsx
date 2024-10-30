@@ -5,6 +5,7 @@ import { YoutubeLogo, DiscordLogo, TwitterLogo  } from "@phosphor-icons/react";
 import { EventData, Socials, EventInfo } from '../../types/schemas';
 import { useReplicant } from '@nodecg/react-hooks';
 import { IntermissionData } from '../../types/schemas/intermissionData';
+import { formatDateHM, formatDateMDY } from '../../helpers/utils'
 
 export const Omnibar: React.FC = () => {
 	const [eventData, setEventData] = useReplicant<EventData>('eventData');
@@ -20,14 +21,6 @@ export const Omnibar: React.FC = () => {
 	}, [eventData]);
 
     const [time, setTime] = useState(new Date());
-
-	const formatTimeHM = (currentTime: Date) => {
-		return currentTime.getHours() + ":" + ((time.getMinutes() < 10) ? "0" : "") + time.getMinutes();
-	};
-
-	const formatTimeMDY = (currentTime: Date) => {
-		return (currentTime.getMonth() + 1) + "/" + currentTime.getDate() + "/" + currentTime.getFullYear();
-	}
 
 	useEffect(() => {
 		const interval = setInterval(() => { 
@@ -46,10 +39,10 @@ export const Omnibar: React.FC = () => {
 			<OmnibarItem $show={intermissionData ? intermissionData.showTime : true}>
 				<TimeDate $border={true}>
 					<TimeDisplay>
-						{formatTimeHM(memoTime)}
+						{formatDateHM(memoTime)}
 					</TimeDisplay>
 					<DateDisplay>
-						{formatTimeMDY(memoTime)}
+						{formatDateMDY(memoTime)}
 					</DateDisplay>
 				</TimeDate>
 			</OmnibarItem>

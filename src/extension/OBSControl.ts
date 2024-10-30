@@ -1,32 +1,76 @@
 import type NodeCG from '@nodecg/types';
 import { Configschema } from '../types/schemas/configschema';
-import OBSWebSocket, { EventTypes } from 'obs-websocket-js';
+import OBSWebSocket, { OBSEventTypes } from 'obs-websocket-js';
+
+export type OBSCallback = (obs: OBSControl) => void;
+export type OBSEventCallback<E extends keyof OBSEventTypes> = (obs: OBSControl, event: OBSEventTypes[E]) => void;
+
+export type OBSEventCalls = {
+    onConnect?: OBSCallback;
+    onDisconnect?: OBSCallback;
+    onCurrentProgramSceneChanged?: OBSEventCallback<'CurrentProgramSceneChanged'>;
+    onStreamStateChanged?: OBSEventCallback<'StreamStateChanged'>;
+    //Expand this list as necessities grow
+}
 
 export class OBSControl {
-    private readonly nodecg: NodeCG.ServerAPI<Configschema>;
     private socket: OBSWebSocket;
+    private eventCalls: OBSEventCalls;
 
-    constructor(nodecg: NodeCG.ServerAPI<Configschema>) {
-        this.nodecg = nodecg;
+    constructor(eventCalls: OBSEventCalls) {
         this.socket = new OBSWebSocket();
-
-        if(this.nodecg.bundleConfig.obs) {
-            this.connect().catch(() => {});
-        }
+        this.eventCalls = eventCalls;
     }
 
-    async connect(): Promise<void> {
-        if(!this.nodecg.bundleConfig.obs) return;
+    async connect(ip: string, port: string, password?: string): Promise<void> {
 
         try {
-            await this.socket.connect(this.nodecg.bundleConfig.obs.url, this.nodecg.bundleConfig.obs.password);
+            await this.socket.connect(`ws://${ip}:${port}`, password);
 
             console.log("OBS Connected");
+
+            if(this.eventCalls.onConnect) {
+                this.eventCalls.onConnect(this);
+            }
+
+            const onExitStarted = () => { 
+                console.log("OBS Disconnected");
+
+                if(this.eventCalls.onDisconnect) {
+                    this.eventCalls.onDisconnect(this); 
+                }
+                
+                this.socket.off('ExitStarted', onExitStarted);
+            }
+
+            this.socket.on('ExitStarted', onExitStarted)
+                .on('CurrentProgramSceneChanged', this.onCurrentProgramSceneChanged.bind(this))
+                .on('StreamStateChanged', this.onStreamStateChanged.bind(this));
         }
         catch(e) {
             throw new Error(`OBS Connection Failed: ${e instanceof Error ? e.message : String(e)}`);
         }
     }
+
+    //
+    // Events
+    //
+
+    private onCurrentProgramSceneChanged(event: { sceneName: string }) {
+        if(this.eventCalls.onCurrentProgramSceneChanged) { 
+            this.eventCalls.onCurrentProgramSceneChanged(this, event);
+        }
+    }
+
+    private onStreamStateChanged(event: { outputActive: boolean, outputState: string }) {
+        if(this.eventCalls.onStreamStateChanged) { 
+            this.eventCalls.onStreamStateChanged(this, event);
+        }
+    }
+
+    //
+    // Requests
+    //
 
     setCurrentProgramScene(scene: string): Promise<void> {
         return this.socket.call('SetCurrentProgramScene', {sceneName: scene});

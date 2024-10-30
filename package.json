@@ -1,8 +1,8 @@
 {
   "name": "chishoals-layouts",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "chishoals": {
-    "month": "August 2024"
+    "month": "November 2024"
   },
   "description": "Bundle with graphics and dashboards for SquidWest's Chi-Shoals Splatoon events.",
   "homepage": "",
@@ -25,27 +25,11 @@
     "compatibleRange": "^2.0.0",
     "dashboardPanels": [
       {
-        "name": "eventinformation",
-        "title": "Event Information",
-        "width": 3,
-        "file": "eventinformation.html",
-        "workspace": "SquidWest",
-        "headerColor": "#525F78"
-      },
-      {
         "name": "credits",
         "title": "Credits",
         "width": 3,
         "file": "credits.html",
-        "workspace": "SquidWest",
-        "headerColor": "#525F78"
-      },
-      {
-        "name": "socials",
-        "title": "Socials Information",
-        "width": 3,
-        "file": "socials.html",
-        "workspace": "SquidWest",
+        "workspace": "1. Stream Tech",
         "headerColor": "#525F78"
       },
       {
@@ -53,7 +37,7 @@
         "title": "Intermission Screen",
         "width": 3,
         "file": "intermission.html",
-        "workspace": "SquidWest",
+        "workspace": "1. Stream Tech",
         "headerColor": "#525F78"
       },
       {
@@ -61,7 +45,39 @@
         "title": "Commentators Information",
         "width": 3,
         "file": "commentators.html",
-        "workspace": "SquidWest",
+        "workspace": "1. Stream Tech",
+        "headerColor": "#525F78"
+      },
+      {
+        "name": "time",
+        "title": "Time Information",
+        "width": 3,
+        "file": "time.html",
+        "workspace": "1. Stream Tech",
+        "headerColor": "#525F78"
+      },
+      {
+        "name": "eventinformation",
+        "title": "Event Information",
+        "width": 3,
+        "file": "eventinformation.html",
+        "workspace": "2. Settings",
+        "headerColor": "#525F78"
+      },
+      {
+        "name": "socials",
+        "title": "Socials Information",
+        "width": 3,
+        "file": "socials.html",
+        "workspace": "2. Settings",
+        "headerColor": "#525F78"
+      },
+      {
+        "name": "obs",
+        "title": "OBS Settings",
+        "width": 3,
+        "file": "obssettings.html",
+        "workspace": "2. Settings",
         "headerColor": "#525F78"
       }
     ],
