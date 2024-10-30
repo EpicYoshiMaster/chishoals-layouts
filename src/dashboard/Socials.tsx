@@ -7,10 +7,11 @@ import { InputButton, InputLabel, InputRow, InputSection, InputSubheader } from 
 import { useReplicant } from '@nodecg/react-hooks'
 
 export function SocialsInformation() {
-	const [socials, setSocials] = useReplicant<Socials>('socials', { defaultValue: { youtube: "", twitter: "", discord: "" }});
+	const [socials, setSocials] = useReplicant<Socials>('socials', { defaultValue: { youtube: "", twitter: "", bluesky: "", discord: "" }});
 
 	const [youtube, setYoutube] = useState("");
 	const [twitter, setTwitter] = useState("");
+	const [bluesky, setBluesky] = useState("");
 	const [discord, setDiscord] = useState("");
 
 	useEffect(() => {
@@ -18,6 +19,7 @@ export function SocialsInformation() {
    
 		setYoutube(socials.youtube);
 		setTwitter(socials.twitter);
+		setBluesky(socials.bluesky);
 		setDiscord(socials.discord);
 	}, [socials]);
 	
@@ -25,11 +27,12 @@ export function SocialsInformation() {
 		let newSocials: Socials = {
 			youtube: youtube,
 			twitter: twitter,
+			bluesky: bluesky,
 			discord: discord
 		};
 
 		setSocials(newSocials);
-	}, [youtube, twitter, discord, setSocials]);
+	}, [youtube, twitter, bluesky, discord, setSocials]);
 
 	return (
 		<PanelContainer>
@@ -42,6 +45,10 @@ export function SocialsInformation() {
 				<InputRow>
 					<InputLabel>Twitter</InputLabel>
 					<input type="text" value={twitter} onChange={(event) => { setTwitter(event.target.value); }}/>
+				</InputRow>
+				<InputRow>
+					<InputLabel>Bluesky</InputLabel>
+					<input type="text" value={bluesky} onChange={(event) => { setBluesky(event.target.value); }}/>
 				</InputRow>
 				<InputRow>
 					<InputLabel>Discord</InputLabel>

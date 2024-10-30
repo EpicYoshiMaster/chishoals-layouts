@@ -13,11 +13,16 @@
 			"description": "Twitter Username",
 			"default": "@SquidWest"
 		},
+		"bluesky": {
+			"type": "string",
+			"description": "Bluesky Username",
+			"default": "@squidwest.bsky.social"
+		},
 		"discord": {
 			"type": "string",
 			"description": "Discord Link",
 			"default": "discord.gg/trdHY59F2u"
 		}
     },
-    "required": ["youtube", "twitter", "discord"]
+    "required": ["youtube", "twitter", "bluesky", "discord"]
 }

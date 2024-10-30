@@ -2,7 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react';
 import styled from 'styled-components'
 import { createRoot } from 'react-dom/client';
 import { Background } from './components/Background';
-import { YoutubeLogo, DiscordLogo, TwitterLogo  } from "@phosphor-icons/react";
+import { YoutubeLogo, DiscordLogo, TwitterLogo, Butterfly  } from "@phosphor-icons/react";
 import { useReplicant } from '@nodecg/react-hooks';
 import { EventData, EventInfo, Socials } from '../types/schemas';
 import { CarouselComponent } from './components/CarouselComponent';
@@ -48,6 +48,10 @@ export function StartingSoon() {
 						<SocialsItem>
 							<TwitterLogo />
 							<SocialsText>{socials ? socials.twitter : ""}</SocialsText>
+						</SocialsItem>
+						<SocialsItem>
+							<Butterfly />
+							<SocialsText>{socials ? socials.bluesky : ""}</SocialsText>
 						</SocialsItem>
 						<SocialsItem>
 							<DiscordLogo />
@@ -121,7 +125,7 @@ const SocialsRow = styled.div`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-evenly;
-	font-size: 3.5rem;
+	font-size: 2.75rem;
 	color: #f10059;
 `;
 

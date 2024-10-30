@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import styled from 'styled-components'
 import { CarouselComponent } from './CarouselComponent';
-import { YoutubeLogo, DiscordLogo, TwitterLogo  } from "@phosphor-icons/react";
+import { YoutubeLogo, DiscordLogo, TwitterLogo, Butterfly } from "@phosphor-icons/react";
 import { EventData, Socials, EventInfo } from '../../types/schemas';
 import { useReplicant } from '@nodecg/react-hooks';
 import { IntermissionData } from '../../types/schemas/intermissionData';
@@ -72,7 +72,7 @@ export const Omnibar: React.FC = () => {
 				</TourneyWrapper>
 			</TextOmnibarItem>
             <CarouselWrapper $border={true}>
-				<CarouselComponent speed={5000} transitionSpeed={1000} indexRelative={2}>
+				<CarouselComponent speed={5000} transitionSpeed={1000} indexRelative={3}>
 					<CarouselRow>
                         <StyledYoutubeLogo />
                         <LogoText>{socials ? socials.youtube : ""}</LogoText>
@@ -80,6 +80,10 @@ export const Omnibar: React.FC = () => {
 					<CarouselRow>
                         <StyledTwitterLogo />
                         <LogoText>{socials ? socials.twitter : ""}</LogoText>
+					</CarouselRow>
+					<CarouselRow>
+                        <StyledButterfly />
+                        <LogoText>{socials ? socials.bluesky : ""}</LogoText>
 					</CarouselRow>
 					<CarouselRow>
                         <StyledDiscordLogo />
@@ -215,7 +219,13 @@ const StyledTwitterLogo = styled(TwitterLogo)`
 	width: 1em;
     object-fit: contain;
 	margin-right: 20px;
-`
+`;
+
+const StyledButterfly = styled(Butterfly)`
+	width: 1em;
+    object-fit: contain;
+	margin-right: 20px;
+`;
 
 const StyledDiscordLogo = styled(DiscordLogo)`
 	width: 1em;

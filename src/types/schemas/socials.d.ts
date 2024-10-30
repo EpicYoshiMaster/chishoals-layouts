@@ -15,6 +15,10 @@ export interface Socials {
 	 */
 	twitter: string;
 	/**
+	 * Bluesky Username
+	 */
+	bluesky: string;
+	/**
 	 * Discord Link
 	 */
 	discord: string;
