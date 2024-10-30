@@ -56,7 +56,7 @@ export class OBSControl {
     // Events
     //
 
-    private onCurrentProgramSceneChanged(event: { sceneName: string }) {
+    private onCurrentProgramSceneChanged(event: { sceneName: string, sceneUuid: string }) {
         if(this.eventCalls.onCurrentProgramSceneChanged) { 
             this.eventCalls.onCurrentProgramSceneChanged(this, event);
         }

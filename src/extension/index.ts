@@ -19,7 +19,7 @@ export = async (nodecg: NodeCG.ServerAPI<Configschema>) => {
 		nodecg.sendMessage('obsConnectionStatus', { isConnected: false });
 	}
 
-	const onCurrentProgramSceneChanged = (obs: OBSControl, event: {sceneName: string}) => {
+	const onCurrentProgramSceneChanged = (obs: OBSControl, event: {sceneName: string, sceneUuid: string}) => {
 		const timeStamp = Date.now();
 		nodecg.sendMessage('onSceneChange', { sceneName: event.sceneName, timeStamp: timeStamp});
 

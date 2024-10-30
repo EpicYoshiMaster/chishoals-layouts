@@ -156,7 +156,7 @@
     "@phosphor-icons/react": "^2.0.15",
     "@types/react": "*",
     "@types/react-dom": "*",
-    "obs-websocket-js": "^5.0.4",
+    "obs-websocket-js": "^5.0.6",
     "react": "*",
     "react-dom": "*",
     "styled-components": "^6.1.8",
