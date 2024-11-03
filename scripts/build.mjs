@@ -31,10 +31,12 @@ const commonBrowserTargetProps = {
   context: 'browser',
 };
 
+//glob.sync('src/dashboard/**/*.html'),
+/*
 if (buildDashboard) {
   bundlers.add(
     new Parcel({
-      entries: glob.sync('src/dashboard/**/*.html'),
+      entries: glob.sync('copythisback'),
       targets: {
         default: {
           ...commonBrowserTargetProps,
@@ -51,7 +53,7 @@ if (buildDashboard) {
       ],
     }),
   );
-}
+}*/
 
 if (buildGraphics) {
   bundlers.add(
@@ -75,7 +77,7 @@ if (buildGraphics) {
   );
 }
 
-if (buildExtension) {
+/*if (buildExtension) {
   bundlers.add(
     new Parcel({
       entries: 'src/extension/index.ts',
@@ -94,7 +96,7 @@ if (buildExtension) {
       ],
     }),
   );
-}
+}*/
 
 try {
   if (argv.includes('--watch')) {
@@ -116,9 +118,9 @@ try {
 
     await Promise.all(watchPromises);
   } else {
-    if (buildSchemas) {
-      doBuildSchemas();
-    }
+    //if (buildSchemas) {
+    //  doBuildSchemas();
+    //}
 
     const buildPromises = [];
     for (const bundler of bundlers.values()) {
@@ -134,13 +136,14 @@ try {
   process.exit(1);
 }
 
-function doBuildSchemas() {
-  execSync('npm run generate-schema-types');
-  process.stdout.write(`🔧 Built Replicant schema types!\n`);
-}
 
-function watchSchemas() {
-  chokidar.watch('schemas/**/*.json').on('all', () => {
-    debounce('compileSchemas', doBuildSchemas);
-  });
-}
+//function doBuildSchemas() {
+//  execSync('npm run generate-schema-types');
+//  process.stdout.write(`🔧 Built Replicant schema types!\n`);
+//}
+
+//function watchSchemas() {
+//  chokidar.watch('schemas/**/*.json').on('all', () => {
+//    debounce('compileSchemas', doBuildSchemas);
+//  });
+//}

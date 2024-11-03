@@ -4,8 +4,13 @@ import { createRoot } from 'react-dom/client';
 import { Background } from './components/Background';
 import { Nameplate } from './components/Nameplate';
 import { useReplicant } from '@nodecg/react-hooks';
-import { CommentatorData, CommentatorInfo } from '../types/schemas/commentatorData';
-import { LoadState } from '../types/types';
+import { CommentatorData, CommentatorInfo } from 'schemas';
+
+enum LoadState {
+	LS_NotLoaded,
+	LS_Loaded,
+	LS_Done
+};
 
 const defaultCommentator: CommentatorInfo = { name: "Commentator Name", pronouns: "any/all", tag: "@TagName" }
 const AnimationDuration = 1000;
@@ -15,6 +20,7 @@ export function Commentators() {
 	const [show, setShow] = useState(false);
 	const [loaded, setLoaded] = useState<LoadState>(LoadState.LS_NotLoaded);
 	const [comms, setComms] = useReplicant<CommentatorData>('commentators', {
+		bundle: 'squidwest-layout-controls',
 		defaultValue: { 
 			commentatorOne: defaultCommentator, 
 			commentatorTwo: defaultCommentator,
@@ -69,10 +75,10 @@ export function Commentators() {
 	}, [setCurrentShow]);
 
 	useEffect(() => {
-		nodecg.listenFor('commsControl', onCommsControl)
+		nodecg.listenFor('commsControl', 'squidwest-layout-controls', onCommsControl)
 
 		return () => {
-			nodecg.unlisten('commsControl', onCommsControl);
+			nodecg.unlisten('commsControl', 'squidwest-layout-controls', onCommsControl);
 		}
 	}, [onCommsControl]);
 

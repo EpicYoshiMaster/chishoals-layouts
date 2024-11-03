@@ -1,4 +1,0 @@
-{
-	"extends": "../../tsconfig.build.json",
-	"include": ["**/*.ts", "../types/schemas/index.d.ts"]
-}

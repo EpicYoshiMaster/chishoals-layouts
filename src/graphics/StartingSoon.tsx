@@ -4,13 +4,13 @@ import { createRoot } from 'react-dom/client';
 import { Background } from './components/Background';
 import { YoutubeLogo, DiscordLogo, TwitterLogo, Butterfly  } from "@phosphor-icons/react";
 import { useReplicant } from '@nodecg/react-hooks';
-import { EventData, EventInfo, Socials } from '../types/schemas';
+import { EventData, EventInfo, Socials } from 'schemas';
 import { CarouselComponent } from './components/CarouselComponent';
 
 export function StartingSoon() {
 
-	const [eventData] = useReplicant<EventData>('eventData');
-	const [socials] = useReplicant<Socials>('socials');
+	const [eventData] = useReplicant<EventData>('eventData', { bundle: 'squidwest-layout-controls'});
+	const [socials] = useReplicant<Socials>('socials', { bundle: 'squidwest-layout-controls'});
 
 	const [currentEvent, setCurrentEvent] = useState<EventInfo>({ name: "Current Event Name", location: "Event Location", number: 1, date: "Today" });
 

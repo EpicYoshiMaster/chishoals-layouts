@@ -1,9 +1,6 @@
 {
   "name": "chishoals-layouts",
-  "version": "1.2.0",
-  "chishoals": {
-    "month": "November 2024"
-  },
+  "version": "2.0.0",
   "description": "Bundle with graphics and dashboards for SquidWest's Chi-Shoals Splatoon events.",
   "homepage": "",
   "author": {
@@ -13,9 +10,7 @@
   },
   "files": [
     "dashboard",
-    "graphics",
-    "extension.js",
-    "extension"
+    "graphics"
   ],
   "keywords": [
     "",
@@ -23,64 +18,6 @@
   ],
   "nodecg": {
     "compatibleRange": "^2.0.0",
-    "dashboardPanels": [
-      {
-        "name": "credits",
-        "title": "Credits",
-        "width": 3,
-        "file": "credits.html",
-        "workspace": "1. Stream Tech",
-        "headerColor": "#525F78"
-      },
-      {
-        "name": "intermission",
-        "title": "Intermission Screen",
-        "width": 3,
-        "file": "intermission.html",
-        "workspace": "1. Stream Tech",
-        "headerColor": "#525F78"
-      },
-      {
-        "name": "commentators",
-        "title": "Commentators Information",
-        "width": 3,
-        "file": "commentators.html",
-        "workspace": "1. Stream Tech",
-        "headerColor": "#525F78"
-      },
-      {
-        "name": "time",
-        "title": "Time Information",
-        "width": 3,
-        "file": "time.html",
-        "workspace": "1. Stream Tech",
-        "headerColor": "#525F78"
-      },
-      {
-        "name": "eventinformation",
-        "title": "Event Information",
-        "width": 3,
-        "file": "eventinformation.html",
-        "workspace": "2. Settings",
-        "headerColor": "#525F78"
-      },
-      {
-        "name": "socials",
-        "title": "Socials Information",
-        "width": 3,
-        "file": "socials.html",
-        "workspace": "2. Settings",
-        "headerColor": "#525F78"
-      },
-      {
-        "name": "obs",
-        "title": "OBS Settings",
-        "width": 3,
-        "file": "obssettings.html",
-        "workspace": "2. Settings",
-        "headerColor": "#525F78"
-      }
-    ],
     "graphics": [
       {
         "file": "intermission.html",
@@ -156,7 +93,6 @@
     "@phosphor-icons/react": "^2.0.15",
     "@types/react": "*",
     "@types/react-dom": "*",
-    "obs-websocket-js": "^5.0.6",
     "react": "*",
     "react-dom": "*",
     "styled-components": "^6.1.8",

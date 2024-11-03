@@ -4,16 +4,16 @@ import { CarouselComponent } from './components/CarouselComponent';
 import { GithubLogo, DiscordLogo, TwitterLogo  } from "@phosphor-icons/react";
 import { createRoot } from 'react-dom/client';
 import { useReplicant } from '@nodecg/react-hooks';
-import { EventData, CreditsData, EventInfo } from '../types/schemas';
+import { EventData, CreditsData, EventInfo } from 'schemas';
 import { CreditsNameRow } from './components/CreditsNameRow';
 
 export function Credits() {
-    const [eventData, setEventData] = useReplicant<EventData>('eventData');
+    const [eventData, setEventData] = useReplicant<EventData>('eventData', { bundle: 'squidwest-layout-controls'});
 
     const [currentEvent, setCurrentEvent] = useState<EventInfo>({ name: "Current Event Name", location: "Event Location", number: 1, date: "Today" });
 	const [nextEvent, setNextEvent] = useState<EventInfo>({ name: "Next Event Name", location: "Next Event Location", number: 2, date: "January 1, 2024" });
 
-    const [creditsData, setCreditsData] = useReplicant<CreditsData>('creditsData');
+    const [creditsData, setCreditsData] = useReplicant<CreditsData>('creditsData', { bundle: 'squidwest-layout-controls'});
 
 	const [setupTeam, setSetupTeam] = useState([""]);
 	const [commentaryTeam, setCommentaryTeam] = useState([""]);

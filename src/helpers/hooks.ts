@@ -21,10 +21,10 @@ export const useObsConnectionStatus = (nodecg: NodeCG.ClientAPI, options?: Conne
 	};
 
 	useEffect(() => {
-		nodecg.listenFor('obsConnectionStatus', onConnectionStatus);
+		nodecg.listenFor('obsConnectionStatus', 'squidwest-layout-controls', onConnectionStatus);
 
 		return () => {
-			nodecg.unlisten('obsConnectionStatus', onConnectionStatus);
+			nodecg.unlisten('obsConnectionStatus', 'squidwest-layout-controls', onConnectionStatus);
 		}
 	}, []);
 

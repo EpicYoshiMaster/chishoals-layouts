@@ -2,15 +2,15 @@ import React, { useState, useEffect, useMemo } from 'react'
 import styled from 'styled-components'
 import { CarouselComponent } from './CarouselComponent';
 import { YoutubeLogo, DiscordLogo, TwitterLogo, Butterfly } from "@phosphor-icons/react";
-import { EventData, Socials, EventInfo } from '../../types/schemas';
+import { EventData, Socials, EventInfo } from 'schemas';
 import { useReplicant } from '@nodecg/react-hooks';
-import { IntermissionData } from '../../types/schemas/intermissionData';
+import { IntermissionData } from 'schemas';
 import { formatDateHM, formatDateMDY } from '../../helpers/utils'
 
 export const Omnibar: React.FC = () => {
-	const [eventData, setEventData] = useReplicant<EventData>('eventData');
-	const [socials] = useReplicant<Socials>('socials');
-	const [intermissionData] = useReplicant<IntermissionData>('intermission');
+	const [eventData, setEventData] = useReplicant<EventData>('eventData', { bundle: 'squidwest-layout-controls'});
+	const [socials] = useReplicant<Socials>('socials', { bundle: 'squidwest-layout-controls'});
+	const [intermissionData] = useReplicant<IntermissionData>('intermission', { bundle: 'squidwest-layout-controls'});
 
 	const [currentEvent, setCurrentEvent] = useState<EventInfo>({ name: "Current Event Name", location: "Event Location", number: 1, date: "Today" });
 
