@@ -53,6 +53,12 @@
         "width": 1920,
         "height": 1080,
         "singleInstance": false
+      },
+      {
+        "file": "game.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
       }
     ],
     "mount": [
@@ -92,6 +98,8 @@
     "@phosphor-icons/react": "^2.0.15",
     "@types/react": "*",
     "@types/react-dom": "*",
+    "fitted-text": "^2.0.5",
+    "fontfaceobserver": "^2.3.0",
     "react": "*",
     "react-dom": "*",
     "styled-components": "^6.1.8",
@@ -103,6 +111,7 @@
     "@parcel/core": "*",
     "@parcel/reporter-cli": "*",
     "@parcel/validator-typescript": "*",
+    "@types/fontfaceobserver": "^2.1.3",
     "@types/node": "^18",
     "concurrently": "*",
     "glob": "^10.2.7",

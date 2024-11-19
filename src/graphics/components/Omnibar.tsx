@@ -102,9 +102,8 @@ const OmnibarWrapper = styled.div`
   	flex-direction: row;
   	width: calc(100% - 40px);
   	background-color: #f04888;
-  	min-height: 0;
-  	min-width: 0;
-  	margin: 20px;
+  	height: 122px;
+  	margin: 10px 20px;
 `;
 
 const OmnibarItem = styled.div<{ $show: boolean }>`
