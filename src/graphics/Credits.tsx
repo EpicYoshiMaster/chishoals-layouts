@@ -49,19 +49,19 @@ export function Credits() {
                     <CreditsRow>
                         <TitleText>{currentEvent.name} {currentEvent.number > 0 ? '#' + currentEvent.number  : ''}</TitleText>
                     </CreditsRow>
-                    <CreditsRow>
+                    {setupTeam.length > 0 && <CreditsRow>
                         <CreditsNameRow title="Setup and Teardown Volunteers" names={setupTeam} />
-                    </CreditsRow>
-                    <CreditsRow>
+                    </CreditsRow>}
+                    {commentaryTeam.length > 0 && <CreditsRow>
                         <CreditsNameRow title="Commentary" names={commentaryTeam} />
-                    </CreditsRow>
-                    <CreditsRow>
+                    </CreditsRow>}
+                    {techTeam.length > 0 && <CreditsRow>
                         <CreditsNameRow title="Stream Technicians" names={techTeam} />
-                    </CreditsRow>
-                    <CreditsRow>
+                    </CreditsRow>}
+                    {artTeam.length > 0 && <CreditsRow>
                         <CreditsNameRow title="Artists" names={artTeam} />
-                    </CreditsRow>
-                    <CreditsRow>
+                    </CreditsRow>}
+                    {staffTeam.length > 0 && <CreditsRow>
                         <LogoRow>
                             <HeaderText>SquidWest TOs and Staff</HeaderText>
                             <SWLogo src="/bundles/chishoals-layouts/images/SW_Logo_bg.png" />
@@ -73,20 +73,20 @@ export function Credits() {
                                 )
                             })
                         }
-                    </CreditsRow>
-                    <CreditsRow>
+                    </CreditsRow>}
+                    {(headTO.length > 0 || poolCaptains.length > 0) && <CreditsRow>
                         <LogoRow>
                             <Logo src="/bundles/chishoals-layouts/images/Chi-Shoals_Logo_Transparent_Green.png" />
                         </LogoRow>
                         <CreditsColumns>
-                            <Rows>
+                            {headTO.length > 0 && <Rows>
                                 <CreditsNameRow title="Head TO" names={headTO} />
-                            </Rows>
-                            <Rows>
+                            </Rows>}
+                            {poolCaptains.length > 0 && <Rows>
                                 <CreditsNameRow title="Staff and Pool Captains" names={poolCaptains} />
-                            </Rows>
+                            </Rows>}
                         </CreditsColumns>
-                    </CreditsRow>
+                    </CreditsRow>}
                     <CreditsRow>
                         <HeaderText>Stream Overlays and Design</HeaderText>
                         <NameText>EpicYoshiMaster</NameText>
