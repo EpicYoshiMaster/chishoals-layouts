@@ -15,7 +15,7 @@ export const TeamScoreBox: React.FC<TeamScoreBoxProps> = ({ team, score, left })
 				<FittedText text={team} font="Splatoon" align={left ? "left" : "right"} maxWidth={470} />
 			</TeamBox>
 			<ScoreBox>
-				{score}
+				<FittedText text={`${score}`} font="Splatoon" align="center" maxWidth={95} />
 			</ScoreBox>
 		</TeamAndScore>
 	)
