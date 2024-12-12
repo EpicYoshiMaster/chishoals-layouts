@@ -72,7 +72,7 @@ export const Omnibar: React.FC = () => {
 				</TourneyWrapper>
 			</TextOmnibarItem>
             <CarouselWrapper $border={true}>
-				<CarouselComponent speed={5000} transitionSpeed={1000} indexRelative={3}>
+				<CarouselComponent speed={5000} transitionSpeed={1000}>
 					<CarouselRow>
                         <StyledYoutubeLogo />
                         <LogoText>{socials ? socials.youtube : ""}</LogoText>

@@ -3,7 +3,7 @@ import styled, { keyframes } from 'styled-components'
 import { createRoot } from 'react-dom/client';
 import { Background } from './components/Background';
 import { Nameplate } from './components/Nameplate';
-import { useReplicant } from '@nodecg/react-hooks';
+import { useReplicant, useListenFor } from '@nodecg/react-hooks';
 import { CommentatorData, CommentatorInfo } from 'schemas';
 
 enum LoadState {
@@ -74,13 +74,7 @@ export function Commentators() {
 		setCurrentShow(value);
 	}, [setCurrentShow]);
 
-	useEffect(() => {
-		nodecg.listenFor('commsControl', 'squidwest-layout-controls', onCommsControl)
-
-		return () => {
-			nodecg.unlisten('commsControl', 'squidwest-layout-controls', onCommsControl);
-		}
-	}, [onCommsControl]);
+	useListenFor('commsControl', onCommsControl, { bundle: 'squidwest-layout-controls' });
 
 	useEffect(() => {
 		if(loaded === LoadState.LS_Loaded) {
