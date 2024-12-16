@@ -28,7 +28,7 @@ export function BeRightBack() {
 				</LogoArea>
 				<TextArea>
 					<CarouselWrapper>
-						<CarouselComponent speed={15000} transitionSpeed={3000} indexRelative={1}>
+						<CarouselComponent speed={15000} transitionSpeed={3000}>
 							<CarouselItem>
 								<TitleText>SquidWest</TitleText>
 								<SubtitleText>MidWest Splatoon Players</SubtitleText>

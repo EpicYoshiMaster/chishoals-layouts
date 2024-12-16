@@ -1,29 +1,39 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useMemo } from 'react'
 import styled from 'styled-components'
 
 interface CarouselComponentProps {
     children: React.ReactNode;
+    playing?: boolean; //Whether or not the carousel is currently playing
     speed?: number;
     transitionSpeed?: number;
     once?: boolean;
-    indexRelative?: number; //Set the index of the item which should be set as relative (should be the largest present), 
     startIndex?: number;
 }
 
 const DEFAULT_SPEED = 5000;
 const DEFAULT_TRANSITION_SPEED = 1000;
 
-export const CarouselComponent: React.FC<CarouselComponentProps> = ({ children, speed, transitionSpeed, once, indexRelative, startIndex }) => {
+export const CarouselComponent: React.FC<CarouselComponentProps> = ({ children, playing = true, speed, transitionSpeed, once, startIndex }) => {
     const [carouselIndex, setCarouselIndex] = useState(0);
     const carouselIntervalId = useRef<number | null>(null);
     const activeCarouselIndexRef = useRef(startIndex || 0);
 
-    useEffect(() => {
-        let childElements = React.Children.toArray(children);
+    const childElements = useMemo(() => {
+        return React.Children.toArray(children);
+    }, [children]);
 
-        if(childElements.length > 1) {
+    useEffect(() => {
+
+        if(playing && childElements.length > 1) {
+            //Force it to the last element
+            if(activeCarouselIndexRef.current >= childElements.length) {
+                setCarouselIndex(childElements.length - 1);
+                activeCarouselIndexRef.current = childElements.length - 1;
+            }
+
             //Function ID from Set Interval, to clear it later
             carouselIntervalId.current = window.setInterval(() => {
+                if(!playing) return;
 
                 if(once && activeCarouselIndexRef.current + 1 >= childElements.length) {
                     if(carouselIntervalId.current) clearInterval(carouselIntervalId.current);
@@ -36,16 +46,20 @@ export const CarouselComponent: React.FC<CarouselComponentProps> = ({ children, 
                 activeCarouselIndexRef.current = nextIndex;
             }, speed || DEFAULT_SPEED);
         }
+        else if(playing) {
+            setCarouselIndex(0);
+            activeCarouselIndexRef.current = 0;
+        }
 
         return () => {
             if(carouselIntervalId.current) clearInterval(carouselIntervalId.current);
         }
-    }, []);
+    }, [playing, childElements.length]);
 
     return (
         <CarouselContainer>
-            {React.Children.toArray(children).map((child, index) => (
-                <CarouselItem key={index} $active={index === carouselIndex} $isRelative={indexRelative ? index === indexRelative : false} speed={(transitionSpeed ? transitionSpeed : DEFAULT_TRANSITION_SPEED) / 2}>
+            {childElements.map((child, index, array) => (
+                <CarouselItem key={index} $active={index === carouselIndex} $isRelative={index === array.length - 1} speed={(transitionSpeed ? transitionSpeed : DEFAULT_TRANSITION_SPEED) / 2}>
                     {child}
                 </CarouselItem>
             ))}
