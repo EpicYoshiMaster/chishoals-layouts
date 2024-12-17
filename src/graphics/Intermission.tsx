@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React from 'react';
 import { useReplicant } from '@nodecg/react-hooks';
-import { EventData, MatchData } from 'schemas';
+import { MatchData } from 'schemas';
 import styled from 'styled-components'
 import { createRoot } from 'react-dom/client';
 import { Omnibar } from './components/Omnibar';
@@ -13,13 +13,16 @@ import { FittedText } from './components/FittedText';
 //#eae6f3
 
 export function Intermission() {
-	const [matchData, setMatchData] = useReplicant<MatchData>('match', { 
+	const [matchData2, setMatchData] = useReplicant<MatchData>('match', { 
 		bundle: 'squidwest-layout-controls',
 		defaultValue: { 
+			matchInfo: "Round 1",
 			teamA: "Team A",
 			teamB: "Team B",
 			scoreA: 0,
-			scoreB: 0
+			scoreB: 0,
+			matchColor: { index: -1, name: "Unknown", teamA: "#ffffff", teamB: "#ffffff" },
+			swapColor: false
 		}
 	});
 
@@ -32,9 +35,9 @@ export function Intermission() {
 					<LargeFeed />
 				</TopRow>
 				<MiddleRow>
-					<TeamScoreBox team={matchData?.teamA || ""} score={matchData?.scoreA || 0} left={true} />
+					<TeamScoreBox team={matchData2?.teamA || ""} score={matchData2?.scoreA || 0} left={true} />
 					<SmallFeed />
-					<TeamScoreBox team={matchData?.teamB || ""} score={matchData?.scoreB || 0} left={false} />
+					<TeamScoreBox team={matchData2?.teamB || ""} score={matchData2?.scoreB || 0} left={false} />
 				</MiddleRow>
 				<Omnibar />
 			</Content>
