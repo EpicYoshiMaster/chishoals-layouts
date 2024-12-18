@@ -13,7 +13,7 @@ import { FittedText } from './components/FittedText';
 //#eae6f3
 
 export function Intermission() {
-	const [matchData2, setMatchData] = useReplicant<MatchData>('match', { 
+	const [matchData, setMatchData] = useReplicant<MatchData>('match', { 
 		bundle: 'squidwest-layout-controls',
 		defaultValue: { 
 			matchInfo: "Round 1",
@@ -35,9 +35,9 @@ export function Intermission() {
 					<LargeFeed />
 				</TopRow>
 				<MiddleRow>
-					<TeamScoreBox team={matchData2?.teamA || ""} score={matchData2?.scoreA || 0} left={true} />
+					<TeamScoreBox team={matchData?.teamA || ""} score={matchData?.scoreA || 0} left={true} />
 					<SmallFeed />
-					<TeamScoreBox team={matchData2?.teamB || ""} score={matchData2?.scoreB || 0} left={false} />
+					<TeamScoreBox team={matchData?.teamB || ""} score={matchData?.scoreB || 0} left={false} />
 				</MiddleRow>
 				<Omnibar />
 			</Content>
