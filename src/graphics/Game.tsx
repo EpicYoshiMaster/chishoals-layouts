@@ -1,28 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import styled, { css } from 'styled-components'
 import { useReplicant, useListenFor } from '@nodecg/react-hooks';
+import { useWrappedReplicant } from '../helpers/hooks'
 import { createRoot } from 'react-dom/client';
 import { MatchData, CommentatorData, CommentatorInfo, EventData, EventInfo } from 'schemas';
-import { GameTeamScoreBox } from './components/GameTeamScoreBox';
+import { GameScoreInfoBox } from './components/GameScoreInfoBox';
 import { FittedText } from './components/FittedText';
 import { CarouselComponent } from './components/CarouselComponent';
+import { GameCommentatorInfoBox } from './components/GameCommentatorInfoBox';
 
+const defaultMatchData: MatchData = { 
+	matchInfo: "Round 1",
+	teamA: "Team A",
+	teamB: "Team B",
+	scoreA: 0,
+	scoreB: 0,
+	matchColor: { index: -1, name: "Unknown", teamA: "#ffffff", teamB: "#ffffff" },
+	swapColor: false
+}
 const defaultCommentator: CommentatorInfo = { name: "Commentator Name", pronouns: "any/all", tag: "@TagName" }
+
 const FullWidth = 340;
+
+const TeamWidth = 300;
+const ScoreWidth = 50;
+
 const CommentatorWidth = 235;
 const PronounsWidth = 95;
 
 export function Game() {
 	const [eventData] = useReplicant<EventData>('eventData', { bundle: 'squidwest-layout-controls' });
-	const [matchData] = useReplicant<MatchData>('match', { 
-		bundle: 'squidwest-layout-controls',
-		defaultValue: { 
-			teamA: "Team A",
-			teamB: "Team B",
-			scoreA: 0,
-			scoreB: 0
-		}
-	});
+	const [matchData] = useWrappedReplicant<MatchData>('match', defaultMatchData, 'squidwest-layout-controls');
 
 	const [comms] = useReplicant<CommentatorData>('commentators', {
 		bundle: 'squidwest-layout-controls',
@@ -69,40 +77,45 @@ export function Game() {
 			<Content>
 				<Scoreboard $show={showScoreboard}>
 					<InfoBox>
-						<FittedText text={`${currentEvent.name} ${currentEvent.number > 0 ? '#' + currentEvent.number  : ''}`} font="Splatoon" align="left" maxWidth={FullWidth} />
+						<FittedText text={`${currentEvent.name} ${currentEvent.number > 0 ? '#' + currentEvent.number  : ''}${matchData.matchInfo !== "" ? " - " + matchData.matchInfo : ""}`} font="Splatoon" align="left" maxWidth={FullWidth} />
 					</InfoBox>
-					<GameTeamScoreBox team={matchData?.teamA || ""} score={matchData?.scoreA || 0} left={false}  />
-					<GameTeamScoreBox team={matchData?.teamB || ""} score={matchData?.scoreB || 0} left={false}  />
+					<GameScoreInfoBox 
+						color={!matchData.swapColor ? matchData.matchColor.teamA : matchData.matchColor.teamB} 
+						team={matchData.teamA || ""} 
+						score={matchData.scoreA || 0}
+						mainWidth={TeamWidth}
+						secondaryWidth={ScoreWidth}
+					/>
+					<GameScoreInfoBox 
+						color={matchData.swapColor ? matchData.matchColor.teamA : matchData.matchColor.teamB} 
+						team={matchData.teamB || ""} 
+						score={matchData.scoreB || 0}
+						mainWidth={TeamWidth}
+						secondaryWidth={ScoreWidth}
+					/>
 				</Scoreboard>
 				<Commentators $show={showCommentary}>
 					<InfoBox>
 						<FittedText text="Commentary" font="Splatoon" align="left" maxWidth={FullWidth} />
 					</InfoBox>
-					<CommentatorBox>
-						<CommentatorName>
-							<CarouselComponent speed={10000} playing={showCommentary}>
-								<FittedText text={commentatorOne.name || ""} font="Splatoon" align="left" maxWidth={commentatorOne.pronouns ? CommentatorWidth : FullWidth}  />
-								{commentatorOne.tag !== "" && <FittedText text={commentatorOne.tag} font="Splatoon" align="left" maxWidth={commentatorOne.pronouns ? CommentatorWidth : FullWidth}  />}
-							</CarouselComponent>
-						</CommentatorName>
-						{commentatorOne.pronouns && commentatorOne.pronouns !== "" && 
-						<CommentatorPronouns>
-							<FittedText text={commentatorOne.pronouns} font="Splatoon" align="left" maxWidth={PronounsWidth} />
-						</CommentatorPronouns>
-						}
-					</CommentatorBox>
-					<CommentatorBox>
-						<CommentatorName>
-							<CarouselComponent speed={10000} playing={showCommentary}>
-								<FittedText text={commentatorTwo.name || ""} font="Splatoon" align="left" maxWidth={commentatorTwo.pronouns ? CommentatorWidth : FullWidth}  />
-								{commentatorTwo.tag !== "" &&  <FittedText text={commentatorTwo.tag} font="Splatoon" align="left" maxWidth={commentatorTwo.pronouns ? CommentatorWidth : FullWidth}  />}
-							</CarouselComponent>
-						</CommentatorName>
-						{commentatorTwo.pronouns && <CommentatorPronouns>
-							<FittedText text={commentatorTwo.pronouns} font="Splatoon" align="left" maxWidth={PronounsWidth} />
-						</CommentatorPronouns>
-						}
-					</CommentatorBox>
+					<GameCommentatorInfoBox
+						name={commentatorOne.name}
+						pronouns={commentatorOne.pronouns}
+						tag={commentatorOne.tag}
+						playing={showCommentary}
+						fullWidth={FullWidth}
+						nameWidth={CommentatorWidth}
+						pronounsWidth={PronounsWidth}
+					/>
+					<GameCommentatorInfoBox 
+						name={commentatorTwo.name}
+						pronouns={commentatorTwo.pronouns}
+						tag={commentatorTwo.tag}
+						playing={showCommentary}
+						fullWidth={FullWidth}
+						nameWidth={CommentatorWidth}
+						pronounsWidth={PronounsWidth}
+					/>
 				</Commentators>
 			</Content>
 		</StyledOmnibarOnly>
@@ -149,43 +162,6 @@ const Commentators = styled.div<{ $show: boolean }>`
 	opacity: ${({ $show }) => $show ? 1 : 0};
 	
 	transition: opacity 0.75s ease;	
-`;
-
-const CommentatorBox = styled.div`
-	position: relative;
-	display: flex;
-	flex-direction: row;
-
-	align-items: center;
-	justify-content: space-between;
-	width: 100%;
-	height: 3rem;
-	font-size: 2rem;
-
-	color: #f04888;
-	background-color: #eae6f3;
-	border: 3px solid #b31451;
-	border-radius: 0.5rem;
-`;
-
-const CommentatorName = styled.div`
-	padding: 5px;
-	position: relative;
-`;
-
-const CommentatorPronouns = styled.div`
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 105px;
-	height: 100%;
-	font-size: 1.5rem;
-
-	color: #eae6f3;
-	background-color: #f04888;
-	border-left: 4px solid #b31451;
-	border-radius: 0 4px 4px 0;
 `;
 
 const root = createRoot(document.getElementById('root')!);
