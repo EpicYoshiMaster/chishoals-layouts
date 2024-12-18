@@ -1,11 +1,12 @@
 import styled, { keyframes, css } from "styled-components";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
+import { FittedText } from "./FittedText";
 
 interface NameplateProps {
 	show: boolean;
-	name?: string;
-	pronouns?: string;
-	tag?: string;
+	name: string;
+	pronouns: string;
+	tag: string;
 	animationLength?: number;
 }
 
@@ -60,18 +61,18 @@ export const Nameplate: React.FC<NameplateProps> = ({ show, name, pronouns, tag,
 		$animLength={animationLength || 1000}
 		onAnimationEnd={(event) => { onAnimEnd(event.animationName); }}>
 			<Name>
-				{name}
+				<FittedText text={name} font="Splatoon" align="center" maxWidth={580}  />
 			</Name>
-			{tag && (
 			<Tag>
-				{tag}
+				<FittedText text={tag} font="Splatoon" align="left" maxWidth={500}  />
 			</Tag>
-			)}
-			{pronouns && (
+			{pronouns !== "" && (
 			<Pronouns>
 			{
 				pronounsSplit.map((item, index) => {
-					return <PronounsText key={index}>{item}</PronounsText>;
+					return <PronounsText key={index}>
+						<FittedText text={item} font="Splatoon" align="center" maxWidth={75}  />
+					</PronounsText>;
 				})
 			}
 			</Pronouns>
@@ -187,6 +188,7 @@ const Tag = styled.div`
 	width: 100%;
 	text-align: left;
 	font-size: 2.25rem;
+	height: 2.25rem;
 `;
 
 const PronounsText = styled.div`
