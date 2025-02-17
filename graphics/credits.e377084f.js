@@ -430,63 +430,74 @@ function Credits() {
             columnNumber: 25
         },
         __self: this
-    }, "Stream Overlays and Design"), /*#__PURE__*/ (0, _reactDefault.default).createElement(NameText, {
+    }, "Stream Overlays and Design"), /*#__PURE__*/ (0, _reactDefault.default).createElement(YoshiRow, {
         __source: {
             fileName: "src/graphics/Credits.tsx",
             lineNumber: 92,
             columnNumber: 25
         },
         __self: this
-    }, "EpicYoshiMaster"), /*#__PURE__*/ (0, _reactDefault.default).createElement(Divider, {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement("img", {
+        src: "/bundles/twinsquiddies-layouts/images/misc/harmonypixel.gif",
+        alt: "Harmony Pixel",
         __source: {
             fileName: "src/graphics/Credits.tsx",
             lineNumber: 93,
-            columnNumber: 25
+            columnNumber: 29
         },
         __self: this
-    }), /*#__PURE__*/ (0, _reactDefault.default).createElement(NameText, {
+    }), /*#__PURE__*/ (0, _reactDefault.default).createElement(YoshiSpan, {
         __source: {
             fileName: "src/graphics/Credits.tsx",
             lineNumber: 94,
-            columnNumber: 25
+            columnNumber: 29
         },
         __self: this
-    }, "Need stream overlays for your event?"), /*#__PURE__*/ (0, _reactDefault.default).createElement(NameText, {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(YoshiText, {
+        __source: {
+            fileName: "src/graphics/Credits.tsx",
+            lineNumber: 94,
+            columnNumber: 40
+        },
+        __self: this
+    }, "EpicYoshiMaster")), /*#__PURE__*/ (0, _reactDefault.default).createElement("img", {
+        src: "/bundles/twinsquiddies-layouts/images/misc/harmonypixel.gif",
+        alt: "Harmony Pixel",
         __source: {
             fileName: "src/graphics/Credits.tsx",
             lineNumber: 95,
-            columnNumber: 25
+            columnNumber: 29
         },
         __self: this
-    }, "Contact me!"), /*#__PURE__*/ (0, _reactDefault.default).createElement(LogoRow, {
-        __source: {
-            fileName: "src/graphics/Credits.tsx",
-            lineNumber: 96,
-            columnNumber: 25
-        },
-        __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledDiscordLogo, {
+    })), /*#__PURE__*/ (0, _reactDefault.default).createElement(Divider, {
         __source: {
             fileName: "src/graphics/Credits.tsx",
             lineNumber: 97,
-            columnNumber: 29
+            columnNumber: 25
         },
         __self: this
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement(NameText, {
         __source: {
             fileName: "src/graphics/Credits.tsx",
             lineNumber: 98,
-            columnNumber: 29
+            columnNumber: 25
         },
         __self: this
-    }, "@epicyoshimaster")), /*#__PURE__*/ (0, _reactDefault.default).createElement(LogoRow, {
+    }, "Need stream overlays for your event?"), /*#__PURE__*/ (0, _reactDefault.default).createElement(NameText, {
+        __source: {
+            fileName: "src/graphics/Credits.tsx",
+            lineNumber: 99,
+            columnNumber: 25
+        },
+        __self: this
+    }, "Contact me!"), /*#__PURE__*/ (0, _reactDefault.default).createElement(YoshiRow, {
         __source: {
             fileName: "src/graphics/Credits.tsx",
             lineNumber: 100,
             columnNumber: 25
         },
         __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledTwitterLogo, {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _react1.DiscordLogo), {
         __source: {
             fileName: "src/graphics/Credits.tsx",
             lineNumber: 101,
@@ -500,14 +511,14 @@ function Credits() {
             columnNumber: 29
         },
         __self: this
-    }, "@EpicYoshiMaster")), /*#__PURE__*/ (0, _reactDefault.default).createElement(LogoRow, {
+    }, "@epicyoshimaster")), /*#__PURE__*/ (0, _reactDefault.default).createElement(YoshiRow, {
         __source: {
             fileName: "src/graphics/Credits.tsx",
             lineNumber: 104,
             columnNumber: 25
         },
         __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledGithubLogo, {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _react1.TwitterLogo), {
         __source: {
             fileName: "src/graphics/Credits.tsx",
             lineNumber: 105,
@@ -521,38 +532,80 @@ function Credits() {
             columnNumber: 29
         },
         __self: this
-    }, "EpicYoshiMaster"))), /*#__PURE__*/ (0, _reactDefault.default).createElement(CreditsRow, {
+    }, "@EpicYoshiMaster")), /*#__PURE__*/ (0, _reactDefault.default).createElement(YoshiRow, {
+        __source: {
+            fileName: "src/graphics/Credits.tsx",
+            lineNumber: 108,
+            columnNumber: 25
+        },
+        __self: this
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _react1.GithubLogo), {
         __source: {
             fileName: "src/graphics/Credits.tsx",
             lineNumber: 109,
+            columnNumber: 29
+        },
+        __self: this
+    }), /*#__PURE__*/ (0, _reactDefault.default).createElement(NameText, {
+        __source: {
+            fileName: "src/graphics/Credits.tsx",
+            lineNumber: 110,
+            columnNumber: 29
+        },
+        __self: this
+    }, "EpicYoshiMaster")), /*#__PURE__*/ (0, _reactDefault.default).createElement(YoshiRow, {
+        __source: {
+            fileName: "src/graphics/Credits.tsx",
+            lineNumber: 112,
+            columnNumber: 25
+        },
+        __self: this
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _react1.Butterfly), {
+        __source: {
+            fileName: "src/graphics/Credits.tsx",
+            lineNumber: 113,
+            columnNumber: 29
+        },
+        __self: this
+    }), /*#__PURE__*/ (0, _reactDefault.default).createElement(NameText, {
+        __source: {
+            fileName: "src/graphics/Credits.tsx",
+            lineNumber: 114,
+            columnNumber: 29
+        },
+        __self: this
+    }, "@epicyoshimaster.bsky.social"))), /*#__PURE__*/ (0, _reactDefault.default).createElement(CreditsRow, {
+        __source: {
+            fileName: "src/graphics/Credits.tsx",
+            lineNumber: 117,
             columnNumber: 21
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(HeaderText, {
         __source: {
             fileName: "src/graphics/Credits.tsx",
-            lineNumber: 110,
+            lineNumber: 118,
             columnNumber: 25
         },
         __self: this
     }, "Special Thanks")), /*#__PURE__*/ (0, _reactDefault.default).createElement(CreditsRow, {
         __source: {
             fileName: "src/graphics/Credits.tsx",
-            lineNumber: 112,
+            lineNumber: 120,
             columnNumber: 21
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(LogoRow, {
         __source: {
             fileName: "src/graphics/Credits.tsx",
-            lineNumber: 113,
+            lineNumber: 121,
             columnNumber: 25
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(HeaderText, {
         __source: {
             fileName: "src/graphics/Credits.tsx",
-            lineNumber: 114,
+            lineNumber: 122,
             columnNumber: 29
         },
         __self: this
@@ -560,35 +613,35 @@ function Credits() {
         src: "/bundles/chishoals-layouts/images/I_Play_Games.png",
         __source: {
             fileName: "src/graphics/Credits.tsx",
-            lineNumber: 115,
+            lineNumber: 123,
             columnNumber: 29
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement(NameText, {
         __source: {
             fileName: "src/graphics/Credits.tsx",
-            lineNumber: 117,
+            lineNumber: 125,
             columnNumber: 25
         },
         __self: this
     }, "Equipment, support, and collaboration")), /*#__PURE__*/ (0, _reactDefault.default).createElement(CreditsRow, {
         __source: {
             fileName: "src/graphics/Credits.tsx",
-            lineNumber: 119,
+            lineNumber: 127,
             columnNumber: 21
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(LogoRow, {
         __source: {
             fileName: "src/graphics/Credits.tsx",
-            lineNumber: 120,
+            lineNumber: 128,
             columnNumber: 25
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(LibraryText, {
         __source: {
             fileName: "src/graphics/Credits.tsx",
-            lineNumber: 121,
+            lineNumber: 129,
             columnNumber: 29
         },
         __self: this
@@ -596,91 +649,91 @@ function Credits() {
         src: "/bundles/chishoals-layouts/images/CPL_Logo.png",
         __source: {
             fileName: "src/graphics/Credits.tsx",
-            lineNumber: 122,
+            lineNumber: 130,
             columnNumber: 29
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement(NameText, {
         __source: {
             fileName: "src/graphics/Credits.tsx",
-            lineNumber: 124,
+            lineNumber: 132,
             columnNumber: 25
         },
         __self: this
     }, "Location and support")), /*#__PURE__*/ (0, _reactDefault.default).createElement(CreditsRow, {
         __source: {
             fileName: "src/graphics/Credits.tsx",
-            lineNumber: 126,
-            columnNumber: 21
-        },
-        __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(HeaderText, {
-        __source: {
-            fileName: "src/graphics/Credits.tsx",
-            lineNumber: 127,
-            columnNumber: 25
-        },
-        __self: this
-    }, "Event Participants"), /*#__PURE__*/ (0, _reactDefault.default).createElement(NameText, {
-        __source: {
-            fileName: "src/graphics/Credits.tsx",
-            lineNumber: 128,
-            columnNumber: 25
-        },
-        __self: this
-    }, "These events aren't possible without you")), /*#__PURE__*/ (0, _reactDefault.default).createElement(CreditsRow, {
-        __source: {
-            fileName: "src/graphics/Credits.tsx",
-            lineNumber: 130,
-            columnNumber: 21
-        },
-        __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(HeaderText, {
-        __source: {
-            fileName: "src/graphics/Credits.tsx",
-            lineNumber: 131,
-            columnNumber: 25
-        },
-        __self: this
-    }, "Stream Viewers"), /*#__PURE__*/ (0, _reactDefault.default).createElement(NameText, {
-        __source: {
-            fileName: "src/graphics/Credits.tsx",
-            lineNumber: 132,
-            columnNumber: 25
-        },
-        __self: this
-    }, "We hope you enjoyed")), /*#__PURE__*/ (0, _reactDefault.default).createElement(CreditsRow, {
-        __source: {
-            fileName: "src/graphics/Credits.tsx",
             lineNumber: 134,
             columnNumber: 21
         },
         __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(TitleText, {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(HeaderText, {
         __source: {
             fileName: "src/graphics/Credits.tsx",
             lineNumber: 135,
             columnNumber: 25
         },
         __self: this
-    }, nextEvent.name, " ", nextEvent.number > 0 ? "#" + nextEvent.number : ""), /*#__PURE__*/ (0, _reactDefault.default).createElement(NameText, {
+    }, "Event Participants"), /*#__PURE__*/ (0, _reactDefault.default).createElement(NameText, {
         __source: {
             fileName: "src/graphics/Credits.tsx",
             lineNumber: 136,
             columnNumber: 25
         },
         __self: this
+    }, "These events aren't possible without you")), /*#__PURE__*/ (0, _reactDefault.default).createElement(CreditsRow, {
+        __source: {
+            fileName: "src/graphics/Credits.tsx",
+            lineNumber: 138,
+            columnNumber: 21
+        },
+        __self: this
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(HeaderText, {
+        __source: {
+            fileName: "src/graphics/Credits.tsx",
+            lineNumber: 139,
+            columnNumber: 25
+        },
+        __self: this
+    }, "Stream Viewers"), /*#__PURE__*/ (0, _reactDefault.default).createElement(NameText, {
+        __source: {
+            fileName: "src/graphics/Credits.tsx",
+            lineNumber: 140,
+            columnNumber: 25
+        },
+        __self: this
+    }, "We hope you enjoyed")), /*#__PURE__*/ (0, _reactDefault.default).createElement(CreditsRow, {
+        __source: {
+            fileName: "src/graphics/Credits.tsx",
+            lineNumber: 142,
+            columnNumber: 21
+        },
+        __self: this
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(TitleText, {
+        __source: {
+            fileName: "src/graphics/Credits.tsx",
+            lineNumber: 143,
+            columnNumber: 25
+        },
+        __self: this
+    }, nextEvent.name, " ", nextEvent.number > 0 ? "#" + nextEvent.number : ""), /*#__PURE__*/ (0, _reactDefault.default).createElement(NameText, {
+        __source: {
+            fileName: "src/graphics/Credits.tsx",
+            lineNumber: 144,
+            columnNumber: 25
+        },
+        __self: this
     }, nextEvent.location), /*#__PURE__*/ (0, _reactDefault.default).createElement(NameText, {
         __source: {
             fileName: "src/graphics/Credits.tsx",
-            lineNumber: 137,
+            lineNumber: 145,
             columnNumber: 25
         },
         __self: this
     }, nextEvent.date), /*#__PURE__*/ (0, _reactDefault.default).createElement(NameText, {
         __source: {
             fileName: "src/graphics/Credits.tsx",
-            lineNumber: 138,
+            lineNumber: 146,
             columnNumber: 25
         },
         __self: this
@@ -769,29 +822,43 @@ const SWLogo = (0, _styledComponentsDefault.default)(Logo)`
 `;
 const IPGLogo = (0, _styledComponentsDefault.default)(Logo)`
     width: 25%;
+
+    margin-bottom: 25px;
 `;
 const LibraryLogo = (0, _styledComponentsDefault.default)(Logo)`
     margin-left: 20px;
     border: 5px solid white;
     width: 20%;
 `;
-const StyledGithubLogo = (0, _styledComponentsDefault.default)((0, _react1.GithubLogo))`
-	width: 1em;
-    object-fit: contain;
-	margin-right: 20px;
-    font-size: 50px;
+const YoshiRow = (0, _styledComponentsDefault.default)(LogoRow)`
+    gap: 20px;
+
+    & img {
+        height: 5rem;
+    }
+    
+    svg {
+        width: 1em;
+        object-fit: contain;
+        font-size: 50px;
+   } 
 `;
-const StyledTwitterLogo = (0, _styledComponentsDefault.default)((0, _react1.TwitterLogo))`
-	width: 1em;
-    object-fit: contain;
-	margin-right: 20px;
-    font-size: 50px;
+const YoshiText = (0, _styledComponentsDefault.default)(NameText)`
+    position: relative;
+    font-size: 5rem;
+    font-weight: bold;
+
+    color: #fff;
+    background: #000;
+
+    mix-blend-mode: multiply;
 `;
-const StyledDiscordLogo = (0, _styledComponentsDefault.default)((0, _react1.DiscordLogo))`
-	width: 1em;
-    object-fit: contain;
-	margin-right: 20px;
-    font-size: 50px;
+const YoshiSpan = (0, _styledComponentsDefault.default).span`
+    background: linear-gradient(to right, transparent 0% 13%, #424fff 13% 16%, transparent 16% 17%, #65b5ff 17% 19%, transparent 19% 100%), 
+    linear-gradient(to right, transparent 0% 41%, #65b5ff 41% 43%, transparent 43% 100%),
+    linear-gradient(to right, transparent 0% 56%, #fe64ab 56% 59%, #a1b4a8 59%, 61%, transparent 61% 100%),
+    linear-gradient(to right, #ff86d5 0% 25%, #00ddab 25% 50%, #ff86d5 50% 75%, #00ddab 75% 100%);
+    background-size: 25%;
 `;
 const Divider = (0, _styledComponentsDefault.default).div`
     width: 100%;
@@ -801,7 +868,7 @@ const root = (0, _client.createRoot)(document.getElementById("root"));
 root.render(/*#__PURE__*/ (0, _reactDefault.default).createElement(Credits, {
     __source: {
         fileName: "src/graphics/Credits.tsx",
-        lineNumber: 276,
+        lineNumber: 298,
         columnNumber: 13
     },
     __self: undefined
@@ -818,7 +885,7 @@ var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
 const DEFAULT_SPEED = 5000;
 const DEFAULT_TRANSITION_SPEED = 1000;
 const CarouselComponent = ({ children, playing = true, speed, transitionSpeed, once, startIndex })=>{
-    const [carouselIndex, setCarouselIndex] = (0, _react.useState)(0);
+    const [carouselIndex, setCarouselIndex] = (0, _react.useState)(startIndex || 0);
     const carouselIntervalId = (0, _react.useRef)(null);
     const activeCarouselIndexRef = (0, _react.useRef)(startIndex || 0);
     const childElements = (0, _react.useMemo)(()=>{
@@ -890,8 +957,6 @@ const CarouselItem = (0, _styledComponentsDefault.default).div`
     opacity: ${(props)=>props.$active ? 1 : 0};
     transition: opacity ${(props)=>props.speed}ms linear;
     transition-delay: ${(props)=>props.$active ? props.speed : 0}ms;
-
-    & img { height: 100%; }
 `;
 
 },{"react":"bH1AQ","styled-components":"9xpRL","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"gc9si":[function(require,module,exports) {

@@ -185,6 +185,7 @@ function Commentators() {
     const [delay, setDelay] = (0, _react.useState)(3000);
     const [autoHide, setAutoHide] = (0, _react.useState)(false);
     const [lifetime, setLifetime] = (0, _react.useState)(5000);
+    const [showSponsor, setShowSponsor] = (0, _react.useState)(false);
     (0, _react.useEffect)(()=>{
         if (!comms) return;
         setCommentatorOne(comms.commentatorOne);
@@ -221,8 +222,16 @@ function Commentators() {
     }, [
         setCurrentShow
     ]);
+    const onIpgControl = (0, _react.useCallback)((value)=>{
+        setShowSponsor(value);
+    }, [
+        setShowSponsor
+    ]);
     (0, _reactHooks.useListenFor)("commsControl", onCommsControl, {
         bundle: "squidwest-layout-controls"
+    });
+    (0, _reactHooks.useListenFor)("ipgControl", onIpgControl, {
+        bundle: "chishoals-layouts"
     });
     (0, _react.useEffect)(()=>{
         if (loaded === 1) {
@@ -238,28 +247,38 @@ function Commentators() {
     return /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledCommentators, {
         __source: {
             fileName: "src/graphics/Commentators.tsx",
-            lineNumber: 90,
+            lineNumber: 96,
             columnNumber: 3
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(Content, {
         __source: {
             fileName: "src/graphics/Commentators.tsx",
-            lineNumber: 91,
+            lineNumber: 97,
             columnNumber: 4
         },
         __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(LowerThirds, {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(IpgLogo, {
+        $show: showSponsor,
+        src: "/bundles/chishoals-layouts/images/I_Play_Games.png",
+        alt: "I Play Games Logo",
         __source: {
             fileName: "src/graphics/Commentators.tsx",
-            lineNumber: 92,
+            lineNumber: 98,
+            columnNumber: 5
+        },
+        __self: this
+    }), /*#__PURE__*/ (0, _reactDefault.default).createElement(LowerThirds, {
+        __source: {
+            fileName: "src/graphics/Commentators.tsx",
+            lineNumber: 99,
             columnNumber: 5
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(NameplateLeft, {
         __source: {
             fileName: "src/graphics/Commentators.tsx",
-            lineNumber: 93,
+            lineNumber: 100,
             columnNumber: 6
         },
         __self: this
@@ -271,14 +290,14 @@ function Commentators() {
         animationLength: AnimationDuration,
         __source: {
             fileName: "src/graphics/Commentators.tsx",
-            lineNumber: 94,
+            lineNumber: 101,
             columnNumber: 7
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement(NameplateRight, {
         __source: {
             fileName: "src/graphics/Commentators.tsx",
-            lineNumber: 101,
+            lineNumber: 108,
             columnNumber: 6
         },
         __self: this
@@ -290,7 +309,7 @@ function Commentators() {
         animationLength: AnimationDuration,
         __source: {
             fileName: "src/graphics/Commentators.tsx",
-            lineNumber: 102,
+            lineNumber: 109,
             columnNumber: 7
         },
         __self: this
@@ -323,11 +342,22 @@ const NameplateLeft = (0, _styledComponentsDefault.default).div`
 const NameplateRight = (0, _styledComponentsDefault.default).div`
 	margin: 20px 200px 20px 100px;
 `;
+const IpgLogo = (0, _styledComponentsDefault.default).img`
+	position: absolute;
+	margin-bottom: 25px;
+	margin-left: 25px;
+
+	width: 700px;
+	object-fit: contain;
+
+	opacity: ${({ $show })=>$show ? 1 : 0};
+	transition: opacity 1s linear;
+`;
 const root = (0, _client.createRoot)(document.getElementById("root"));
 root.render(/*#__PURE__*/ (0, _reactDefault.default).createElement(Commentators, {
     __source: {
         fileName: "src/graphics/Commentators.tsx",
-        lineNumber: 148,
+        lineNumber: 167,
         columnNumber: 13
     },
     __self: undefined

@@ -589,7 +589,7 @@ var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
 const DEFAULT_SPEED = 5000;
 const DEFAULT_TRANSITION_SPEED = 1000;
 const CarouselComponent = ({ children, playing = true, speed, transitionSpeed, once, startIndex })=>{
-    const [carouselIndex, setCarouselIndex] = (0, _react.useState)(0);
+    const [carouselIndex, setCarouselIndex] = (0, _react.useState)(startIndex || 0);
     const carouselIntervalId = (0, _react.useRef)(null);
     const activeCarouselIndexRef = (0, _react.useRef)(startIndex || 0);
     const childElements = (0, _react.useMemo)(()=>{
@@ -661,8 +661,6 @@ const CarouselItem = (0, _styledComponentsDefault.default).div`
     opacity: ${(props)=>props.$active ? 1 : 0};
     transition: opacity ${(props)=>props.speed}ms linear;
     transition-delay: ${(props)=>props.$active ? props.speed : 0}ms;
-
-    & img { height: 100%; }
 `;
 
 },{"react":"bH1AQ","styled-components":"9xpRL","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}]},["41g4H"], "41g4H", "parcelRequired251")
