@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import styled from 'styled-components'
 import { CarouselComponent } from './components/CarouselComponent';
-import { GithubLogo, DiscordLogo, TwitterLogo  } from "@phosphor-icons/react";
+import { GithubLogo, DiscordLogo, TwitterLogo, Butterfly  } from "@phosphor-icons/react";
 import { createRoot } from 'react-dom/client';
 import { useReplicant } from '@nodecg/react-hooks';
 import { EventData, CreditsData, EventInfo } from 'schemas';
@@ -89,22 +89,30 @@ export function Credits() {
                     </CreditsRow>}
                     <CreditsRow>
                         <HeaderText>Stream Overlays and Design</HeaderText>
-                        <NameText>EpicYoshiMaster</NameText>
+                        <YoshiRow>
+                            <img src="/bundles/twinsquiddies-layouts/images/misc/harmonypixel.gif" alt="Harmony Pixel" />
+                            <YoshiSpan><YoshiText>EpicYoshiMaster</YoshiText></YoshiSpan>
+                            <img src="/bundles/twinsquiddies-layouts/images/misc/harmonypixel.gif" alt="Harmony Pixel" />
+                        </YoshiRow>
                         <Divider />
                         <NameText>Need stream overlays for your event?</NameText>
                         <NameText>Contact me!</NameText>
-                        <LogoRow>
-                            <StyledDiscordLogo />
+                        <YoshiRow>
+                            <DiscordLogo />
                             <NameText>@epicyoshimaster</NameText>
-                        </LogoRow>
-                        <LogoRow>
-                            <StyledTwitterLogo />
+                        </YoshiRow>
+                        <YoshiRow>
+                            <TwitterLogo />
                             <NameText>@EpicYoshiMaster</NameText>
-                        </LogoRow>
-                        <LogoRow>
-                            <StyledGithubLogo />
+                        </YoshiRow>
+                        <YoshiRow>
+                            <GithubLogo />
                             <NameText>EpicYoshiMaster</NameText>
-                        </LogoRow>
+                        </YoshiRow>
+                        <YoshiRow>
+                            <Butterfly />
+                            <NameText>@epicyoshimaster.bsky.social</NameText>
+                        </YoshiRow>
                     </CreditsRow>
                     <CreditsRow>
                         <HeaderText>Special Thanks</HeaderText>
@@ -238,7 +246,9 @@ const SWLogo = styled(Logo)`
 
 const IPGLogo = styled(Logo)`
     width: 25%;
-`
+
+    margin-bottom: 25px;
+`;
 
 const LibraryLogo = styled(Logo)`
     margin-left: 20px;
@@ -246,25 +256,37 @@ const LibraryLogo = styled(Logo)`
     width: 20%;
 `;
 
-const StyledGithubLogo = styled(GithubLogo)`
-	width: 1em;
-    object-fit: contain;
-	margin-right: 20px;
-    font-size: 50px;
+const YoshiRow = styled(LogoRow)`
+    gap: 20px;
+
+    & img {
+        height: 5rem;
+    }
+    
+    svg {
+        width: 1em;
+        object-fit: contain;
+        font-size: 50px;
+   } 
 `;
 
-const StyledTwitterLogo = styled(TwitterLogo)`
-	width: 1em;
-    object-fit: contain;
-	margin-right: 20px;
-    font-size: 50px;
-`
+const YoshiText = styled(NameText)`
+    position: relative;
+    font-size: 5rem;
+    font-weight: bold;
 
-const StyledDiscordLogo = styled(DiscordLogo)`
-	width: 1em;
-    object-fit: contain;
-	margin-right: 20px;
-    font-size: 50px;
+    color: #fff;
+    background: #000;
+
+    mix-blend-mode: multiply;
+`;
+
+const YoshiSpan = styled.span`
+    background: linear-gradient(to right, transparent 0% 13%, #424fff 13% 16%, transparent 16% 17%, #65b5ff 17% 19%, transparent 19% 100%), 
+    linear-gradient(to right, transparent 0% 41%, #65b5ff 41% 43%, transparent 43% 100%),
+    linear-gradient(to right, transparent 0% 56%, #fe64ab 56% 59%, #a1b4a8 59%, 61%, transparent 61% 100%),
+    linear-gradient(to right, #ff86d5 0% 25%, #00ddab 25% 50%, #ff86d5 50% 75%, #00ddab 75% 100%);
+    background-size: 25%;
 `;
 
 const Divider = styled.div`

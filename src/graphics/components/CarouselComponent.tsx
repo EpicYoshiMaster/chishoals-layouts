@@ -14,7 +14,7 @@ const DEFAULT_SPEED = 5000;
 const DEFAULT_TRANSITION_SPEED = 1000;
 
 export const CarouselComponent: React.FC<CarouselComponentProps> = ({ children, playing = true, speed, transitionSpeed, once, startIndex }) => {
-    const [carouselIndex, setCarouselIndex] = useState(0);
+    const [carouselIndex, setCarouselIndex] = useState(startIndex || 0);
     const carouselIntervalId = useRef<number | null>(null);
     const activeCarouselIndexRef = useRef(startIndex || 0);
 
@@ -83,6 +83,4 @@ const CarouselItem = styled.div<{$active: boolean, $isRelative: boolean, speed: 
     opacity: ${props => props.$active ? 1 : 0};
     transition: opacity ${props => props.speed}ms linear;
     transition-delay: ${props => props.$active ? props.speed : 0}ms;
-
-    & img { height: 100%; }
 `;

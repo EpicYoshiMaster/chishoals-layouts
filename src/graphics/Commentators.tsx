@@ -38,6 +38,7 @@ export function Commentators() {
 	const [ delay, setDelay ] = useState<number>(3000);
 	const [ autoHide, setAutoHide ] = useState<boolean>(false);
 	const [ lifetime, setLifetime ] = useState<number>(5000);
+	const [ showSponsor, setShowSponsor ] = useState(false);
 
 	useEffect(() => {
 		if(!comms) return;
@@ -74,7 +75,12 @@ export function Commentators() {
 		setCurrentShow(value);
 	}, [setCurrentShow]);
 
+	const onIpgControl = useCallback(( value: boolean ) => {
+		setShowSponsor(value);
+	}, [setShowSponsor]);
+
 	useListenFor('commsControl', onCommsControl, { bundle: 'squidwest-layout-controls' });
+	useListenFor('ipgControl', onIpgControl, { bundle: 'chishoals-layouts' });
 
 	useEffect(() => {
 		if(loaded === LoadState.LS_Loaded) {
@@ -89,6 +95,7 @@ export function Commentators() {
 	return (
 		<StyledCommentators>
 			<Content>
+				<IpgLogo $show={showSponsor} src="/bundles/chishoals-layouts/images/I_Play_Games.png" alt="I Play Games Logo" />
 				<LowerThirds>
 					<NameplateLeft>
 						<Nameplate 
@@ -142,6 +149,18 @@ const NameplateLeft = styled.div`
 
 const NameplateRight = styled.div`
 	margin: 20px 200px 20px 100px;
+`;
+
+const IpgLogo = styled.img<{ $show: boolean }>`
+	position: absolute;
+	margin-bottom: 25px;
+	margin-left: 25px;
+
+	width: 700px;
+	object-fit: contain;
+
+	opacity: ${({ $show }) => $show ? 1 : 0};
+	transition: opacity 1s linear;
 `;
 
 const root = createRoot(document.getElementById('root')!);
