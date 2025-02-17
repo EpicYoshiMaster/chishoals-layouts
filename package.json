@@ -17,6 +17,16 @@
   ],
   "nodecg": {
     "compatibleRange": "^2.0.0",
+    "dashboardPanels": [
+      {
+        "name": "ipgsponsor",
+        "title": "I Play Games! Sponsor",
+        "width": 3,
+        "file": "ipg.html",
+        "workspace": "1. Stream Tech",
+        "headerColor": "#525F78"
+      }
+    ],
     "graphics": [
       {
         "file": "intermission.html",
