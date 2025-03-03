@@ -90,9 +90,9 @@ export function Credits() {
                     <CreditsRow>
                         <HeaderText>Stream Overlays and Design</HeaderText>
                         <YoshiRow>
-                            <img src="/bundles/twinsquiddies-layouts/images/misc/harmonypixel.gif" alt="Harmony Pixel" />
+                            <img src="/bundles/chishoals-layouts/images/misc/harmonypixel.gif" alt="Harmony Pixel" />
                             <YoshiSpan><YoshiText>EpicYoshiMaster</YoshiText></YoshiSpan>
-                            <img src="/bundles/twinsquiddies-layouts/images/misc/harmonypixel.gif" alt="Harmony Pixel" />
+                            <img src="/bundles/chishoals-layouts/images/misc/harmonypixel.gif" alt="Harmony Pixel" />
                         </YoshiRow>
                         <Divider />
                         <NameText>Need stream overlays for your event?</NameText>
