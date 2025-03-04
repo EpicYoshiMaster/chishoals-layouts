@@ -4,7 +4,8 @@ import { CarouselComponent } from './components/CarouselComponent';
 import { GithubLogo, DiscordLogo, TwitterLogo, Butterfly  } from "@phosphor-icons/react";
 import { createRoot } from 'react-dom/client';
 import { useReplicant } from '@nodecg/react-hooks';
-import { EventData, CreditsData, EventInfo } from 'schemas';
+import { CreditsData } from 'schemas/creditsData';
+import { EventInfo, EventData } from 'schemas/eventData';
 import { CreditsNameRow } from './components/CreditsNameRow';
 
 export function Credits() {

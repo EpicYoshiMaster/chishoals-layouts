@@ -1,6 +1,6 @@
 import React from 'react';
 import { useReplicant } from '@nodecg/react-hooks';
-import { MatchData } from 'schemas';
+import { MatchData } from 'schemas/matchData';
 import styled from 'styled-components'
 import { createRoot } from 'react-dom/client';
 import { Omnibar } from './components/Omnibar';

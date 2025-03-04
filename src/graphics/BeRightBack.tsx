@@ -4,7 +4,8 @@ import { createRoot } from 'react-dom/client';
 import { Background } from './components/Background';
 import { YoutubeLogo, DiscordLogo, TwitterLogo, Butterfly  } from "@phosphor-icons/react";
 import { useReplicant } from '@nodecg/react-hooks';
-import { EventData, Socials, EventInfo } from 'schemas';
+import { Socials } from 'schemas/socials';
+import { EventData, EventInfo } from 'schemas/eventData';
 import { CarouselComponent } from './components/CarouselComponent';
 
 export function BeRightBack() {

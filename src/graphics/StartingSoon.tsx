@@ -4,7 +4,8 @@ import { createRoot } from 'react-dom/client';
 import { Background } from './components/Background';
 import { YoutubeLogo, DiscordLogo, TwitterLogo, Butterfly  } from "@phosphor-icons/react";
 import { useReplicant } from '@nodecg/react-hooks';
-import { EventData, EventInfo, Socials } from 'schemas';
+import { EventData, EventInfo } from 'schemas/eventData';
+import { Socials } from 'schemas/socials';
 import { CarouselComponent } from './components/CarouselComponent';
 
 export function StartingSoon() {
