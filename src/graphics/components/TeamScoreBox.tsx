@@ -31,9 +31,10 @@ const TeamAndScore = styled.div<{ $left: boolean }>`
 	height: 5rem;
 	width: 100%;
 	font-size: 3rem;
-	color: #f04888;
-	border: 8px solid #f04888;
-	background-color: #eae6f3;
+	color: var(--teams-text);
+	background-color: var(--teams-inner);
+	border: 8px solid var(--teams-border);
+	
 	box-sizing: content-box;
 `;
 
@@ -52,6 +53,6 @@ const ScoreBox = styled.div`
 
 	font-size: 5rem;
 
-	color: #eae6f3;
-	background-color: #f04888;
+	color: var(--teams-score-text);
+	background-color: var(--teams-score-inner);
 `;

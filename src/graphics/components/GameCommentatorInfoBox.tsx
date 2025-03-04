@@ -42,9 +42,9 @@ const CommentatorBox = styled.div`
 	height: 3rem;
 	font-size: 2rem;
 
-	color: #f04888;
-	background-color: #eae6f3;
-	border: 3px solid #b31451;
+	color: var(--game-main-text);
+	background-color: var(--game-main-bg);
+	border: 3px solid var(--game-border);
 	border-radius: 0.5rem;
 `;
 
@@ -62,8 +62,8 @@ const CommentatorPronouns = styled.div`
 	height: 100%;
 	font-size: 1.5rem;
 
-	color: #eae6f3;
-	background-color: #f04888;
-	border-left: 4px solid #b31451;
+	color: var(--game-sub-text);
+	background-color: var(--game-sub-bg);
+	border-left: 4px solid var(--game-border);
 	border-radius: 0 4px 4px 0;
 `;

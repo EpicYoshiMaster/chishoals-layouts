@@ -102,7 +102,7 @@ const OmnibarWrapper = styled.div`
   	display: flex;
   	flex-direction: row;
   	width: calc(100% - 40px);
-  	background-color: #f04888;
+  	background-color: var(--omnibar-color);
   	height: 122px;
   	margin: 10px 20px;
 `;
@@ -119,9 +119,9 @@ const TextOmnibarItem = styled(OmnibarItem)<{ $maxWidth: string }>`
 const OmnibarElement = styled.div<{$border?: boolean}>`
 	position: relative;
 	padding: 10px;
-	color: #ffffff;
+	color: var(--omnibar-text);
 	font-size: 20pt;
-	border-right: ${props => props.$border ? '5px solid #eae6f3' : ''};
+	border-right: ${props => props.$border ? '5px solid var(--omnibar-divider)' : ''};
 `;
 
 const TimeDate = styled(OmnibarElement)`
@@ -137,14 +137,14 @@ const TimeDate = styled(OmnibarElement)`
 const TimeDisplay = styled.div`
 	position: relative;
 	margin: auto;
-	color: #ffffff;
+	color: var(--omnibar-text);
 	font-size: 35pt;
 `;
 
 const DateDisplay = styled.div`
 	position: relative;
 	margin: auto;
-	color: #ffffff;
+	color: var(--omnibar-text);
 	font-size: 20pt;
 `;
 

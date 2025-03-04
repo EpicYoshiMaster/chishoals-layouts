@@ -165,8 +165,8 @@ const Content = styled.div`
     width: 100%;
     height: 100%;
 
-    color: #ffffff;
-    background-color: #000000;
+    color: var(--credits-text);
+    background-color: var(--credits-bg);
 
     overflow: hidden;
 `;
@@ -276,8 +276,8 @@ const YoshiText = styled(NameText)`
     font-size: 5rem;
     font-weight: bold;
 
-    color: #fff;
-    background: #000;
+    color: var(--credits-text);
+    background: var(--credits-bg);
 
     mix-blend-mode: multiply;
 `;

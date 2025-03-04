@@ -143,9 +143,9 @@ const InfoBox = styled.div`
 	font-size: 2rem;
 	padding: 0 5px;
 
-	color: #eae6f3;
-	background-color: #f04888;
-	border: 3px solid #b31451;
+	color: var(--game-title-text);
+	background-color: var(--game-title-bg);
+	border: 3px solid var(--game-border);
 	border-radius: 0.5rem;
 `;
 

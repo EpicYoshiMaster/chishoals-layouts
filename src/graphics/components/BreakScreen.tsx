@@ -95,8 +95,6 @@ const TextArea = styled.div`
 	display: flex;
 	flex-direction: column;
 	text-align: center;
-
-	color: #fff;
 `;
 
 const CarouselWrapper = styled.div`
@@ -109,19 +107,18 @@ const CarouselItem = styled.div`
 
 const TitleText = styled.div`
 	font-size: 8rem;
-	color: #23eb00;
-	//text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;
-	-webkit-text-stroke: 3px white;
+	color: var(--break-main-text);
+	-webkit-text-stroke: 3px var(--break-main-outline);
 `;
 
 const SubtitleText = styled.div`
 	font-size: 6rem;
-	color: #23eb00;
-	-webkit-text-stroke: 2px white;
+	color: var(--break-main-text);
+	-webkit-text-stroke: 2px var(--break-main-outline);
 `;
 
 const SocialsText = styled.div`
-	-webkit-text-stroke: 2px white;
+	-webkit-text-stroke: 2px var(--break-socials-outline);
 `;
 
 const SocialsRow = styled.div`
@@ -130,7 +127,7 @@ const SocialsRow = styled.div`
 	flex-direction: row;
 	justify-content: space-evenly;
 	font-size: 2.75rem;
-	color: #f10059;
+	color: var(--break-socials-text);
 `;
 
 const SocialsItem = styled.div`

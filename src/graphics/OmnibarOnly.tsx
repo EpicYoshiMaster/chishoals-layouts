@@ -3,10 +3,6 @@ import styled from 'styled-components'
 import { createRoot } from 'react-dom/client';
 import { Omnibar } from './components/Omnibar';
 
-//Theme:
-//#f04888
-//#eae6f3
-
 export function OmnibarOnly() {
 	return (
 		<StyledOmnibarOnly>
