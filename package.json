@@ -59,6 +59,12 @@
         "singleInstance": false
       },
       {
+        "file": "scoresonly.html",
+        "width": 1920,
+        "height": 1080,
+        "singleInstance": false
+      },
+      {
         "file": "commentators.html",
         "width": 1920,
         "height": 1080,
