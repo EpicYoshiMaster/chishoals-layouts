@@ -145,9 +145,6 @@
 })({"ahfx7":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-//Theme:
-//#f04888
-//#eae6f3
 parcelHelpers.export(exports, "OmnibarOnly", ()=>OmnibarOnly);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
@@ -159,21 +156,21 @@ function OmnibarOnly() {
     return /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledOmnibarOnly, {
         __source: {
             fileName: "src/graphics/OmnibarOnly.tsx",
-            lineNumber: 13,
+            lineNumber: 8,
             columnNumber: 3
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(Content, {
         __source: {
             fileName: "src/graphics/OmnibarOnly.tsx",
-            lineNumber: 14,
+            lineNumber: 9,
             columnNumber: 4
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _omnibar.Omnibar), {
         __source: {
             fileName: "src/graphics/OmnibarOnly.tsx",
-            lineNumber: 15,
+            lineNumber: 10,
             columnNumber: 5
         },
         __self: this
@@ -199,7 +196,7 @@ const root = (0, _client.createRoot)(document.getElementById("root"));
 root.render(/*#__PURE__*/ (0, _reactDefault.default).createElement(OmnibarOnly, {
     __source: {
         fileName: "src/graphics/OmnibarOnly.tsx",
-        lineNumber: 40,
+        lineNumber: 35,
         columnNumber: 13
     },
     __self: undefined
@@ -256,7 +253,7 @@ const Omnibar = ()=>{
     return /*#__PURE__*/ (0, _reactDefault.default).createElement(OmnibarWrapper, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 38,
+            lineNumber: 39,
             columnNumber: 9
         },
         __self: undefined
@@ -264,7 +261,7 @@ const Omnibar = ()=>{
         $show: intermissionData ? intermissionData.showTime : true,
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 39,
+            lineNumber: 40,
             columnNumber: 4
         },
         __self: undefined
@@ -272,21 +269,21 @@ const Omnibar = ()=>{
         $border: true,
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 40,
+            lineNumber: 41,
             columnNumber: 5
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(TimeDisplay, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 41,
+            lineNumber: 42,
             columnNumber: 6
         },
         __self: undefined
     }, (0, _utils.formatDateHM)(memoTime)), /*#__PURE__*/ (0, _reactDefault.default).createElement(DateDisplay, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 44,
+            lineNumber: 45,
             columnNumber: 6
         },
         __self: undefined
@@ -294,7 +291,7 @@ const Omnibar = ()=>{
         $show: intermissionData ? intermissionData.showEvent : true,
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 49,
+            lineNumber: 50,
             columnNumber: 4
         },
         __self: undefined
@@ -302,7 +299,7 @@ const Omnibar = ()=>{
         $border: true,
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 50,
+            lineNumber: 51,
             columnNumber: 5
         },
         __self: undefined
@@ -311,14 +308,14 @@ const Omnibar = ()=>{
         alt: "Chi-Shoals Logo",
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 51,
+            lineNumber: 52,
             columnNumber: 6
         },
         __self: undefined
     }), currentEvent.number > 0 && /*#__PURE__*/ (0, _reactDefault.default).createElement(EventNumberText, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 53,
+            lineNumber: 54,
             columnNumber: 6
         },
         __self: undefined
@@ -327,7 +324,7 @@ const Omnibar = ()=>{
         $maxWidth: "24rem",
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 58,
+            lineNumber: 59,
             columnNumber: 4
         },
         __self: undefined
@@ -335,14 +332,14 @@ const Omnibar = ()=>{
         $border: true,
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 60,
+            lineNumber: 61,
             columnNumber: 5
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(LocationText, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 61,
+            lineNumber: 62,
             columnNumber: 6
         },
         __self: undefined
@@ -351,7 +348,7 @@ const Omnibar = ()=>{
         $maxWidth: "20rem",
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 67,
+            lineNumber: 68,
             columnNumber: 4
         },
         __self: undefined
@@ -359,14 +356,14 @@ const Omnibar = ()=>{
         $border: true,
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 68,
+            lineNumber: 69,
             columnNumber: 5
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(TourneyPlaceholder, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 69,
+            lineNumber: 70,
             columnNumber: 6
         },
         __self: undefined
@@ -374,7 +371,7 @@ const Omnibar = ()=>{
         $border: true,
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 74,
+            lineNumber: 75,
             columnNumber: 13
         },
         __self: undefined
@@ -383,91 +380,91 @@ const Omnibar = ()=>{
         transitionSpeed: 1000,
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 75,
+            lineNumber: 76,
             columnNumber: 5
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(CarouselRow, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 76,
+            lineNumber: 77,
             columnNumber: 6
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledYoutubeLogo, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 77,
+            lineNumber: 78,
             columnNumber: 25
         },
         __self: undefined
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement(LogoText, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 78,
+            lineNumber: 79,
             columnNumber: 25
         },
         __self: undefined
     }, socials ? socials.youtube : "")), /*#__PURE__*/ (0, _reactDefault.default).createElement(CarouselRow, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 80,
+            lineNumber: 81,
             columnNumber: 6
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledTwitterLogo, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 81,
+            lineNumber: 82,
             columnNumber: 25
         },
         __self: undefined
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement(LogoText, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 82,
+            lineNumber: 83,
             columnNumber: 25
         },
         __self: undefined
     }, socials ? socials.twitter : "")), /*#__PURE__*/ (0, _reactDefault.default).createElement(CarouselRow, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 84,
+            lineNumber: 85,
             columnNumber: 6
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledButterfly, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 85,
+            lineNumber: 86,
             columnNumber: 25
         },
         __self: undefined
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement(LogoText, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 86,
+            lineNumber: 87,
             columnNumber: 25
         },
         __self: undefined
     }, socials ? socials.bluesky : "")), /*#__PURE__*/ (0, _reactDefault.default).createElement(CarouselRow, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 88,
+            lineNumber: 89,
             columnNumber: 6
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledDiscordLogo, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 89,
+            lineNumber: 90,
             columnNumber: 25
         },
         __self: undefined
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement(LogoText, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 90,
+            lineNumber: 91,
             columnNumber: 25
         },
         __self: undefined
@@ -477,7 +474,7 @@ const Omnibar = ()=>{
         alt: "SquidWest Logo",
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 94,
+            lineNumber: 95,
             columnNumber: 13
         },
         __self: undefined
@@ -488,7 +485,7 @@ const OmnibarWrapper = (0, _styledComponentsDefault.default).div`
   	display: flex;
   	flex-direction: row;
   	width: calc(100% - 40px);
-  	background-color: #f04888;
+  	background-color: var(--omnibar-color);
   	height: 122px;
   	margin: 10px 20px;
 `;
@@ -502,9 +499,9 @@ const TextOmnibarItem = (0, _styledComponentsDefault.default)(OmnibarItem)`
 const OmnibarElement = (0, _styledComponentsDefault.default).div`
 	position: relative;
 	padding: 10px;
-	color: #ffffff;
+	color: var(--omnibar-text);
 	font-size: 20pt;
-	border-right: ${(props)=>props.$border ? "5px solid #eae6f3" : ""};
+	border-right: ${(props)=>props.$border ? "5px solid var(--omnibar-divider)" : ""};
 `;
 const TimeDate = (0, _styledComponentsDefault.default)(OmnibarElement)`
 	position: relative;
@@ -518,13 +515,13 @@ const TimeDate = (0, _styledComponentsDefault.default)(OmnibarElement)`
 const TimeDisplay = (0, _styledComponentsDefault.default).div`
 	position: relative;
 	margin: auto;
-	color: #ffffff;
+	color: var(--omnibar-text);
 	font-size: 35pt;
 `;
 const DateDisplay = (0, _styledComponentsDefault.default).div`
 	position: relative;
 	margin: auto;
-	color: #ffffff;
+	color: var(--omnibar-text);
 	font-size: 20pt;
 `;
 const EventSection = (0, _styledComponentsDefault.default)(OmnibarElement)`

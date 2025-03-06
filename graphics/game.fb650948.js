@@ -232,14 +232,14 @@ function Game() {
     return /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledOmnibarOnly, {
         __source: {
             fileName: "src/graphics/Game.tsx",
-            lineNumber: 76,
+            lineNumber: 77,
             columnNumber: 3
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(Content, {
         __source: {
             fileName: "src/graphics/Game.tsx",
-            lineNumber: 77,
+            lineNumber: 78,
             columnNumber: 4
         },
         __self: this
@@ -247,14 +247,14 @@ function Game() {
         $show: showScoreboard,
         __source: {
             fileName: "src/graphics/Game.tsx",
-            lineNumber: 78,
+            lineNumber: 79,
             columnNumber: 5
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(InfoBox, {
         __source: {
             fileName: "src/graphics/Game.tsx",
-            lineNumber: 79,
+            lineNumber: 80,
             columnNumber: 6
         },
         __self: this
@@ -265,7 +265,7 @@ function Game() {
         maxWidth: FullWidth,
         __source: {
             fileName: "src/graphics/Game.tsx",
-            lineNumber: 80,
+            lineNumber: 81,
             columnNumber: 7
         },
         __self: this
@@ -277,7 +277,7 @@ function Game() {
         secondaryWidth: ScoreWidth,
         __source: {
             fileName: "src/graphics/Game.tsx",
-            lineNumber: 82,
+            lineNumber: 83,
             columnNumber: 6
         },
         __self: this
@@ -289,7 +289,7 @@ function Game() {
         secondaryWidth: ScoreWidth,
         __source: {
             fileName: "src/graphics/Game.tsx",
-            lineNumber: 89,
+            lineNumber: 90,
             columnNumber: 6
         },
         __self: this
@@ -297,14 +297,14 @@ function Game() {
         $show: showCommentary,
         __source: {
             fileName: "src/graphics/Game.tsx",
-            lineNumber: 97,
+            lineNumber: 98,
             columnNumber: 5
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(InfoBox, {
         __source: {
             fileName: "src/graphics/Game.tsx",
-            lineNumber: 98,
+            lineNumber: 99,
             columnNumber: 6
         },
         __self: this
@@ -315,7 +315,7 @@ function Game() {
         maxWidth: FullWidth,
         __source: {
             fileName: "src/graphics/Game.tsx",
-            lineNumber: 99,
+            lineNumber: 100,
             columnNumber: 7
         },
         __self: this
@@ -329,7 +329,7 @@ function Game() {
         pronounsWidth: PronounsWidth,
         __source: {
             fileName: "src/graphics/Game.tsx",
-            lineNumber: 101,
+            lineNumber: 102,
             columnNumber: 6
         },
         __self: this
@@ -343,7 +343,7 @@ function Game() {
         pronounsWidth: PronounsWidth,
         __source: {
             fileName: "src/graphics/Game.tsx",
-            lineNumber: 110,
+            lineNumber: 111,
             columnNumber: 6
         },
         __self: this
@@ -367,9 +367,9 @@ const InfoBox = (0, _styledComponentsDefault.default).div`
 	font-size: 2rem;
 	padding: 0 5px;
 
-	color: #eae6f3;
-	background-color: #f04888;
-	border: 3px solid #b31451;
+	color: var(--game-title-text);
+	background-color: var(--game-title-bg);
+	border: 3px solid var(--game-border);
 	border-radius: 0.5rem;
 `;
 const Scoreboard = (0, _styledComponentsDefault.default).div`
@@ -390,13 +390,174 @@ const root = (0, _client.createRoot)(document.getElementById("root"));
 root.render(/*#__PURE__*/ (0, _reactDefault.default).createElement(Game, {
     __source: {
         fileName: "src/graphics/Game.tsx",
-        lineNumber: 168,
+        lineNumber: 169,
         columnNumber: 13
     },
     __self: undefined
 }));
 
-},{"react":"bH1AQ","styled-components":"9xpRL","@nodecg/react-hooks":"audz3","react-dom/client":"i5cPj","./components/FittedText":"f5NVk","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG","../helpers/hooks":"2VUsa","./components/GameScoreInfoBox":"j4XKJ","./components/GameCommentatorInfoBox":"2vw2F"}],"f5NVk":[function(require,module,exports) {
+},{"react":"bH1AQ","styled-components":"9xpRL","@nodecg/react-hooks":"audz3","../helpers/hooks":"2VUsa","react-dom/client":"i5cPj","./components/GameScoreInfoBox":"j4XKJ","./components/FittedText":"f5NVk","./components/GameCommentatorInfoBox":"2vw2F","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"2VUsa":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "useObsConnectionStatus", ()=>useObsConnectionStatus);
+parcelHelpers.export(exports, "useWrappedReplicant", ()=>useWrappedReplicant);
+var _react = require("react");
+var _reactHooks = require("@nodecg/react-hooks");
+const useObsConnectionStatus = (nodecg, options)=>{
+    const [connected, setConnected] = (0, _react.useState)(false);
+    const onConnectionStatus = (value)=>{
+        setConnected(value.isConnected);
+        if (options) {
+            if (options.onConnect && value.isConnected) options.onConnect();
+            if (options.onDisconnect && !value.isConnected) options.onDisconnect();
+        }
+    };
+    (0, _react.useEffect)(()=>{
+        nodecg.listenFor("obsConnectionStatus", "squidwest-layout-controls", onConnectionStatus);
+        return ()=>{
+            nodecg.unlisten("obsConnectionStatus", "squidwest-layout-controls", onConnectionStatus);
+        };
+    }, []);
+    return connected;
+};
+const useWrappedReplicant = (replicantName, defaultValue, bundle, persistent)=>{
+    const [replicant, setReplicant] = (0, _reactHooks.useReplicant)(replicantName, {
+        bundle,
+        defaultValue,
+        persistent
+    });
+    const [value, setValue] = (0, _react.useState)(defaultValue);
+    (0, _react.useEffect)(()=>{
+        if (!replicant) return;
+        setValue(replicant);
+    }, [
+        replicant,
+        setValue
+    ]);
+    return [
+        value,
+        setReplicant
+    ];
+};
+
+},{"react":"bH1AQ","@nodecg/react-hooks":"audz3","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"j4XKJ":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "GameScoreInfoBox", ()=>GameScoreInfoBox);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _styledComponents = require("styled-components");
+var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
+var _fittedText = require("./FittedText");
+const paddingWidth = 10;
+const colorDisplayWidth = 15;
+const colorMargin = 5;
+const GameScoreInfoBox = ({ team, score, color, mainWidth, secondaryWidth })=>{
+    return /*#__PURE__*/ (0, _reactDefault.default).createElement(TeamAndScore, {
+        __source: {
+            fileName: "src/graphics/components/GameScoreInfoBox.tsx",
+            lineNumber: 19,
+            columnNumber: 3
+        },
+        __self: undefined
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(TeamBox, {
+        $width: mainWidth,
+        __source: {
+            fileName: "src/graphics/components/GameScoreInfoBox.tsx",
+            lineNumber: 20,
+            columnNumber: 4
+        },
+        __self: undefined
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(ColorDisplay, {
+        $color: color,
+        __source: {
+            fileName: "src/graphics/components/GameScoreInfoBox.tsx",
+            lineNumber: 21,
+            columnNumber: 5
+        },
+        __self: undefined
+    }), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _fittedText.FittedText), {
+        text: team,
+        font: "Splatoon",
+        align: "left",
+        maxWidth: mainWidth - paddingWidth - colorDisplayWidth - colorMargin,
+        __source: {
+            fileName: "src/graphics/components/GameScoreInfoBox.tsx",
+            lineNumber: 22,
+            columnNumber: 5
+        },
+        __self: undefined
+    })), /*#__PURE__*/ (0, _reactDefault.default).createElement(ScoreBox, {
+        $width: secondaryWidth,
+        __source: {
+            fileName: "src/graphics/components/GameScoreInfoBox.tsx",
+            lineNumber: 24,
+            columnNumber: 4
+        },
+        __self: undefined
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _fittedText.FittedText), {
+        text: `${score}`,
+        font: "Splatoon",
+        align: "center",
+        maxWidth: secondaryWidth - 5,
+        __source: {
+            fileName: "src/graphics/components/GameScoreInfoBox.tsx",
+            lineNumber: 25,
+            columnNumber: 5
+        },
+        __self: undefined
+    })));
+};
+const TeamAndScore = (0, _styledComponentsDefault.default).div`
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-direction: row;
+
+	height: 3rem;
+	width: 100%;
+	font-size: 2rem;
+	color: var(--game-main-text);
+	background-color: var(--game-main-bg);
+	border: 3px solid var(--game-border);
+	border-radius: 0.5rem;
+`;
+const TeamBox = (0, _styledComponentsDefault.default).div`
+	position: relative;
+	height: 100%;
+	padding: 5px;
+	width: ${({ $width })=>$width}px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+
+	box-sizing: border-box;
+`;
+const ColorDisplay = (0, _styledComponentsDefault.default).div`
+	width: ${colorDisplayWidth}px;
+	min-width: ${colorDisplayWidth}px;
+	margin-right: ${colorMargin}px;
+	height: 100%;
+	
+	border-radius: 5px;
+	background-color: ${({ $color })=>$color};
+`;
+const ScoreBox = (0, _styledComponentsDefault.default).div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: ${({ $width })=>$width}px;
+	height: 100%;
+
+	font-size: 3rem;
+
+	color: var(--game-sub-text);
+	background-color: var(--game-sub-bg);
+	border-left: 4px solid var(--game-border);
+	border-radius: 0 4px 4px 0;
+`;
+
+},{"react":"bH1AQ","styled-components":"9xpRL","./FittedText":"f5NVk","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"f5NVk":[function(require,module,exports) {
 /**
  * Horizontally squishes text within a max width
  * 
@@ -638,169 +799,7 @@ const TextFit = (0, _styledComponentsDefault.default).div`
     module.exports = D;
 })();
 
-},{}],"2VUsa":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "useObsConnectionStatus", ()=>useObsConnectionStatus);
-parcelHelpers.export(exports, "useWrappedReplicant", ()=>useWrappedReplicant);
-var _react = require("react");
-var _reactHooks = require("@nodecg/react-hooks");
-const useObsConnectionStatus = (nodecg, options)=>{
-    const [connected, setConnected] = (0, _react.useState)(false);
-    const onConnectionStatus = (value)=>{
-        setConnected(value.isConnected);
-        if (options) {
-            if (options.onConnect && value.isConnected) options.onConnect();
-            if (options.onDisconnect && !value.isConnected) options.onDisconnect();
-        }
-    };
-    (0, _react.useEffect)(()=>{
-        nodecg.listenFor("obsConnectionStatus", "squidwest-layout-controls", onConnectionStatus);
-        return ()=>{
-            nodecg.unlisten("obsConnectionStatus", "squidwest-layout-controls", onConnectionStatus);
-        };
-    }, []);
-    return connected;
-};
-const useWrappedReplicant = (replicantName, defaultValue, bundle, persistent)=>{
-    const [replicant, setReplicant] = (0, _reactHooks.useReplicant)(replicantName, {
-        bundle,
-        defaultValue,
-        persistent
-    });
-    const [value, setValue] = (0, _react.useState)(defaultValue);
-    (0, _react.useEffect)(()=>{
-        if (!replicant) return;
-        setValue(replicant);
-    }, [
-        replicant,
-        setValue
-    ]);
-    return [
-        value,
-        setReplicant
-    ];
-};
-
-},{"react":"bH1AQ","@nodecg/react-hooks":"audz3","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"j4XKJ":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "GameScoreInfoBox", ()=>GameScoreInfoBox);
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _styledComponents = require("styled-components");
-var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
-var _fittedText = require("./FittedText");
-const paddingWidth = 10;
-const colorDisplayWidth = 15;
-const colorMargin = 5;
-const GameScoreInfoBox = ({ team, score, color, mainWidth, secondaryWidth })=>{
-    return /*#__PURE__*/ (0, _reactDefault.default).createElement(TeamAndScore, {
-        __source: {
-            fileName: "src/graphics/components/GameScoreInfoBox.tsx",
-            lineNumber: 19,
-            columnNumber: 3
-        },
-        __self: undefined
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(TeamBox, {
-        $width: mainWidth,
-        __source: {
-            fileName: "src/graphics/components/GameScoreInfoBox.tsx",
-            lineNumber: 20,
-            columnNumber: 4
-        },
-        __self: undefined
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(ColorDisplay, {
-        $color: color,
-        __source: {
-            fileName: "src/graphics/components/GameScoreInfoBox.tsx",
-            lineNumber: 21,
-            columnNumber: 5
-        },
-        __self: undefined
-    }), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _fittedText.FittedText), {
-        text: team,
-        font: "Splatoon",
-        align: "left",
-        maxWidth: mainWidth - paddingWidth - colorDisplayWidth - colorMargin,
-        __source: {
-            fileName: "src/graphics/components/GameScoreInfoBox.tsx",
-            lineNumber: 22,
-            columnNumber: 5
-        },
-        __self: undefined
-    })), /*#__PURE__*/ (0, _reactDefault.default).createElement(ScoreBox, {
-        $width: secondaryWidth,
-        __source: {
-            fileName: "src/graphics/components/GameScoreInfoBox.tsx",
-            lineNumber: 24,
-            columnNumber: 4
-        },
-        __self: undefined
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _fittedText.FittedText), {
-        text: `${score}`,
-        font: "Splatoon",
-        align: "center",
-        maxWidth: secondaryWidth - 5,
-        __source: {
-            fileName: "src/graphics/components/GameScoreInfoBox.tsx",
-            lineNumber: 25,
-            columnNumber: 5
-        },
-        __self: undefined
-    })));
-};
-const TeamAndScore = (0, _styledComponentsDefault.default).div`
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	flex-direction: row;
-
-	height: 3rem;
-	width: 100%;
-	font-size: 2rem;
-	color: #f04888;
-	border: 3px solid #b31451;
-	border-radius: 0.5rem;
-	background-color: #eae6f3;
-	//box-sizing: content-box;
-`;
-const TeamBox = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	height: 100%;
-	padding: 5px;
-	width: ${({ $width })=>$width}px;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-
-	box-sizing: border-box;
-`;
-const ColorDisplay = (0, _styledComponentsDefault.default).div`
-	width: ${colorDisplayWidth}px;
-	min-width: ${colorDisplayWidth}px;
-	margin-right: ${colorMargin}px;
-	height: 100%;
-	
-	border-radius: 5px;
-	background-color: ${({ $color })=>$color};
-`;
-const ScoreBox = (0, _styledComponentsDefault.default).div`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: ${({ $width })=>$width}px;
-	height: 100%;
-
-	font-size: 3rem;
-
-	color: #eae6f3;
-	background-color: #f04888;
-	border-left: 4px solid #b31451;
-	border-radius: 0 4px 4px 0;
-`;
-
-},{"react":"bH1AQ","styled-components":"9xpRL","./FittedText":"f5NVk","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"2vw2F":[function(require,module,exports) {
+},{}],"2vw2F":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "GameCommentatorInfoBox", ()=>GameCommentatorInfoBox);
@@ -886,9 +885,9 @@ const CommentatorBox = (0, _styledComponents.styled).div`
 	height: 3rem;
 	font-size: 2rem;
 
-	color: #f04888;
-	background-color: #eae6f3;
-	border: 3px solid #b31451;
+	color: var(--game-main-text);
+	background-color: var(--game-main-bg);
+	border: 3px solid var(--game-border);
 	border-radius: 0.5rem;
 `;
 const CommentatorName = (0, _styledComponents.styled).div`
@@ -904,9 +903,9 @@ const CommentatorPronouns = (0, _styledComponents.styled).div`
 	height: 100%;
 	font-size: 1.5rem;
 
-	color: #eae6f3;
-	background-color: #f04888;
-	border-left: 4px solid #b31451;
+	color: var(--game-sub-text);
+	background-color: var(--game-sub-bg);
+	border-left: 4px solid var(--game-border);
 	border-radius: 0 4px 4px 0;
 `;
 

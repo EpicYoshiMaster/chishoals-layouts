@@ -148,14 +148,52 @@ parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "BeRightBack", ()=>BeRightBack);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _client = require("react-dom/client");
+var _breakScreen = require("./components/BreakScreen");
 var _styledComponents = require("styled-components");
 var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
-var _client = require("react-dom/client");
-var _background = require("./components/Background");
+function BeRightBack() {
+    return /*#__PURE__*/ (0, _reactDefault.default).createElement(Wrapper, {
+        __source: {
+            fileName: "src/graphics/BeRightBack.tsx",
+            lineNumber: 9,
+            columnNumber: 3
+        },
+        __self: this
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _breakScreen.BreakScreen), {
+        message: "We'll be right back!",
+        __source: {
+            fileName: "src/graphics/BeRightBack.tsx",
+            lineNumber: 10,
+            columnNumber: 4
+        },
+        __self: this
+    }));
+}
+const Wrapper = (0, _styledComponentsDefault.default).div``;
+const root = (0, _client.createRoot)(document.getElementById("root"));
+root.render(/*#__PURE__*/ (0, _reactDefault.default).createElement(BeRightBack, {
+    __source: {
+        fileName: "src/graphics/BeRightBack.tsx",
+        lineNumber: 18,
+        columnNumber: 13
+    },
+    __self: undefined
+}));
+
+},{"react":"bH1AQ","styled-components":"9xpRL","react-dom/client":"i5cPj","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG","./components/BreakScreen":"knVSC"}],"knVSC":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "BreakScreen", ()=>BreakScreen);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _styledComponents = require("styled-components");
+var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
+var _background = require("./Background");
 var _react1 = require("@phosphor-icons/react");
 var _reactHooks = require("@nodecg/react-hooks");
-var _carouselComponent = require("./components/CarouselComponent");
-function BeRightBack() {
+var _carouselComponent = require("./CarouselComponent");
+const BreakScreen = ({ message })=>{
     const [eventData] = (0, _reactHooks.useReplicant)("eventData", {
         bundle: "squidwest-layout-controls"
     });
@@ -174,202 +212,202 @@ function BeRightBack() {
     }, [
         eventData
     ]);
-    return /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledBeRightBack, {
+    return /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledBreakScreen, {
         __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
-            lineNumber: 23,
+            fileName: "src/graphics/components/BreakScreen.tsx",
+            lineNumber: 28,
             columnNumber: 3
         },
-        __self: this
+        __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _background.Background), {
         __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
-            lineNumber: 24,
+            fileName: "src/graphics/components/BreakScreen.tsx",
+            lineNumber: 29,
             columnNumber: 4
         },
-        __self: this
+        __self: undefined
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement(Content, {
         __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
-            lineNumber: 25,
+            fileName: "src/graphics/components/BreakScreen.tsx",
+            lineNumber: 30,
             columnNumber: 4
         },
-        __self: this
+        __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(LogoArea, {
         __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
-            lineNumber: 26,
+            fileName: "src/graphics/components/BreakScreen.tsx",
+            lineNumber: 31,
             columnNumber: 5
         },
-        __self: this
+        __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(SWLogo, {
         src: "/bundles/chishoals-layouts/images/SW_Logo.png",
         alt: "SquidWest Logo",
         __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
-            lineNumber: 27,
+            fileName: "src/graphics/components/BreakScreen.tsx",
+            lineNumber: 32,
             columnNumber: 6
         },
-        __self: this
+        __self: undefined
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement(TextArea, {
         __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
-            lineNumber: 29,
+            fileName: "src/graphics/components/BreakScreen.tsx",
+            lineNumber: 34,
             columnNumber: 5
         },
-        __self: this
+        __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(CarouselWrapper, {
         __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
-            lineNumber: 30,
+            fileName: "src/graphics/components/BreakScreen.tsx",
+            lineNumber: 35,
             columnNumber: 6
         },
-        __self: this
+        __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _carouselComponent.CarouselComponent), {
         speed: 15000,
         transitionSpeed: 3000,
         __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
-            lineNumber: 31,
+            fileName: "src/graphics/components/BreakScreen.tsx",
+            lineNumber: 36,
             columnNumber: 7
         },
-        __self: this
+        __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(CarouselItem, {
         __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
-            lineNumber: 32,
-            columnNumber: 8
-        },
-        __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(TitleText, {
-        __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
-            lineNumber: 33,
-            columnNumber: 9
-        },
-        __self: this
-    }, "SquidWest"), /*#__PURE__*/ (0, _reactDefault.default).createElement(SubtitleText, {
-        __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
-            lineNumber: 34,
-            columnNumber: 9
-        },
-        __self: this
-    }, "MidWest Splatoon Players")), /*#__PURE__*/ (0, _reactDefault.default).createElement(CarouselItem, {
-        __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
-            lineNumber: 36,
-            columnNumber: 8
-        },
-        __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(TitleText, {
-        __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
+            fileName: "src/graphics/components/BreakScreen.tsx",
             lineNumber: 37,
             columnNumber: 8
         },
-        __self: this
-    }, currentEvent.name, " ", currentEvent.number > 0 ? "#" + currentEvent.number : ""), /*#__PURE__*/ (0, _reactDefault.default).createElement(SubtitleText, {
+        __self: undefined
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(TitleText, {
         __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
+            fileName: "src/graphics/components/BreakScreen.tsx",
             lineNumber: 38,
             columnNumber: 9
         },
-        __self: this
-    }, "We'll be right back!")))), /*#__PURE__*/ (0, _reactDefault.default).createElement(SocialsRow, {
+        __self: undefined
+    }, "SquidWest"), /*#__PURE__*/ (0, _reactDefault.default).createElement(SubtitleText, {
         __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
+            fileName: "src/graphics/components/BreakScreen.tsx",
+            lineNumber: 39,
+            columnNumber: 9
+        },
+        __self: undefined
+    }, "MidWest Splatoon Players")), /*#__PURE__*/ (0, _reactDefault.default).createElement(CarouselItem, {
+        __source: {
+            fileName: "src/graphics/components/BreakScreen.tsx",
+            lineNumber: 41,
+            columnNumber: 8
+        },
+        __self: undefined
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(TitleText, {
+        __source: {
+            fileName: "src/graphics/components/BreakScreen.tsx",
             lineNumber: 42,
+            columnNumber: 8
+        },
+        __self: undefined
+    }, currentEvent.name, " ", currentEvent.number > 0 ? "#" + currentEvent.number : ""), /*#__PURE__*/ (0, _reactDefault.default).createElement(SubtitleText, {
+        __source: {
+            fileName: "src/graphics/components/BreakScreen.tsx",
+            lineNumber: 43,
+            columnNumber: 9
+        },
+        __self: undefined
+    }, message)))), /*#__PURE__*/ (0, _reactDefault.default).createElement(SocialsRow, {
+        __source: {
+            fileName: "src/graphics/components/BreakScreen.tsx",
+            lineNumber: 47,
             columnNumber: 6
         },
-        __self: this
+        __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(SocialsItem, {
         __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
-            lineNumber: 43,
+            fileName: "src/graphics/components/BreakScreen.tsx",
+            lineNumber: 48,
             columnNumber: 7
         },
-        __self: this
+        __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _react1.YoutubeLogo), {
         __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
-            lineNumber: 44,
-            columnNumber: 8
-        },
-        __self: this
-    }), /*#__PURE__*/ (0, _reactDefault.default).createElement(SocialsText, {
-        __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
-            lineNumber: 45,
-            columnNumber: 8
-        },
-        __self: this
-    }, socials ? socials.youtube : "")), /*#__PURE__*/ (0, _reactDefault.default).createElement(SocialsItem, {
-        __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
-            lineNumber: 47,
-            columnNumber: 7
-        },
-        __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _react1.TwitterLogo), {
-        __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
-            lineNumber: 48,
-            columnNumber: 8
-        },
-        __self: this
-    }), /*#__PURE__*/ (0, _reactDefault.default).createElement(SocialsText, {
-        __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
+            fileName: "src/graphics/components/BreakScreen.tsx",
             lineNumber: 49,
             columnNumber: 8
         },
-        __self: this
-    }, socials ? socials.twitter : "")), /*#__PURE__*/ (0, _reactDefault.default).createElement(SocialsItem, {
-        __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
-            lineNumber: 51,
-            columnNumber: 7
-        },
-        __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _react1.Butterfly), {
-        __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
-            lineNumber: 52,
-            columnNumber: 8
-        },
-        __self: this
+        __self: undefined
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement(SocialsText, {
         __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
+            fileName: "src/graphics/components/BreakScreen.tsx",
+            lineNumber: 50,
+            columnNumber: 8
+        },
+        __self: undefined
+    }, socials ? socials.youtube : "")), /*#__PURE__*/ (0, _reactDefault.default).createElement(SocialsItem, {
+        __source: {
+            fileName: "src/graphics/components/BreakScreen.tsx",
+            lineNumber: 52,
+            columnNumber: 7
+        },
+        __self: undefined
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _react1.TwitterLogo), {
+        __source: {
+            fileName: "src/graphics/components/BreakScreen.tsx",
             lineNumber: 53,
             columnNumber: 8
         },
-        __self: this
-    }, socials ? socials.bluesky : "")), /*#__PURE__*/ (0, _reactDefault.default).createElement(SocialsItem, {
-        __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
-            lineNumber: 55,
-            columnNumber: 7
-        },
-        __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _react1.DiscordLogo), {
-        __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
-            lineNumber: 56,
-            columnNumber: 8
-        },
-        __self: this
+        __self: undefined
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement(SocialsText, {
         __source: {
-            fileName: "src/graphics/BeRightBack.tsx",
+            fileName: "src/graphics/components/BreakScreen.tsx",
+            lineNumber: 54,
+            columnNumber: 8
+        },
+        __self: undefined
+    }, socials ? socials.twitter : "")), /*#__PURE__*/ (0, _reactDefault.default).createElement(SocialsItem, {
+        __source: {
+            fileName: "src/graphics/components/BreakScreen.tsx",
+            lineNumber: 56,
+            columnNumber: 7
+        },
+        __self: undefined
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _react1.Butterfly), {
+        __source: {
+            fileName: "src/graphics/components/BreakScreen.tsx",
             lineNumber: 57,
             columnNumber: 8
         },
-        __self: this
+        __self: undefined
+    }), /*#__PURE__*/ (0, _reactDefault.default).createElement(SocialsText, {
+        __source: {
+            fileName: "src/graphics/components/BreakScreen.tsx",
+            lineNumber: 58,
+            columnNumber: 8
+        },
+        __self: undefined
+    }, socials ? socials.bluesky : "")), /*#__PURE__*/ (0, _reactDefault.default).createElement(SocialsItem, {
+        __source: {
+            fileName: "src/graphics/components/BreakScreen.tsx",
+            lineNumber: 60,
+            columnNumber: 7
+        },
+        __self: undefined
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _react1.DiscordLogo), {
+        __source: {
+            fileName: "src/graphics/components/BreakScreen.tsx",
+            lineNumber: 61,
+            columnNumber: 8
+        },
+        __self: undefined
+    }), /*#__PURE__*/ (0, _reactDefault.default).createElement(SocialsText, {
+        __source: {
+            fileName: "src/graphics/components/BreakScreen.tsx",
+            lineNumber: 62,
+            columnNumber: 8
+        },
+        __self: undefined
     }, socials ? socials.discord : ""))))));
-}
-const StyledBeRightBack = (0, _styledComponentsDefault.default).div`
+};
+const StyledBreakScreen = (0, _styledComponentsDefault.default).div`
 	position: relative;
 	width: 1920px;
 	height: 1080px;
@@ -393,8 +431,6 @@ const TextArea = (0, _styledComponentsDefault.default).div`
 	display: flex;
 	flex-direction: column;
 	text-align: center;
-
-	color: #fff;
 `;
 const CarouselWrapper = (0, _styledComponentsDefault.default).div`
 	position: relative;	
@@ -404,17 +440,16 @@ const CarouselItem = (0, _styledComponentsDefault.default).div`
 `;
 const TitleText = (0, _styledComponentsDefault.default).div`
 	font-size: 8rem;
-	color: #23eb00;
-	//text-shadow: -1px -1px 0 #ffffff, 1px -1px 0 #ffffff, -1px 1px 0 #ffffff, 1px 1px 0 #ffffff;
-	-webkit-text-stroke: 3px white;
+	color: var(--break-main-text);
+	-webkit-text-stroke: 3px var(--break-main-outline);
 `;
 const SubtitleText = (0, _styledComponentsDefault.default).div`
 	font-size: 6rem;
-	color: #23eb00;
-	-webkit-text-stroke: 2px white;
+	color: var(--break-main-text);
+	-webkit-text-stroke: 2px var(--break-main-outline);
 `;
 const SocialsText = (0, _styledComponentsDefault.default).div`
-	-webkit-text-stroke: 2px white;
+	-webkit-text-stroke: 2px var(--break-socials-outline);
 `;
 const SocialsRow = (0, _styledComponentsDefault.default).div`
 	position: relative;
@@ -422,7 +457,7 @@ const SocialsRow = (0, _styledComponentsDefault.default).div`
 	flex-direction: row;
 	justify-content: space-evenly;
 	font-size: 2.75rem;
-	color: #f10059;
+	color: var(--break-socials-text);
 `;
 const SocialsItem = (0, _styledComponentsDefault.default).div`
 	position: relative;
@@ -433,17 +468,8 @@ const SocialsItem = (0, _styledComponentsDefault.default).div`
 const SWLogo = (0, _styledComponentsDefault.default).img`
 	object-fit: contain;	
 `;
-const root = (0, _client.createRoot)(document.getElementById("root"));
-root.render(/*#__PURE__*/ (0, _reactDefault.default).createElement(BeRightBack, {
-    __source: {
-        fileName: "src/graphics/BeRightBack.tsx",
-        lineNumber: 143,
-        columnNumber: 13
-    },
-    __self: undefined
-}));
 
-},{"react":"bH1AQ","styled-components":"9xpRL","react-dom/client":"i5cPj","./components/Background":"n2E1c","@phosphor-icons/react":"h9z2e","@nodecg/react-hooks":"audz3","./components/CarouselComponent":"3ZV6n","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"n2E1c":[function(require,module,exports) {
+},{"react":"bH1AQ","styled-components":"9xpRL","./Background":"n2E1c","@phosphor-icons/react":"h9z2e","@nodecg/react-hooks":"audz3","./CarouselComponent":"3ZV6n","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"n2E1c":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Background", ()=>Background);

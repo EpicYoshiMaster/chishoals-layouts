@@ -142,455 +142,202 @@
       this[globalName] = mainExports;
     }
   }
-})({"iTT7o":[function(require,module,exports) {
+})({"e81nl":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Commentators", ()=>Commentators);
+parcelHelpers.export(exports, "ScoresOnly", ()=>ScoresOnly);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactHooks = require("@nodecg/react-hooks");
 var _styledComponents = require("styled-components");
 var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
 var _client = require("react-dom/client");
-var _nameplate = require("./components/Nameplate");
-var _reactHooks = require("@nodecg/react-hooks");
-var LoadState;
-(function(LoadState) {
-    LoadState[LoadState["LS_NotLoaded"] = 0] = "LS_NotLoaded";
-    LoadState[LoadState["LS_Loaded"] = 1] = "LS_Loaded";
-    LoadState[LoadState["LS_Done"] = 2] = "LS_Done";
-})(LoadState || (LoadState = {}));
-const defaultCommentator = {
-    name: "Commentator Name",
-    pronouns: "any/all",
-    tag: "@TagName"
-};
-const AnimationDuration = 1000;
-function Commentators() {
-    const [show, setShow] = (0, _react.useState)(false);
-    const [loaded, setLoaded] = (0, _react.useState)(0);
-    const [comms, setComms] = (0, _reactHooks.useReplicant)("commentators", {
+var _teamScoreBox = require("./components/TeamScoreBox");
+function ScoresOnly() {
+    const [matchData, setMatchData] = (0, _reactHooks.useReplicant)("match", {
         bundle: "squidwest-layout-controls",
         defaultValue: {
-            commentatorOne: defaultCommentator,
-            commentatorTwo: defaultCommentator,
-            autoShow: true,
-            delay: 3000,
-            autoHide: true,
-            lifetime: 5000
+            matchInfo: "Round 1",
+            teamA: "Team A",
+            teamB: "Team B",
+            scoreA: 0,
+            scoreB: 0,
+            matchColor: {
+                index: -1,
+                name: "Unknown",
+                teamA: "#ffffff",
+                teamB: "#ffffff"
+            },
+            swapColor: false
         }
     });
-    const [commentatorOne, setCommentatorOne] = (0, _react.useState)(defaultCommentator);
-    const [commentatorTwo, setCommentatorTwo] = (0, _react.useState)(defaultCommentator);
-    const [autoShow, setAutoShow] = (0, _react.useState)(false);
-    const [delay, setDelay] = (0, _react.useState)(3000);
-    const [autoHide, setAutoHide] = (0, _react.useState)(false);
-    const [lifetime, setLifetime] = (0, _react.useState)(5000);
-    const [showSponsor, setShowSponsor] = (0, _react.useState)(false);
-    (0, _react.useEffect)(()=>{
-        if (!comms) return;
-        setCommentatorOne(comms.commentatorOne);
-        setCommentatorTwo(comms.commentatorTwo);
-        setAutoShow(comms.autoShow);
-        setDelay(comms.delay);
-        setAutoHide(comms.autoHide);
-        setLifetime(comms.lifetime);
-        if (loaded === 0) setLoaded(1);
-    }, [
-        comms
-    ]);
-    const onAutoHide = (0, _react.useCallback)(()=>{
-        setShow(false);
-    }, [
-        setShow
-    ]);
-    const setCurrentShow = (0, _react.useCallback)((newShow)=>{
-        if (newShow && autoHide) window.setTimeout(onAutoHide, Math.max(AnimationDuration + lifetime, AnimationDuration));
-        setShow(newShow);
-    }, [
-        setShow,
-        onAutoHide,
-        autoHide,
-        lifetime
-    ]);
-    const onAutoShow = (0, _react.useCallback)(()=>{
-        setCurrentShow(true);
-    }, [
-        setCurrentShow
-    ]);
-    const onCommsControl = (0, _react.useCallback)((value)=>{
-        setCurrentShow(value);
-    }, [
-        setCurrentShow
-    ]);
-    const onIpgControl = (0, _react.useCallback)((value)=>{
-        setShowSponsor(value);
-    }, [
-        setShowSponsor
-    ]);
-    (0, _reactHooks.useListenFor)("commsControl", onCommsControl, {
-        bundle: "squidwest-layout-controls"
-    });
-    (0, _reactHooks.useListenFor)("ipgControl", onIpgControl, {
-        bundle: "chishoals-layouts"
-    });
-    (0, _react.useEffect)(()=>{
-        if (loaded === 1) {
-            if (autoShow) window.setTimeout(onAutoShow, Math.max(delay, 0));
-            setLoaded(2);
-        }
-    }, [
-        loaded,
-        autoShow,
-        delay,
-        onAutoShow
-    ]);
-    return /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledCommentators, {
+    return /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledOmnibarOnly, {
         __source: {
-            fileName: "src/graphics/Commentators.tsx",
-            lineNumber: 96,
+            fileName: "src/graphics/ScoresOnly.tsx",
+            lineNumber: 23,
             columnNumber: 3
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(Content, {
         __source: {
-            fileName: "src/graphics/Commentators.tsx",
-            lineNumber: 97,
+            fileName: "src/graphics/ScoresOnly.tsx",
+            lineNumber: 24,
             columnNumber: 4
         },
         __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(IpgLogo, {
-        $show: showSponsor,
-        src: "/bundles/chishoals-layouts/images/I_Play_Games.png",
-        alt: "I Play Games Logo",
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(ScoreRow, {
         __source: {
-            fileName: "src/graphics/Commentators.tsx",
-            lineNumber: 98,
+            fileName: "src/graphics/ScoresOnly.tsx",
+            lineNumber: 25,
             columnNumber: 5
         },
         __self: this
-    }), /*#__PURE__*/ (0, _reactDefault.default).createElement(LowerThirds, {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _teamScoreBox.TeamScoreBox), {
+        team: matchData?.teamA || "",
+        score: matchData?.scoreA || 0,
+        left: true,
         __source: {
-            fileName: "src/graphics/Commentators.tsx",
-            lineNumber: 99,
-            columnNumber: 5
-        },
-        __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(NameplateLeft, {
-        __source: {
-            fileName: "src/graphics/Commentators.tsx",
-            lineNumber: 100,
+            fileName: "src/graphics/ScoresOnly.tsx",
+            lineNumber: 26,
             columnNumber: 6
         },
         __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _nameplate.Nameplate), {
-        show: show,
-        name: commentatorOne.name,
-        pronouns: commentatorOne.pronouns,
-        tag: commentatorOne.tag,
-        animationLength: AnimationDuration,
+    }), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _teamScoreBox.TeamScoreBox), {
+        team: matchData?.teamB || "",
+        score: matchData?.scoreB || 0,
+        left: false,
         __source: {
-            fileName: "src/graphics/Commentators.tsx",
-            lineNumber: 101,
-            columnNumber: 7
-        },
-        __self: this
-    })), /*#__PURE__*/ (0, _reactDefault.default).createElement(NameplateRight, {
-        __source: {
-            fileName: "src/graphics/Commentators.tsx",
-            lineNumber: 108,
+            fileName: "src/graphics/ScoresOnly.tsx",
+            lineNumber: 27,
             columnNumber: 6
         },
         __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _nameplate.Nameplate), {
-        show: show,
-        name: commentatorTwo.name,
-        pronouns: commentatorTwo.pronouns,
-        tag: commentatorTwo.tag,
-        animationLength: AnimationDuration,
-        __source: {
-            fileName: "src/graphics/Commentators.tsx",
-            lineNumber: 109,
-            columnNumber: 7
-        },
-        __self: this
-    })))));
+    }))));
 }
-const StyledCommentators = (0, _styledComponentsDefault.default).div`
+const StyledOmnibarOnly = (0, _styledComponentsDefault.default).div`
 	position: relative;
 	width: 1920px;
 	height: 1080px;
 	background-color: transparent;
 `;
 const Content = (0, _styledComponentsDefault.default).div`
+	padding: 0 350px 50px 350px;
 	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	
 	width: 100%;
 	height: 100%;
-	
-	display: flex;
-	flex-direction: column-reverse;
 `;
-const LowerThirds = (0, _styledComponentsDefault.default).div`
+const ScoreRow = (0, _styledComponentsDefault.default).div`
 	position: relative;
-	margin-bottom: 50px;
-
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-`;
-const NameplateLeft = (0, _styledComponentsDefault.default).div`
-	margin: 20px 100px 20px 200px;
-`;
-const NameplateRight = (0, _styledComponentsDefault.default).div`
-	margin: 20px 200px 20px 100px;
-`;
-const IpgLogo = (0, _styledComponentsDefault.default).img`
-	position: absolute;
-	margin-bottom: 25px;
-	margin-left: 25px;
-
-	width: 700px;
-	object-fit: contain;
-
-	opacity: ${({ $show })=>$show ? 1 : 0};
-	transition: opacity 1s linear;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
 `;
 const root = (0, _client.createRoot)(document.getElementById("root"));
-root.render(/*#__PURE__*/ (0, _reactDefault.default).createElement(Commentators, {
+root.render(/*#__PURE__*/ (0, _reactDefault.default).createElement(ScoresOnly, {
     __source: {
-        fileName: "src/graphics/Commentators.tsx",
-        lineNumber: 167,
+        fileName: "src/graphics/ScoresOnly.tsx",
+        lineNumber: 61,
         columnNumber: 13
     },
     __self: undefined
 }));
 
-},{"react":"bH1AQ","styled-components":"9xpRL","react-dom/client":"i5cPj","./components/Nameplate":"cxLMe","@nodecg/react-hooks":"audz3","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"cxLMe":[function(require,module,exports) {
+},{"react":"bH1AQ","styled-components":"9xpRL","react-dom/client":"i5cPj","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG","@nodecg/react-hooks":"audz3","./components/TeamScoreBox":"6sL9p"}],"6sL9p":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "Nameplate", ()=>Nameplate);
-var _styledComponents = require("styled-components");
-var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
+parcelHelpers.export(exports, "TeamScoreBox", ()=>TeamScoreBox);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _styledComponents = require("styled-components");
+var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
 var _fittedText = require("./FittedText");
-const Nameplate = ({ show, name, pronouns, tag, animationLength })=>{
-    const [visible, setVisible] = (0, _react.useState)(false);
-    const [active, setActive] = (0, _react.useState)(false);
-    let onAnimEnd = (0, _react.useCallback)((animName)=>{
-        if (animName === ShowNameplate.getName()) {
-            if (!show) {
-                setActive(true);
-                return;
-            }
-        } else if (animName === HideNameplate.getName()) setVisible(false);
-        setActive(false);
-    }, [
-        show
-    ]);
-    (0, _react.useEffect)(()=>{
-        if (show && !visible) {
-            setVisible(true);
-            setActive(true);
-        }
-        if (!show && visible) setActive(true);
-    }, [
-        show,
-        visible
-    ]);
-    const pronounsSplit = (0, _react.useMemo)(()=>{
-        if (!pronouns) return [];
-        let split = pronouns.split("/");
-        split = split.map((item, index)=>{
-            return index === split.length - 1 ? item : item + "/";
-        });
-        return split;
-    }, [
-        pronouns
-    ]);
-    return /*#__PURE__*/ (0, _reactDefault.default).createElement(NameplateBox, {
-        $show: show,
-        $visible: visible,
-        $active: active,
-        $animLength: animationLength || 1000,
-        onAnimationEnd: (event)=>{
-            onAnimEnd(event.animationName);
-        },
+const TeamScoreBox = ({ team, score, left })=>{
+    return /*#__PURE__*/ (0, _reactDefault.default).createElement(TeamAndScore, {
+        $left: left,
         __source: {
-            fileName: "src/graphics/components/Nameplate.tsx",
-            lineNumber: 57,
+            fileName: "src/graphics/components/TeamScoreBox.tsx",
+            lineNumber: 13,
             columnNumber: 3
         },
         __self: undefined
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(Name, {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(TeamBox, {
         __source: {
-            fileName: "src/graphics/components/Nameplate.tsx",
-            lineNumber: 63,
+            fileName: "src/graphics/components/TeamScoreBox.tsx",
+            lineNumber: 14,
             columnNumber: 4
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _fittedText.FittedText), {
-        text: name,
+        text: team,
+        font: "Splatoon",
+        align: left ? "left" : "right",
+        maxWidth: 470,
+        __source: {
+            fileName: "src/graphics/components/TeamScoreBox.tsx",
+            lineNumber: 15,
+            columnNumber: 5
+        },
+        __self: undefined
+    })), /*#__PURE__*/ (0, _reactDefault.default).createElement(ScoreBox, {
+        __source: {
+            fileName: "src/graphics/components/TeamScoreBox.tsx",
+            lineNumber: 17,
+            columnNumber: 4
+        },
+        __self: undefined
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _fittedText.FittedText), {
+        text: `${score}`,
         font: "Splatoon",
         align: "center",
-        maxWidth: 580,
+        maxWidth: 95,
         __source: {
-            fileName: "src/graphics/components/Nameplate.tsx",
-            lineNumber: 64,
+            fileName: "src/graphics/components/TeamScoreBox.tsx",
+            lineNumber: 18,
             columnNumber: 5
         },
         __self: undefined
-    })), /*#__PURE__*/ (0, _reactDefault.default).createElement(Tag, {
-        __source: {
-            fileName: "src/graphics/components/Nameplate.tsx",
-            lineNumber: 66,
-            columnNumber: 4
-        },
-        __self: undefined
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _fittedText.FittedText), {
-        text: tag,
-        font: "Splatoon",
-        align: "left",
-        maxWidth: 500,
-        __source: {
-            fileName: "src/graphics/components/Nameplate.tsx",
-            lineNumber: 67,
-            columnNumber: 5
-        },
-        __self: undefined
-    })), pronouns !== "" && /*#__PURE__*/ (0, _reactDefault.default).createElement(Pronouns, {
-        __source: {
-            fileName: "src/graphics/components/Nameplate.tsx",
-            lineNumber: 70,
-            columnNumber: 4
-        },
-        __self: undefined
-    }, pronounsSplit.map((item, index)=>{
-        return /*#__PURE__*/ (0, _reactDefault.default).createElement(PronounsText, {
-            key: index,
-            __source: {
-                fileName: "src/graphics/components/Nameplate.tsx",
-                lineNumber: 73,
-                columnNumber: 13
-            },
-            __self: undefined
-        }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _fittedText.FittedText), {
-            text: item,
-            font: "Splatoon",
-            align: "center",
-            maxWidth: 75,
-            __source: {
-                fileName: "src/graphics/components/Nameplate.tsx",
-                lineNumber: 74,
-                columnNumber: 7
-            },
-            __self: undefined
-        }));
     })));
 };
-const ShowNameplate = (0, _styledComponents.keyframes)`
-	0% {
-		opacity: 1;
-		clip-path: polygon(
-			50% -40%,
-			50% -40%,
-			50% 140%,
-			50% 140%
-		);
-	}
-
-	100% {
-		opacity: 1;
-		clip-path: polygon(
-			-40% -40%,
-			140% -40%,
-			140% 140%,
-			-40% 140%
-		)
-	}
-`;
-const HideNameplate = (0, _styledComponents.keyframes)`
-	0% {
-		opacity: 1;
-		clip-path: polygon(
-			-40% -40%,
-			140% -40%,
-			140% 140%,
-			-40% 140%
-		)
-	}
-
-	100% {
-		opacity: 1;
-		clip-path: polygon(
-			50% -40%,
-			50% -40%,
-			50% 140%,
-			50% 140%
-		);
-	}
-`;
-const NameplateBox = (0, _styledComponentsDefault.default).div`
-	position: relative;
+const TeamAndScore = (0, _styledComponentsDefault.default).div`
 	display: flex;
-	flex-direction: column;
-
-	padding: 10px;
-	height: 160px;
-	width: 600px;
-
 	align-items: center;
-	justify-content: space-evenly;
-	text-align: center;
+	justify-content: flex-end;
+	flex-direction: ${({ $left })=>$left ? "row" : "row-reverse"};
 
-	background-image: url('/bundles/chishoals-layouts/images/Chi_Banner.png');
-	background-size: contain;
-	background-repeat: no-repeat;
-	color: var(--commentary-text);
-
-	${({ $visible })=>$visible ? (0, _styledComponents.css)`opacity: 1;` : (0, _styledComponents.css)`opacity: 0;`};
-
-	${(props)=>{
-    if (props.$active) return (0, _styledComponents.css)`animation: ${props.$animLength}ms linear 0s ${props.$show ? ShowNameplate : HideNameplate} forwards;`;
-    else return (0, _styledComponents.css)`animation: none;`;
-}}
-`;
-const Name = (0, _styledComponentsDefault.default).div`
-	position: relative;
+	${({ $left })=>$left ? (0, _styledComponents.css)`margin-right: 10px;` : (0, _styledComponents.css)`margin-left: 10px;`}
+	height: 5rem;
 	width: 100%;
 	font-size: 3rem;
+	color: var(--teams-text);
+	background-color: var(--teams-inner);
+	border: 8px solid var(--teams-border);
+	
+	box-sizing: content-box;
 `;
-const Pronouns = (0, _styledComponentsDefault.default).div`
-	position: absolute;
-	display: flex;
-	flex-direction: column;
-
+const TeamBox = (0, _styledComponentsDefault.default).div`
 	padding: 5px;
 
-	bottom: -50px;
-	right: -80px;
-	
-	justify-content: center;
+	box-sizing: border-box;
+`;
+const ScoreBox = (0, _styledComponentsDefault.default).div`
+	display: flex;
 	align-items: center;
+	justify-content: center;
+	width: 100px;
+	height: 100%;
 
-	width: 167px;
-	height: 135px;
-	background-image: url('/bundles/chishoals-layouts/images/Splatter.png');
-	background-size: contain;
-	background-repeat: no-repeat;
-	color: var(--commentary-pronouns);
-	font-size: 1.6rem;
-`;
-const Tag = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	width: 100%;
-	text-align: left;
-	font-size: 2.25rem;
-	height: 2.25rem;
-	color: var(--commentary-tag);
-`;
-const PronounsText = (0, _styledComponentsDefault.default).div`
+	font-size: 5rem;
+
+	color: var(--teams-score-text);
+	background-color: var(--teams-score-inner);
 `;
 
-},{"styled-components":"9xpRL","react":"bH1AQ","./FittedText":"f5NVk","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"f5NVk":[function(require,module,exports) {
+},{"react":"bH1AQ","styled-components":"9xpRL","./FittedText":"f5NVk","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"f5NVk":[function(require,module,exports) {
 /**
  * Horizontally squishes text within a max width
  * 
@@ -832,6 +579,6 @@ const TextFit = (0, _styledComponentsDefault.default).div`
     module.exports = D;
 })();
 
-},{}]},["iTT7o"], "iTT7o", "parcelRequired251")
+},{}]},["e81nl"], "e81nl", "parcelRequired251")
 
-//# sourceMappingURL=commentators.27949ab7.js.map
+//# sourceMappingURL=scoresonly.6fdc09b4.js.map

@@ -145,9 +145,6 @@
 })({"9dx5I":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-//Theme:
-//#f04888
-//#eae6f3
 parcelHelpers.export(exports, "Intermission", ()=>Intermission);
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
@@ -158,7 +155,6 @@ var _client = require("react-dom/client");
 var _omnibar = require("./components/Omnibar");
 var _background = require("./components/Background");
 var _teamScoreBox = require("./components/TeamScoreBox");
-var _fittedText = require("./components/FittedText");
 function Intermission() {
     const [matchData, setMatchData] = (0, _reactHooks.useReplicant)("match", {
         bundle: "squidwest-layout-controls",
@@ -180,49 +176,49 @@ function Intermission() {
     return /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledIntermission, {
         __source: {
             fileName: "src/graphics/Intermission.tsx",
-            lineNumber: 30,
+            lineNumber: 26,
             columnNumber: 3
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _background.Background), {
         __source: {
             fileName: "src/graphics/Intermission.tsx",
-            lineNumber: 31,
+            lineNumber: 27,
             columnNumber: 4
         },
         __self: this
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement(Content, {
         __source: {
             fileName: "src/graphics/Intermission.tsx",
-            lineNumber: 32,
+            lineNumber: 28,
             columnNumber: 4
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(TopRow, {
         __source: {
             fileName: "src/graphics/Intermission.tsx",
-            lineNumber: 33,
+            lineNumber: 29,
             columnNumber: 5
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(LargeFeed, {
         __source: {
             fileName: "src/graphics/Intermission.tsx",
-            lineNumber: 34,
+            lineNumber: 30,
             columnNumber: 6
         },
         __self: this
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement(LargeFeed, {
         __source: {
             fileName: "src/graphics/Intermission.tsx",
-            lineNumber: 35,
+            lineNumber: 31,
             columnNumber: 6
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement(MiddleRow, {
         __source: {
             fileName: "src/graphics/Intermission.tsx",
-            lineNumber: 37,
+            lineNumber: 33,
             columnNumber: 5
         },
         __self: this
@@ -232,14 +228,14 @@ function Intermission() {
         left: true,
         __source: {
             fileName: "src/graphics/Intermission.tsx",
-            lineNumber: 38,
+            lineNumber: 34,
             columnNumber: 6
         },
         __self: this
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement(SmallFeed, {
         __source: {
             fileName: "src/graphics/Intermission.tsx",
-            lineNumber: 39,
+            lineNumber: 35,
             columnNumber: 6
         },
         __self: this
@@ -249,14 +245,14 @@ function Intermission() {
         left: false,
         __source: {
             fileName: "src/graphics/Intermission.tsx",
-            lineNumber: 40,
+            lineNumber: 36,
             columnNumber: 6
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _omnibar.Omnibar), {
         __source: {
             fileName: "src/graphics/Intermission.tsx",
-            lineNumber: 42,
+            lineNumber: 38,
             columnNumber: 5
         },
         __self: this
@@ -296,45 +292,28 @@ const LargeFeed = (0, _styledComponentsDefault.default).div`
 	aspect-ratio: 16/9;
 	box-sizing: content-box;
 
-	border: 8px solid #f04888;
-	background-color: #eae6f3;
+	background-color: var(--feed-large-color);
+	border: 8px solid var(--feed-large-border);
 `;
 const SmallFeed = (0, _styledComponentsDefault.default).div`
 	height: 360px;
 	aspect-ratio: 16/9;
 	box-sizing: content-box;
 
-	border: 8px solid #f04888;
-	background-color: #eae6f3;
-`;
-const ScoreBox = (0, _styledComponentsDefault.default).div`
-	display: flex;
-
-	align-items: center;
-	margin: 0 5px;
-	padding: 5px;
-	height: 5rem;
-	width: 100%;
-	font-size: 3rem;
-	color: #f04888;
-	border: 8px solid #f04888;
-	background-color: #eae6f3;
-	box-sizing: content-box;
-`;
-const StyledFittedText = (0, _styledComponentsDefault.default)((0, _fittedText.FittedText))`
-	height: 100%;
+	background-color: var(--feed-small-color);
+	border: 8px solid var(--feed-small-border);
 `;
 const root = (0, _client.createRoot)(document.getElementById("root"));
 root.render(/*#__PURE__*/ (0, _reactDefault.default).createElement(Intermission, {
     __source: {
         fileName: "src/graphics/Intermission.tsx",
-        lineNumber: 119,
+        lineNumber: 96,
         columnNumber: 13
     },
     __self: undefined
 }));
 
-},{"react":"bH1AQ","@nodecg/react-hooks":"audz3","styled-components":"9xpRL","react-dom/client":"i5cPj","./components/Omnibar":"au5f9","./components/Background":"n2E1c","./components/TeamScoreBox":"6sL9p","./components/FittedText":"f5NVk","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"au5f9":[function(require,module,exports) {
+},{"react":"bH1AQ","@nodecg/react-hooks":"audz3","styled-components":"9xpRL","react-dom/client":"i5cPj","./components/Omnibar":"au5f9","./components/Background":"n2E1c","./components/TeamScoreBox":"6sL9p","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"au5f9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Omnibar", ()=>Omnibar);
@@ -385,7 +364,7 @@ const Omnibar = ()=>{
     return /*#__PURE__*/ (0, _reactDefault.default).createElement(OmnibarWrapper, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 38,
+            lineNumber: 39,
             columnNumber: 9
         },
         __self: undefined
@@ -393,7 +372,7 @@ const Omnibar = ()=>{
         $show: intermissionData ? intermissionData.showTime : true,
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 39,
+            lineNumber: 40,
             columnNumber: 4
         },
         __self: undefined
@@ -401,21 +380,21 @@ const Omnibar = ()=>{
         $border: true,
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 40,
+            lineNumber: 41,
             columnNumber: 5
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(TimeDisplay, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 41,
+            lineNumber: 42,
             columnNumber: 6
         },
         __self: undefined
     }, (0, _utils.formatDateHM)(memoTime)), /*#__PURE__*/ (0, _reactDefault.default).createElement(DateDisplay, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 44,
+            lineNumber: 45,
             columnNumber: 6
         },
         __self: undefined
@@ -423,7 +402,7 @@ const Omnibar = ()=>{
         $show: intermissionData ? intermissionData.showEvent : true,
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 49,
+            lineNumber: 50,
             columnNumber: 4
         },
         __self: undefined
@@ -431,7 +410,7 @@ const Omnibar = ()=>{
         $border: true,
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 50,
+            lineNumber: 51,
             columnNumber: 5
         },
         __self: undefined
@@ -440,14 +419,14 @@ const Omnibar = ()=>{
         alt: "Chi-Shoals Logo",
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 51,
+            lineNumber: 52,
             columnNumber: 6
         },
         __self: undefined
     }), currentEvent.number > 0 && /*#__PURE__*/ (0, _reactDefault.default).createElement(EventNumberText, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 53,
+            lineNumber: 54,
             columnNumber: 6
         },
         __self: undefined
@@ -456,7 +435,7 @@ const Omnibar = ()=>{
         $maxWidth: "24rem",
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 58,
+            lineNumber: 59,
             columnNumber: 4
         },
         __self: undefined
@@ -464,14 +443,14 @@ const Omnibar = ()=>{
         $border: true,
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 60,
+            lineNumber: 61,
             columnNumber: 5
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(LocationText, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 61,
+            lineNumber: 62,
             columnNumber: 6
         },
         __self: undefined
@@ -480,7 +459,7 @@ const Omnibar = ()=>{
         $maxWidth: "20rem",
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 67,
+            lineNumber: 68,
             columnNumber: 4
         },
         __self: undefined
@@ -488,14 +467,14 @@ const Omnibar = ()=>{
         $border: true,
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 68,
+            lineNumber: 69,
             columnNumber: 5
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(TourneyPlaceholder, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 69,
+            lineNumber: 70,
             columnNumber: 6
         },
         __self: undefined
@@ -503,7 +482,7 @@ const Omnibar = ()=>{
         $border: true,
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 74,
+            lineNumber: 75,
             columnNumber: 13
         },
         __self: undefined
@@ -512,91 +491,91 @@ const Omnibar = ()=>{
         transitionSpeed: 1000,
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 75,
+            lineNumber: 76,
             columnNumber: 5
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(CarouselRow, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 76,
+            lineNumber: 77,
             columnNumber: 6
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledYoutubeLogo, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 77,
+            lineNumber: 78,
             columnNumber: 25
         },
         __self: undefined
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement(LogoText, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 78,
+            lineNumber: 79,
             columnNumber: 25
         },
         __self: undefined
     }, socials ? socials.youtube : "")), /*#__PURE__*/ (0, _reactDefault.default).createElement(CarouselRow, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 80,
+            lineNumber: 81,
             columnNumber: 6
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledTwitterLogo, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 81,
+            lineNumber: 82,
             columnNumber: 25
         },
         __self: undefined
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement(LogoText, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 82,
+            lineNumber: 83,
             columnNumber: 25
         },
         __self: undefined
     }, socials ? socials.twitter : "")), /*#__PURE__*/ (0, _reactDefault.default).createElement(CarouselRow, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 84,
+            lineNumber: 85,
             columnNumber: 6
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledButterfly, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 85,
+            lineNumber: 86,
             columnNumber: 25
         },
         __self: undefined
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement(LogoText, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 86,
+            lineNumber: 87,
             columnNumber: 25
         },
         __self: undefined
     }, socials ? socials.bluesky : "")), /*#__PURE__*/ (0, _reactDefault.default).createElement(CarouselRow, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 88,
+            lineNumber: 89,
             columnNumber: 6
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledDiscordLogo, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 89,
+            lineNumber: 90,
             columnNumber: 25
         },
         __self: undefined
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement(LogoText, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 90,
+            lineNumber: 91,
             columnNumber: 25
         },
         __self: undefined
@@ -606,7 +585,7 @@ const Omnibar = ()=>{
         alt: "SquidWest Logo",
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 94,
+            lineNumber: 95,
             columnNumber: 13
         },
         __self: undefined
@@ -617,7 +596,7 @@ const OmnibarWrapper = (0, _styledComponentsDefault.default).div`
   	display: flex;
   	flex-direction: row;
   	width: calc(100% - 40px);
-  	background-color: #f04888;
+  	background-color: var(--omnibar-color);
   	height: 122px;
   	margin: 10px 20px;
 `;
@@ -631,9 +610,9 @@ const TextOmnibarItem = (0, _styledComponentsDefault.default)(OmnibarItem)`
 const OmnibarElement = (0, _styledComponentsDefault.default).div`
 	position: relative;
 	padding: 10px;
-	color: #ffffff;
+	color: var(--omnibar-text);
 	font-size: 20pt;
-	border-right: ${(props)=>props.$border ? "5px solid #eae6f3" : ""};
+	border-right: ${(props)=>props.$border ? "5px solid var(--omnibar-divider)" : ""};
 `;
 const TimeDate = (0, _styledComponentsDefault.default)(OmnibarElement)`
 	position: relative;
@@ -647,13 +626,13 @@ const TimeDate = (0, _styledComponentsDefault.default)(OmnibarElement)`
 const TimeDisplay = (0, _styledComponentsDefault.default).div`
 	position: relative;
 	margin: auto;
-	color: #ffffff;
+	color: var(--omnibar-text);
 	font-size: 35pt;
 `;
 const DateDisplay = (0, _styledComponentsDefault.default).div`
 	position: relative;
 	margin: auto;
-	color: #ffffff;
+	color: var(--omnibar-text);
 	font-size: 20pt;
 `;
 const EventSection = (0, _styledComponentsDefault.default)(OmnibarElement)`
@@ -1042,9 +1021,10 @@ const TeamAndScore = (0, _styledComponentsDefault.default).div`
 	height: 5rem;
 	width: 100%;
 	font-size: 3rem;
-	color: #f04888;
-	border: 8px solid #f04888;
-	background-color: #eae6f3;
+	color: var(--teams-text);
+	background-color: var(--teams-inner);
+	border: 8px solid var(--teams-border);
+	
 	box-sizing: content-box;
 `;
 const TeamBox = (0, _styledComponentsDefault.default).div`
@@ -1061,8 +1041,8 @@ const ScoreBox = (0, _styledComponentsDefault.default).div`
 
 	font-size: 5rem;
 
-	color: #eae6f3;
-	background-color: #f04888;
+	color: var(--teams-score-text);
+	background-color: var(--teams-score-inner);
 `;
 
 },{"react":"bH1AQ","styled-components":"9xpRL","./FittedText":"f5NVk","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"f5NVk":[function(require,module,exports) {
