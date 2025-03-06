@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client';
 import { Background } from './components/Background';
 import { Nameplate } from './components/Nameplate';
 import { useReplicant, useListenFor } from '@nodecg/react-hooks';
-import { CommentatorData, CommentatorInfo } from 'schemas';
+import { CommentatorData, CommentatorInfo } from 'schemas/commentatorData';
 
 enum LoadState {
 	LS_NotLoaded,

@@ -1,16 +1,12 @@
 import React from 'react';
 import { useReplicant } from '@nodecg/react-hooks';
-import { MatchData } from 'schemas';
+import { MatchData } from 'schemas/matchData';
 import styled from 'styled-components'
 import { createRoot } from 'react-dom/client';
 import { Omnibar } from './components/Omnibar';
 import { Background } from './components/Background';
 import { TeamScoreBox } from './components/TeamScoreBox';
 import { FittedText } from './components/FittedText';
-
-//Theme:
-//#f04888
-//#eae6f3
 
 export function Intermission() {
 	const [matchData, setMatchData] = useReplicant<MatchData>('match', { 
@@ -83,8 +79,8 @@ const LargeFeed = styled.div`
 	aspect-ratio: 16/9;
 	box-sizing: content-box;
 
-	border: 8px solid #f04888;
-	background-color: #eae6f3;
+	background-color: var(--feed-large-color);
+	border: 8px solid var(--feed-large-border);
 `;
 
 const SmallFeed = styled.div`
@@ -92,27 +88,8 @@ const SmallFeed = styled.div`
 	aspect-ratio: 16/9;
 	box-sizing: content-box;
 
-	border: 8px solid #f04888;
-	background-color: #eae6f3;
-`;
-
-const ScoreBox = styled.div`
-	display: flex;
-
-	align-items: center;
-	margin: 0 5px;
-	padding: 5px;
-	height: 5rem;
-	width: 100%;
-	font-size: 3rem;
-	color: #f04888;
-	border: 8px solid #f04888;
-	background-color: #eae6f3;
-	box-sizing: content-box;
-`;
-
-const StyledFittedText = styled(FittedText)`
-	height: 100%;
+	background-color: var(--feed-small-color);
+	border: 8px solid var(--feed-small-border);
 `;
 
 const root = createRoot(document.getElementById('root')!);

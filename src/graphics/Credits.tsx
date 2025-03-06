@@ -4,7 +4,8 @@ import { CarouselComponent } from './components/CarouselComponent';
 import { GithubLogo, DiscordLogo, TwitterLogo, Butterfly  } from "@phosphor-icons/react";
 import { createRoot } from 'react-dom/client';
 import { useReplicant } from '@nodecg/react-hooks';
-import { EventData, CreditsData, EventInfo } from 'schemas';
+import { CreditsData } from 'schemas/creditsData';
+import { EventInfo, EventData } from 'schemas/eventData';
 import { CreditsNameRow } from './components/CreditsNameRow';
 
 export function Credits() {
@@ -90,9 +91,9 @@ export function Credits() {
                     <CreditsRow>
                         <HeaderText>Stream Overlays and Design</HeaderText>
                         <YoshiRow>
-                            <img src="/bundles/twinsquiddies-layouts/images/misc/harmonypixel.gif" alt="Harmony Pixel" />
+                            <img src="/bundles/chishoals-layouts/images/misc/harmonypixel.gif" alt="Harmony Pixel" />
                             <YoshiSpan><YoshiText>EpicYoshiMaster</YoshiText></YoshiSpan>
-                            <img src="/bundles/twinsquiddies-layouts/images/misc/harmonypixel.gif" alt="Harmony Pixel" />
+                            <img src="/bundles/chishoals-layouts/images/misc/harmonypixel.gif" alt="Harmony Pixel" />
                         </YoshiRow>
                         <Divider />
                         <NameText>Need stream overlays for your event?</NameText>
@@ -164,8 +165,8 @@ const Content = styled.div`
     width: 100%;
     height: 100%;
 
-    color: #ffffff;
-    background-color: #000000;
+    color: var(--credits-text);
+    background-color: var(--credits-bg);
 
     overflow: hidden;
 `;
@@ -275,8 +276,8 @@ const YoshiText = styled(NameText)`
     font-size: 5rem;
     font-weight: bold;
 
-    color: #fff;
-    background: #000;
+    color: var(--credits-text);
+    background: var(--credits-bg);
 
     mix-blend-mode: multiply;
 `;

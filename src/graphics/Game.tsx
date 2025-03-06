@@ -3,10 +3,11 @@ import styled, { css } from 'styled-components'
 import { useReplicant, useListenFor } from '@nodecg/react-hooks';
 import { useWrappedReplicant } from '../helpers/hooks'
 import { createRoot } from 'react-dom/client';
-import { MatchData, CommentatorData, CommentatorInfo, EventData, EventInfo } from 'schemas';
+import { MatchData } from 'schemas/matchData';
+import { CommentatorData, CommentatorInfo } from 'schemas/commentatorData';
+import { EventData, EventInfo } from 'schemas/eventData';
 import { GameScoreInfoBox } from './components/GameScoreInfoBox';
 import { FittedText } from './components/FittedText';
-import { CarouselComponent } from './components/CarouselComponent';
 import { GameCommentatorInfoBox } from './components/GameCommentatorInfoBox';
 
 const defaultMatchData: MatchData = { 
@@ -142,9 +143,9 @@ const InfoBox = styled.div`
 	font-size: 2rem;
 	padding: 0 5px;
 
-	color: #eae6f3;
-	background-color: #f04888;
-	border: 3px solid #b31451;
+	color: var(--game-title-text);
+	background-color: var(--game-title-bg);
+	border: 3px solid var(--game-border);
 	border-radius: 0.5rem;
 `;
 

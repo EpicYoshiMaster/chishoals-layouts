@@ -141,7 +141,7 @@ const NameplateBox = styled.div<{ $show: boolean, $visible: boolean, $active: bo
 	background-image: url('/bundles/chishoals-layouts/images/Chi_Banner.png');
 	background-size: contain;
 	background-repeat: no-repeat;
-	color: #a72456;
+	color: var(--commentary-text);
 
 	${({$visible}) => $visible ? css`opacity: 1;` : css`opacity: 0;` };
 
@@ -179,7 +179,7 @@ const Pronouns = styled.div`
 	background-image: url('/bundles/chishoals-layouts/images/Splatter.png');
 	background-size: contain;
 	background-repeat: no-repeat;
-	color: #eae6f3;
+	color: var(--commentary-pronouns);
 	font-size: 1.6rem;
 `;
 
@@ -189,6 +189,7 @@ const Tag = styled.div`
 	text-align: left;
 	font-size: 2.25rem;
 	height: 2.25rem;
+	color: var(--commentary-tag);
 `;
 
 const PronounsText = styled.div`

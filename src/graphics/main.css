@@ -1,0 +1,68 @@
+:root {
+	/* Break Screen */
+
+	--break-main-text: #23eb00;
+	--break-main-outline: #ffffff;
+
+	--break-socials-text: #f10059;
+	--break-socials-outline: #ffffff;
+
+	/* Intermission & Omnibar */
+
+	--feed-large-color: #eae6f3;
+	--feed-large-border: #f04888;
+
+	--feed-small-color: #eae6f3;
+	--feed-small-border: #f04888;
+
+	--omnibar-color: #f04888;
+	--omnibar-text: #ffffff;
+	--omnibar-divider: #eae6f3;
+
+	--teams-border: #f04888;
+	--teams-text: #f04888;
+	--teams-inner: #eae6f3;
+	--teams-score-text: #eae6f3;
+	--teams-score-inner: #f04888;
+
+	/* Commentary */ 
+
+	--commentary-text: #a72456;
+	--commentary-tag: #a72456;
+	--commentary-pronouns: #eae6f3;
+
+	/*--commentary-pronouns-outline: #000000;*/
+
+	/* Game */
+	--game-title-text: #eae6f3;
+	--game-title-bg: #f04888;
+
+	--game-main-text: #f04888;
+	--game-main-bg: #eae6f3;
+
+	--game-sub-text: #eae6f3;
+	--game-sub-bg: #f04888;
+
+	--game-border: #b31451;
+
+	/* Credits */
+
+	--credits-text: #ffffff;
+	--credits-bg: #000000;
+}
+
+@font-face {
+	font-family: Splatoon;
+	src: url('../../fonts/project_paintball.otf');
+}
+
+body {
+  font-family: Splatoon;
+  margin: 0;
+}
+
+.monospace {
+  font-family: monospace;
+}
+
+* { box-sizing: border-box; }
