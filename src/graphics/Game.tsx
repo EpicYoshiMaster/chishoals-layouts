@@ -4,7 +4,7 @@ import { useReplicant, useListenFor } from '@nodecg/react-hooks';
 import { useWrappedReplicant } from '../helpers/hooks'
 import { createRoot } from 'react-dom/client';
 import { MatchData } from 'schemas/matchData';
-import { CommentatorData, CommentatorInfo } from 'schemas/commentatorData';
+import { CommentatorList } from 'schemas/commentatorList';
 import { EventData, EventInfo } from 'schemas/eventData';
 import { GameScoreInfoBox } from './components/GameScoreInfoBox';
 import { FittedText } from './components/FittedText';
@@ -19,7 +19,6 @@ const defaultMatchData: MatchData = {
 	matchColor: { index: -1, name: "Unknown", teamA: "#ffffff", teamB: "#ffffff" },
 	swapColor: false
 }
-const defaultCommentator: CommentatorInfo = { name: "Commentator Name", pronouns: "any/all", tag: "@TagName" }
 
 const FullWidth = 340;
 
@@ -33,28 +32,10 @@ export function Game() {
 	const [eventData] = useReplicant<EventData>('eventData', { bundle: 'squidwest-layout-controls' });
 	const [matchData] = useWrappedReplicant<MatchData>('match', defaultMatchData, 'squidwest-layout-controls');
 
-	const [comms] = useReplicant<CommentatorData>('commentators', {
-		bundle: 'squidwest-layout-controls',
-		defaultValue: { 
-			commentatorOne: defaultCommentator, 
-			commentatorTwo: defaultCommentator,
-			autoShow: true,
-			delay: 3000,
-			autoHide: true,
-			lifetime: 5000
-		}
+	const [commentatorList] = useReplicant<CommentatorList>('commentatorList', { bundle: 'squidwest-layout-controls', defaultValue: []
 	});
 
 	const [currentEvent, setCurrentEvent] = useState<EventInfo>({ name: "Current Event Name", location: "Event Location", number: 1, date: "Today" });
-	const [commentatorOne, setCommentatorOne ] = useState<CommentatorInfo>(defaultCommentator);
-	const [commentatorTwo, setCommentatorTwo ] = useState<CommentatorInfo>(defaultCommentator);
-
-	useEffect(() => {
-		if(!comms) return;
-
-		setCommentatorOne(comms.commentatorOne);
-		setCommentatorTwo(comms.commentatorTwo);
-	}, [comms]);
 
 	useEffect(() => {
 		if(!eventData) return;
@@ -99,24 +80,18 @@ export function Game() {
 					<InfoBox>
 						<FittedText text="Commentary" font="Splatoon" align="left" maxWidth={FullWidth} />
 					</InfoBox>
-					<GameCommentatorInfoBox
-						name={commentatorOne.name}
-						pronouns={commentatorOne.pronouns}
-						tag={commentatorOne.tag}
-						playing={showCommentary}
-						fullWidth={FullWidth}
-						nameWidth={CommentatorWidth}
-						pronounsWidth={PronounsWidth}
-					/>
-					<GameCommentatorInfoBox 
-						name={commentatorTwo.name}
-						pronouns={commentatorTwo.pronouns}
-						tag={commentatorTwo.tag}
-						playing={showCommentary}
-						fullWidth={FullWidth}
-						nameWidth={CommentatorWidth}
-						pronounsWidth={PronounsWidth}
-					/>
+					{commentatorList && commentatorList.map((commentator, index) => (
+						<GameCommentatorInfoBox
+							key={index}
+							name={commentator.name}
+							pronouns={commentator.pronouns}
+							tag={commentator.tag}
+							playing={showCommentary}
+							fullWidth={FullWidth}
+							nameWidth={CommentatorWidth}
+							pronounsWidth={PronounsWidth}
+						/>
+					))}
 				</Commentators>
 			</Content>
 		</StyledOmnibarOnly>

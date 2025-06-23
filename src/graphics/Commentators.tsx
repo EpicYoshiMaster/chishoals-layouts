@@ -4,7 +4,8 @@ import { createRoot } from 'react-dom/client';
 import { Background } from './components/Background';
 import { Nameplate } from './components/Nameplate';
 import { useReplicant, useListenFor } from '@nodecg/react-hooks';
-import { CommentatorData, CommentatorInfo } from 'schemas/commentatorData';
+import { CommentatorData } from 'schemas/commentatorData';
+import { CommentatorList } from 'schemas/commentatorList';
 
 enum LoadState {
 	LS_NotLoaded,
@@ -12,18 +13,18 @@ enum LoadState {
 	LS_Done
 };
 
-const defaultCommentator: CommentatorInfo = { name: "Commentator Name", pronouns: "any/all", tag: "@TagName" }
 const AnimationDuration = 1000;
 
 export function Commentators() {
 
 	const [show, setShow] = useState(false);
 	const [loaded, setLoaded] = useState<LoadState>(LoadState.LS_NotLoaded);
-	const [comms, setComms] = useReplicant<CommentatorData>('commentators', {
+
+	const [commentatorList] = useReplicant<CommentatorList>('commentatorList', { bundle: 'squidwest-layout-controls', defaultValue: [] });
+
+	const [settings] = useReplicant<CommentatorData>('commentatorSettings', {
 		bundle: 'squidwest-layout-controls',
 		defaultValue: { 
-			commentatorOne: defaultCommentator, 
-			commentatorTwo: defaultCommentator,
 			autoShow: true,
 			delay: 3000,
 			autoHide: true,
@@ -31,41 +32,30 @@ export function Commentators() {
 		}
 	});
 
-	const [commentatorOne, setCommentatorOne ] = useState<CommentatorInfo>(defaultCommentator);
-	const [commentatorTwo, setCommentatorTwo ] = useState<CommentatorInfo>(defaultCommentator);
-
-	const [ autoShow, setAutoShow ] = useState<boolean>(false);
-	const [ delay, setDelay ] = useState<number>(3000);
-	const [ autoHide, setAutoHide ] = useState<boolean>(false);
-	const [ lifetime, setLifetime ] = useState<number>(5000);
 	const [ showSponsor, setShowSponsor ] = useState(false);
 
 	useEffect(() => {
-		if(!comms) return;
-
-		setCommentatorOne(comms.commentatorOne);
-		setCommentatorTwo(comms.commentatorTwo);
-		setAutoShow(comms.autoShow);
-		setDelay(comms.delay);
-		setAutoHide(comms.autoHide);
-		setLifetime(comms.lifetime);
+		if(!commentatorList) return;
+		if(!settings) return;
 
 		if(loaded === LoadState.LS_NotLoaded) {
 			setLoaded(LoadState.LS_Loaded);
 		}
-	}, [comms]);
+	}, [commentatorList, settings]);
 
 	const onAutoHide = useCallback(() => {
 		setShow(false);
 	}, [setShow]);
 
 	const setCurrentShow = useCallback((newShow: boolean) => {
-		if(newShow && autoHide) {
-			window.setTimeout(onAutoHide, Math.max(AnimationDuration + lifetime, AnimationDuration));
+		if(!settings) return;
+
+		if(newShow && settings.autoHide) {
+			window.setTimeout(onAutoHide, Math.max(AnimationDuration + settings.lifetime, AnimationDuration));
 		}
 
 		setShow(newShow);
-	}, [setShow, onAutoHide, autoHide, lifetime])
+	}, [setShow, onAutoHide, settings]);
 
 	const onAutoShow = useCallback(() => {
 		setCurrentShow(true);
@@ -83,36 +73,30 @@ export function Commentators() {
 	useListenFor('ipgControl', onIpgControl, { bundle: 'chishoals-layouts' });
 
 	useEffect(() => {
-		if(loaded === LoadState.LS_Loaded) {
-			if(autoShow) {
-				window.setTimeout(onAutoShow, Math.max(delay, 0));
+		if(settings && loaded === LoadState.LS_Loaded) {
+			if(settings.autoShow) {
+				window.setTimeout(onAutoShow, Math.max(settings.delay, 0));
 			}
 
 			setLoaded(LoadState.LS_Done);
 		}
-	}, [loaded, autoShow, delay, onAutoShow]);
+	}, [loaded, settings, onAutoShow]);
 
 	return (
 		<StyledCommentators>
 			<Content>
 				<IpgLogo $show={showSponsor} src="/bundles/chishoals-layouts/images/I_Play_Games.png" alt="I Play Games Logo" />
 				<LowerThirds>
-					<NameplateLeft>
-						<Nameplate 
-						show={show} 
-						name={commentatorOne.name}
-						pronouns={commentatorOne.pronouns}
-						tag={commentatorOne.tag}
-						animationLength={AnimationDuration} />
-					</NameplateLeft>
-					<NameplateRight>
-						<Nameplate 
-						show={show}
-						name={commentatorTwo.name}
-						pronouns={commentatorTwo.pronouns}
-						tag={commentatorTwo.tag}
-						animationLength={AnimationDuration} />
-					</NameplateRight>
+					{commentatorList && commentatorList.map((commentator, index) => (
+						<NameplateWrapper key={index}>
+							<Nameplate
+							show={show} 
+							name={commentator.name}
+							pronouns={commentator.pronouns}
+							tag={commentator.tag}
+							animationLength={AnimationDuration} />
+						</NameplateWrapper>
+					))}
 				</LowerThirds>
 			</Content>
 		</StyledCommentators>
@@ -139,16 +123,12 @@ const LowerThirds = styled.div`
 	position: relative;
 	margin-bottom: 50px;
 
-	display: grid;
-	grid-template-columns: 1fr 1fr;
+	display: flex;
+	justify-content: space-evenly;
 `;
 
-const NameplateLeft = styled.div`
-	margin: 20px 100px 20px 200px;
-`;
-
-const NameplateRight = styled.div`
-	margin: 20px 200px 20px 100px;
+const NameplateWrapper = styled.div`
+	margin: 20px 0;
 `;
 
 const IpgLogo = styled.img<{ $show: boolean }>`
