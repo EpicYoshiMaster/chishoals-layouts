@@ -36,3 +36,7 @@ export const getSocialPlatformIcon = (platform: string) => {
 
 	return ( <Question /> );
 }
+
+export const getImagePath = (bundle: string, imagePath: string) => {
+	return `\\bundles\\${bundle}\\images\\${imagePath}`;
+}
