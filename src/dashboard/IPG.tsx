@@ -15,35 +15,61 @@ export function IPG() {
 
 	return (
 		<PanelContainer>
-			<InputButton onClick={() => { showSponsor(); }}>Show Sponsor</InputButton>
-			<InputButton onClick={() => { hideSponsor(); }}>Hide Sponsor</InputButton>
+			<GridRow $height='56px'>
+				<Button $expand onClick={() => { showSponsor(); }}>Show Sponsor</Button>
+				<Button $expand onClick={() => { hideSponsor(); }}>Hide Sponsor</Button>
+			</GridRow>
 		</PanelContainer>
 	)
 }
 
 const PanelContainer = styled.div`
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	gap: 5px;
+	padding: 5px 10px 12px;	
 `;
 
-const InputButton = styled.button`
-	margin: 10px;
-	padding: 10px 50px;
-	font-size: 1.5rem;
+const GridRow = styled.div<{ $height?: string }>`
+	position: relative;
+	margin: 5px 0;
+	display: grid;
+	width: 100%;
+	gap: 5px;
+	height: ${({ $height }) => $height ? $height : 'auto'};
+	grid-auto-columns: 1fr;
+	grid-auto-flow: column;
+	align-items: center;
+`;
+
+const Button = styled.button<{ $colorTag?: string, $expand?: boolean }>`
+	position: relative;
+	padding: 6px 10px;
+	font-size: 1.1rem;
 	font-weight: bold;
+	
+	border-radius: 0.25rem;
+	margin: 0;
+	color: var(--text);
+	background-color: #a25dcf;
 	border: none;
-	border-radius: 0.5rem;
-	color: #ffffff;
-	background-color: #d346fe;
+
+	height: ${({ $expand }) => $expand ? '100%' : 'auto'};
+	width: ${({ $expand }) => $expand ? '100%' : 'auto'};
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
 
 	&:not(:disabled):hover {
-		background-color: #5f2573;
+		background-color: #753b9c;
 	}
 
 	&:not(:disabled):active {
-		background-color: #4c1d5c;
+		background-color: #50246d;
 	}
 
 	&:disabled {
