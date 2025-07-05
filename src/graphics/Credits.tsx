@@ -9,8 +9,6 @@ import { EventInfo, EventData } from 'schemas/eventData';
 import { getImagePath } from '../helpers/utils';
 import { FittedText } from './components/FittedText';
 
-
-
 export function Credits() {
     const [eventData] = useReplicant<EventData>('eventData', { bundle: 'squidwest-layout-controls'});
 
@@ -129,11 +127,6 @@ const Content = styled.div`
     overflow: hidden;
 `;
 
-const TitleText = styled.div`
-    font-weight: bolder;
-    font-size: 7rem;
-`;
-
 const CreditsRow = styled.div<{}>`
     position: relative;
 
@@ -144,16 +137,6 @@ const CreditsRow = styled.div<{}>`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-`;
-
-const HeaderText = styled.div`
-    font-weight: bolder;
-    font-size: 6rem;
-`;
-
-const NameText = styled.div`
-    font-weight: normal;
-    font-size: 3rem;
 `;
 
 const LogoRow = styled.div`
@@ -173,6 +156,21 @@ const Logo = styled.img`
     max-height: 100%;
 
     object-fit: contain;
+`;
+
+const TitleText = styled.div`
+    font-weight: bolder;
+    font-size: 7rem;
+`;
+
+const HeaderText = styled.div`
+    font-weight: bolder;
+    font-size: 6rem;
+`;
+
+const NameText = styled.div`
+    font-weight: normal;
+    font-size: 3rem;
 `;
 
 const YoshiRow = styled(LogoRow)`
