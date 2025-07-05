@@ -83,7 +83,7 @@ export function Credits() {
 	return (
         <StyledCredits>
             <Content>
-                <CarouselComponent playing={false} startIndex={2} speed={5000} transitionSpeed={1000} once={true}>
+                <CarouselComponent speed={10000} transitionSpeed={3000} once={true}>
                     {creditsData && creditsData.map((creditsRow, index) => {
 
                         const specialCreditsRow = getSpecialCreditsRow(creditsRow.name, index);
