@@ -1,3 +1,6 @@
+import { Butterfly, DiscordLogo, Question, TwitterLogo, YoutubeLogo } from "@phosphor-icons/react";
+import React from "react";
+
 export const formatTimeHMSC = (ms: number): string => {
 	ms = ms > 0 ? ms : 0;
 
@@ -21,4 +24,19 @@ export const formatDateHM = (date: Date) => {
 
 export const formatDateMDY = (date: Date) => {
 	return (date.getMonth() + 1) + "/" + date.getDate() + "/" + date.getFullYear();
+}
+
+export const getSocialPlatformIcon = (platform: string) => {
+	switch(platform) {
+		case "Bluesky": return ( <Butterfly/> );
+		case "YouTube": return ( <YoutubeLogo /> );
+		case "Twitter": return ( <TwitterLogo /> );
+		case "Discord": return ( <DiscordLogo /> );
+	}
+
+	return ( <Question /> );
+}
+
+export const getImagePath = (bundle: string, imagePath: string) => {
+	return `\\bundles\\${bundle}\\images\\${imagePath}`;
 }
