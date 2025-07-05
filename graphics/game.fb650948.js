@@ -170,11 +170,6 @@ const defaultMatchData = {
     },
     swapColor: false
 };
-const defaultCommentator = {
-    name: "Commentator Name",
-    pronouns: "any/all",
-    tag: "@TagName"
-};
 const FullWidth = 340;
 const TeamWidth = 300;
 const ScoreWidth = 50;
@@ -185,16 +180,9 @@ function Game() {
         bundle: "squidwest-layout-controls"
     });
     const [matchData] = (0, _hooks.useWrappedReplicant)("match", defaultMatchData, "squidwest-layout-controls");
-    const [comms] = (0, _reactHooks.useReplicant)("commentators", {
+    const [commentatorList] = (0, _reactHooks.useReplicant)("commentatorList", {
         bundle: "squidwest-layout-controls",
-        defaultValue: {
-            commentatorOne: defaultCommentator,
-            commentatorTwo: defaultCommentator,
-            autoShow: true,
-            delay: 3000,
-            autoHide: true,
-            lifetime: 5000
-        }
+        defaultValue: []
     });
     const [currentEvent, setCurrentEvent] = (0, _react.useState)({
         name: "Current Event Name",
@@ -202,15 +190,6 @@ function Game() {
         number: 1,
         date: "Today"
     });
-    const [commentatorOne, setCommentatorOne] = (0, _react.useState)(defaultCommentator);
-    const [commentatorTwo, setCommentatorTwo] = (0, _react.useState)(defaultCommentator);
-    (0, _react.useEffect)(()=>{
-        if (!comms) return;
-        setCommentatorOne(comms.commentatorOne);
-        setCommentatorTwo(comms.commentatorTwo);
-    }, [
-        comms
-    ]);
     (0, _react.useEffect)(()=>{
         if (!eventData) return;
         setCurrentEvent(eventData.currentEvent);
@@ -232,14 +211,14 @@ function Game() {
     return /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledOmnibarOnly, {
         __source: {
             fileName: "src/graphics/Game.tsx",
-            lineNumber: 77,
-            columnNumber: 3
+            lineNumber: 62,
+            columnNumber: 10
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(Content, {
         __source: {
             fileName: "src/graphics/Game.tsx",
-            lineNumber: 78,
+            lineNumber: 63,
             columnNumber: 4
         },
         __self: this
@@ -247,14 +226,14 @@ function Game() {
         $show: showScoreboard,
         __source: {
             fileName: "src/graphics/Game.tsx",
-            lineNumber: 79,
+            lineNumber: 64,
             columnNumber: 5
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(InfoBox, {
         __source: {
             fileName: "src/graphics/Game.tsx",
-            lineNumber: 80,
+            lineNumber: 65,
             columnNumber: 6
         },
         __self: this
@@ -265,7 +244,7 @@ function Game() {
         maxWidth: FullWidth,
         __source: {
             fileName: "src/graphics/Game.tsx",
-            lineNumber: 81,
+            lineNumber: 66,
             columnNumber: 7
         },
         __self: this
@@ -277,7 +256,7 @@ function Game() {
         secondaryWidth: ScoreWidth,
         __source: {
             fileName: "src/graphics/Game.tsx",
-            lineNumber: 83,
+            lineNumber: 68,
             columnNumber: 6
         },
         __self: this
@@ -289,7 +268,7 @@ function Game() {
         secondaryWidth: ScoreWidth,
         __source: {
             fileName: "src/graphics/Game.tsx",
-            lineNumber: 90,
+            lineNumber: 69,
             columnNumber: 6
         },
         __self: this
@@ -297,14 +276,14 @@ function Game() {
         $show: showCommentary,
         __source: {
             fileName: "src/graphics/Game.tsx",
-            lineNumber: 98,
+            lineNumber: 71,
             columnNumber: 5
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(InfoBox, {
         __source: {
             fileName: "src/graphics/Game.tsx",
-            lineNumber: 99,
+            lineNumber: 72,
             columnNumber: 6
         },
         __self: this
@@ -315,82 +294,64 @@ function Game() {
         maxWidth: FullWidth,
         __source: {
             fileName: "src/graphics/Game.tsx",
-            lineNumber: 100,
+            lineNumber: 73,
             columnNumber: 7
         },
         __self: this
-    })), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _gameCommentatorInfoBox.GameCommentatorInfoBox), {
-        name: commentatorOne.name,
-        pronouns: commentatorOne.pronouns,
-        tag: commentatorOne.tag,
-        playing: showCommentary,
-        fullWidth: FullWidth,
-        nameWidth: CommentatorWidth,
-        pronounsWidth: PronounsWidth,
-        __source: {
-            fileName: "src/graphics/Game.tsx",
-            lineNumber: 102,
-            columnNumber: 6
-        },
-        __self: this
-    }), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _gameCommentatorInfoBox.GameCommentatorInfoBox), {
-        name: commentatorTwo.name,
-        pronouns: commentatorTwo.pronouns,
-        tag: commentatorTwo.tag,
-        playing: showCommentary,
-        fullWidth: FullWidth,
-        nameWidth: CommentatorWidth,
-        pronounsWidth: PronounsWidth,
-        __source: {
-            fileName: "src/graphics/Game.tsx",
-            lineNumber: 111,
-            columnNumber: 6
-        },
-        __self: this
-    }))));
+    })), commentatorList && commentatorList.map((commentator, index)=>/*#__PURE__*/ (0, _reactDefault.default).createElement((0, _gameCommentatorInfoBox.GameCommentatorInfoBox), {
+            key: index,
+            name: commentator.name,
+            pronouns: commentator.pronouns,
+            tag: commentator.tag,
+            playing: showCommentary,
+            fullWidth: FullWidth,
+            nameWidth: CommentatorWidth,
+            pronounsWidth: PronounsWidth,
+            __source: {
+                fileName: "src/graphics/Game.tsx",
+                lineNumber: 75,
+                columnNumber: 70
+            },
+            __self: this
+        })))));
 }
-const StyledOmnibarOnly = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	width: 1920px;
-	height: 1080px;
-	background-color: transparent;
-`;
-const Content = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	margin: 25px 0 0 20px;
-
-	font-size: 2rem;
-
-	width: 356px;
-`;
-const InfoBox = (0, _styledComponentsDefault.default).div`
-	font-size: 2rem;
-	padding: 0 5px;
-
-	color: var(--game-title-text);
-	background-color: var(--game-title-bg);
-	border: 3px solid var(--game-border);
-	border-radius: 0.5rem;
-`;
-const Scoreboard = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	opacity: ${({ $show })=>$show ? 1 : 0};
-	
-	transition: opacity 0.75s ease;
-`;
-const Commentators = (0, _styledComponentsDefault.default).div`
-	margin-top: 1rem;
-
-	position: relative;
-	opacity: ${({ $show })=>$show ? 1 : 0};
-	
-	transition: opacity 0.75s ease;	
-`;
+const StyledOmnibarOnly = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Game__StyledOmnibarOnly",
+    componentId: "sc-119uyvb-0"
+})([
+    "position:relative;width:1920px;height:1080px;background-color:transparent;"
+]);
+const Content = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Game__Content",
+    componentId: "sc-119uyvb-1"
+})([
+    "position:relative;margin:25px 0 0 20px;font-size:2rem;width:356px;"
+]);
+const InfoBox = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Game__InfoBox",
+    componentId: "sc-119uyvb-2"
+})([
+    "font-size:2rem;padding:0 5px;color:var(--game-title-text);background-color:var(--game-title-bg);border:3px solid var(--game-border);border-radius:0.5rem;"
+]);
+const Scoreboard = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Game__Scoreboard",
+    componentId: "sc-119uyvb-3"
+})([
+    "position:relative;opacity:",
+    ";transition:opacity 0.75s ease;"
+], ({ $show })=>$show ? 1 : 0);
+const Commentators = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Game__Commentators",
+    componentId: "sc-119uyvb-4"
+})([
+    "margin-top:1rem;position:relative;opacity:",
+    ";transition:opacity 0.75s ease;"
+], ({ $show })=>$show ? 1 : 0);
 const root = (0, _client.createRoot)(document.getElementById("root"));
 root.render(/*#__PURE__*/ (0, _reactDefault.default).createElement(Game, {
     __source: {
         fileName: "src/graphics/Game.tsx",
-        lineNumber: 169,
+        lineNumber: 105,
         columnNumber: 13
     },
     __self: undefined
@@ -456,15 +417,15 @@ const GameScoreInfoBox = ({ team, score, color, mainWidth, secondaryWidth })=>{
     return /*#__PURE__*/ (0, _reactDefault.default).createElement(TeamAndScore, {
         __source: {
             fileName: "src/graphics/components/GameScoreInfoBox.tsx",
-            lineNumber: 19,
-            columnNumber: 3
+            lineNumber: 21,
+            columnNumber: 10
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(TeamBox, {
         $width: mainWidth,
         __source: {
             fileName: "src/graphics/components/GameScoreInfoBox.tsx",
-            lineNumber: 20,
+            lineNumber: 22,
             columnNumber: 4
         },
         __self: undefined
@@ -472,7 +433,7 @@ const GameScoreInfoBox = ({ team, score, color, mainWidth, secondaryWidth })=>{
         $color: color,
         __source: {
             fileName: "src/graphics/components/GameScoreInfoBox.tsx",
-            lineNumber: 21,
+            lineNumber: 23,
             columnNumber: 5
         },
         __self: undefined
@@ -483,7 +444,7 @@ const GameScoreInfoBox = ({ team, score, color, mainWidth, secondaryWidth })=>{
         maxWidth: mainWidth - paddingWidth - colorDisplayWidth - colorMargin,
         __source: {
             fileName: "src/graphics/components/GameScoreInfoBox.tsx",
-            lineNumber: 22,
+            lineNumber: 24,
             columnNumber: 5
         },
         __self: undefined
@@ -491,7 +452,7 @@ const GameScoreInfoBox = ({ team, score, color, mainWidth, secondaryWidth })=>{
         $width: secondaryWidth,
         __source: {
             fileName: "src/graphics/components/GameScoreInfoBox.tsx",
-            lineNumber: 24,
+            lineNumber: 26,
             columnNumber: 4
         },
         __self: undefined
@@ -502,60 +463,42 @@ const GameScoreInfoBox = ({ team, score, color, mainWidth, secondaryWidth })=>{
         maxWidth: secondaryWidth - 5,
         __source: {
             fileName: "src/graphics/components/GameScoreInfoBox.tsx",
-            lineNumber: 25,
+            lineNumber: 27,
             columnNumber: 5
         },
         __self: undefined
     })));
 };
-const TeamAndScore = (0, _styledComponentsDefault.default).div`
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	flex-direction: row;
-
-	height: 3rem;
-	width: 100%;
-	font-size: 2rem;
-	color: var(--game-main-text);
-	background-color: var(--game-main-bg);
-	border: 3px solid var(--game-border);
-	border-radius: 0.5rem;
-`;
-const TeamBox = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	height: 100%;
-	padding: 5px;
-	width: ${({ $width })=>$width}px;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-
-	box-sizing: border-box;
-`;
-const ColorDisplay = (0, _styledComponentsDefault.default).div`
-	width: ${colorDisplayWidth}px;
-	min-width: ${colorDisplayWidth}px;
-	margin-right: ${colorMargin}px;
-	height: 100%;
-	
-	border-radius: 5px;
-	background-color: ${({ $color })=>$color};
-`;
-const ScoreBox = (0, _styledComponentsDefault.default).div`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: ${({ $width })=>$width}px;
-	height: 100%;
-
-	font-size: 3rem;
-
-	color: var(--game-sub-text);
-	background-color: var(--game-sub-bg);
-	border-left: 4px solid var(--game-border);
-	border-radius: 0 4px 4px 0;
-`;
+const TeamAndScore = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "GameScoreInfoBox__TeamAndScore",
+    componentId: "sc-1vp897z-0"
+})([
+    "display:flex;align-items:center;justify-content:space-between;flex-direction:row;height:3rem;width:100%;font-size:2rem;color:var(--game-main-text);background-color:var(--game-main-bg);border:3px solid var(--game-border);border-radius:0.5rem;"
+]);
+const TeamBox = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "GameScoreInfoBox__TeamBox",
+    componentId: "sc-1vp897z-1"
+})([
+    "position:relative;height:100%;padding:5px;width:",
+    "px;display:flex;flex-direction:row;align-items:center;box-sizing:border-box;"
+], ({ $width })=>$width);
+const ColorDisplay = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "GameScoreInfoBox__ColorDisplay",
+    componentId: "sc-1vp897z-2"
+})([
+    "width:",
+    "px;min-width:",
+    "px;margin-right:",
+    "px;height:100%;border-radius:5px;background-color:",
+    ";"
+], colorDisplayWidth, colorDisplayWidth, colorMargin, ({ $color })=>$color);
+const ScoreBox = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "GameScoreInfoBox__ScoreBox",
+    componentId: "sc-1vp897z-3"
+})([
+    "display:flex;align-items:center;justify-content:center;width:",
+    "px;height:100%;font-size:3rem;color:var(--game-sub-text);background-color:var(--game-sub-bg);border-left:4px solid var(--game-border);border-radius:0 4px 4px 0;"
+], ({ $width })=>$width);
 
 },{"react":"bH1AQ","styled-components":"9xpRL","./FittedText":"f5NVk","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"f5NVk":[function(require,module,exports) {
 /**
@@ -608,8 +551,8 @@ const FittedText = ({ text, maxWidth, align, font })=>{
         $align: align,
         __source: {
             fileName: "src/graphics/components/FittedText.tsx",
-            lineNumber: 53,
-            columnNumber: 3
+            lineNumber: 50,
+            columnNumber: 10
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(TextFit, {
@@ -619,28 +562,30 @@ const FittedText = ({ text, maxWidth, align, font })=>{
         $align: align,
         __source: {
             fileName: "src/graphics/components/FittedText.tsx",
-            lineNumber: 57,
+            lineNumber: 51,
             columnNumber: 4
         },
         __self: undefined
     }, text));
 };
-const TextSpace = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	display: flex;
-
-	justify-content: ${({ $align })=>justifyAlign($align)};
-	
-	white-space: nowrap;
-	max-width: ${({ $maxWidth })=>$maxWidth > 0 ? `${$maxWidth}px` : `unset`};
-`;
-const TextFit = (0, _styledComponentsDefault.default).div`
-	text-align: ${({ $align })=>$align};
-	transform-origin: ${({ $align })=>`${$align} center`};
-	width: max-content;
-	transform: scaleX(${({ $scale })=>$scale});
-	font-family: ${({ $font })=>$font};
-`;
+const TextSpace = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "FittedText__TextSpace",
+    componentId: "sc-te1i8m-0"
+})([
+    "position:relative;display:flex;justify-content:",
+    ";white-space:nowrap;max-width:",
+    ";"
+], ({ $align })=>justifyAlign($align), ({ $maxWidth })=>$maxWidth > 0 ? `${$maxWidth}px` : `unset`);
+const TextFit = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "FittedText__TextFit",
+    componentId: "sc-te1i8m-1"
+})([
+    "text-align:",
+    ";transform-origin:",
+    ";width:max-content;transform:scaleX(",
+    ");font-family:",
+    ";"
+], ({ $align })=>$align, ({ $align })=>`${$align} center`, ({ $scale })=>$scale, ({ $font })=>$font);
 
 },{"react":"bH1AQ","fontfaceobserver":"6uSsZ","styled-components":"9xpRL","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"6uSsZ":[function(require,module,exports) {
 /* Font Face Observer v2.3.0 - © Bram Stein. License: BSD-3-Clause */ (function() {
@@ -812,14 +757,14 @@ const GameCommentatorInfoBox = ({ name, tag, pronouns, playing, fullWidth, nameW
     return /*#__PURE__*/ (0, _reactDefault.default).createElement(CommentatorBox, {
         __source: {
             fileName: "src/graphics/components/GameCommentatorInfoBox.tsx",
-            lineNumber: 18,
-            columnNumber: 3
+            lineNumber: 23,
+            columnNumber: 10
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(CommentatorName, {
         __source: {
             fileName: "src/graphics/components/GameCommentatorInfoBox.tsx",
-            lineNumber: 19,
+            lineNumber: 24,
             columnNumber: 4
         },
         __self: undefined
@@ -828,7 +773,7 @@ const GameCommentatorInfoBox = ({ name, tag, pronouns, playing, fullWidth, nameW
         playing: playing,
         __source: {
             fileName: "src/graphics/components/GameCommentatorInfoBox.tsx",
-            lineNumber: 20,
+            lineNumber: 25,
             columnNumber: 5
         },
         __self: undefined
@@ -839,7 +784,7 @@ const GameCommentatorInfoBox = ({ name, tag, pronouns, playing, fullWidth, nameW
         maxWidth: pronouns !== "" ? nameWidth : fullWidth,
         __source: {
             fileName: "src/graphics/components/GameCommentatorInfoBox.tsx",
-            lineNumber: 21,
+            lineNumber: 26,
             columnNumber: 6
         },
         __self: undefined
@@ -850,15 +795,15 @@ const GameCommentatorInfoBox = ({ name, tag, pronouns, playing, fullWidth, nameW
         maxWidth: pronouns !== "" ? nameWidth : fullWidth,
         __source: {
             fileName: "src/graphics/components/GameCommentatorInfoBox.tsx",
-            lineNumber: 22,
+            lineNumber: 27,
             columnNumber: 21
         },
         __self: undefined
     }))), pronouns !== "" && /*#__PURE__*/ (0, _reactDefault.default).createElement(CommentatorPronouns, {
         __source: {
             fileName: "src/graphics/components/GameCommentatorInfoBox.tsx",
-            lineNumber: 26,
-            columnNumber: 4
+            lineNumber: 30,
+            columnNumber: 24
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _fittedText.FittedText), {
@@ -868,46 +813,30 @@ const GameCommentatorInfoBox = ({ name, tag, pronouns, playing, fullWidth, nameW
         maxWidth: pronounsWidth,
         __source: {
             fileName: "src/graphics/components/GameCommentatorInfoBox.tsx",
-            lineNumber: 27,
+            lineNumber: 31,
             columnNumber: 5
         },
         __self: undefined
     })));
 };
-const CommentatorBox = (0, _styledComponents.styled).div`
-	position: relative;
-	display: flex;
-	flex-direction: row;
-
-	align-items: center;
-	justify-content: space-between;
-	width: 100%;
-	height: 3rem;
-	font-size: 2rem;
-
-	color: var(--game-main-text);
-	background-color: var(--game-main-bg);
-	border: 3px solid var(--game-border);
-	border-radius: 0.5rem;
-`;
-const CommentatorName = (0, _styledComponents.styled).div`
-	padding: 5px;
-	position: relative;
-`;
-const CommentatorPronouns = (0, _styledComponents.styled).div`
-	position: relative;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 105px;
-	height: 100%;
-	font-size: 1.5rem;
-
-	color: var(--game-sub-text);
-	background-color: var(--game-sub-bg);
-	border-left: 4px solid var(--game-border);
-	border-radius: 0 4px 4px 0;
-`;
+const CommentatorBox = (0, _styledComponents.styled).div.withConfig({
+    displayName: "GameCommentatorInfoBox__CommentatorBox",
+    componentId: "sc-m3szzn-0"
+})([
+    "position:relative;display:flex;flex-direction:row;align-items:center;justify-content:space-between;width:100%;height:3rem;font-size:2rem;color:var(--game-main-text);background-color:var(--game-main-bg);border:3px solid var(--game-border);border-radius:0.5rem;"
+]);
+const CommentatorName = (0, _styledComponents.styled).div.withConfig({
+    displayName: "GameCommentatorInfoBox__CommentatorName",
+    componentId: "sc-m3szzn-1"
+})([
+    "padding:5px;position:relative;"
+]);
+const CommentatorPronouns = (0, _styledComponents.styled).div.withConfig({
+    displayName: "GameCommentatorInfoBox__CommentatorPronouns",
+    componentId: "sc-m3szzn-2"
+})([
+    "position:relative;display:flex;align-items:center;justify-content:center;width:105px;height:100%;font-size:1.5rem;color:var(--game-sub-text);background-color:var(--game-sub-bg);border-left:4px solid var(--game-border);border-radius:0 4px 4px 0;"
+]);
 
 },{"react":"bH1AQ","./CarouselComponent":"3ZV6n","./FittedText":"f5NVk","styled-components":"9xpRL","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"3ZV6n":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -960,8 +889,8 @@ const CarouselComponent = ({ children, playing = true, speed, transitionSpeed, o
     return /*#__PURE__*/ (0, _reactDefault.default).createElement(CarouselContainer, {
         __source: {
             fileName: "src/graphics/components/CarouselComponent.tsx",
-            lineNumber: 60,
-            columnNumber: 9
+            lineNumber: 54,
+            columnNumber: 10
         },
         __self: undefined
     }, childElements.map((child, index, array)=>/*#__PURE__*/ (0, _reactDefault.default).createElement(CarouselItem, {
@@ -971,28 +900,28 @@ const CarouselComponent = ({ children, playing = true, speed, transitionSpeed, o
             speed: (transitionSpeed ? transitionSpeed : DEFAULT_TRANSITION_SPEED) / 2,
             __source: {
                 fileName: "src/graphics/components/CarouselComponent.tsx",
-                lineNumber: 62,
-                columnNumber: 17
+                lineNumber: 55,
+                columnNumber: 57
             },
             __self: undefined
         }, child)));
 };
-const CarouselContainer = (0, _styledComponentsDefault.default).div`
-    position: relative;
-    width: 100%;
-    height: 100%;
-`;
-const CarouselItem = (0, _styledComponentsDefault.default).div`
-    position: ${(props)=>props.$isRelative ? `relative` : `absolute`};
-    max-height: 100%;
-
-    width: 100%;
-    height: 100%;
-
-    opacity: ${(props)=>props.$active ? 1 : 0};
-    transition: opacity ${(props)=>props.speed}ms linear;
-    transition-delay: ${(props)=>props.$active ? props.speed : 0}ms;
-`;
+const CarouselContainer = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "CarouselComponent__CarouselContainer",
+    componentId: "sc-94xrx4-0"
+})([
+    "position:relative;width:100%;height:100%;"
+]);
+const CarouselItem = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "CarouselComponent__CarouselItem",
+    componentId: "sc-94xrx4-1"
+})([
+    "position:",
+    ";max-height:100%;width:100%;height:100%;opacity:",
+    ";transition:opacity ",
+    "ms linear;transition-delay:",
+    "ms;"
+], (props)=>props.$isRelative ? `relative` : `absolute`, (props)=>props.$active ? 1 : 0, (props)=>props.speed, (props)=>props.$active ? props.speed : 0);
 
 },{"react":"bH1AQ","styled-components":"9xpRL","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}]},["dynfa"], "dynfa", "parcelRequired251")
 

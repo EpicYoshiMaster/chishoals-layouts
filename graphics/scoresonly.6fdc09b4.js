@@ -174,21 +174,21 @@ function ScoresOnly() {
     return /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledOmnibarOnly, {
         __source: {
             fileName: "src/graphics/ScoresOnly.tsx",
-            lineNumber: 23,
-            columnNumber: 3
+            lineNumber: 25,
+            columnNumber: 10
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(Content, {
         __source: {
             fileName: "src/graphics/ScoresOnly.tsx",
-            lineNumber: 24,
+            lineNumber: 26,
             columnNumber: 4
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(ScoreRow, {
         __source: {
             fileName: "src/graphics/ScoresOnly.tsx",
-            lineNumber: 25,
+            lineNumber: 27,
             columnNumber: 5
         },
         __self: this
@@ -198,7 +198,7 @@ function ScoresOnly() {
         left: true,
         __source: {
             fileName: "src/graphics/ScoresOnly.tsx",
-            lineNumber: 26,
+            lineNumber: 28,
             columnNumber: 6
         },
         __self: this
@@ -208,40 +208,35 @@ function ScoresOnly() {
         left: false,
         __source: {
             fileName: "src/graphics/ScoresOnly.tsx",
-            lineNumber: 27,
+            lineNumber: 29,
             columnNumber: 6
         },
         __self: this
     }))));
 }
-const StyledOmnibarOnly = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	width: 1920px;
-	height: 1080px;
-	background-color: transparent;
-`;
-const Content = (0, _styledComponentsDefault.default).div`
-	padding: 0 350px 50px 350px;
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
-	
-	width: 100%;
-	height: 100%;
-`;
-const ScoreRow = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	justify-content: space-between;
-`;
+const StyledOmnibarOnly = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "ScoresOnly__StyledOmnibarOnly",
+    componentId: "sc-c4dl64-0"
+})([
+    "position:relative;width:1920px;height:1080px;background-color:transparent;"
+]);
+const Content = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "ScoresOnly__Content",
+    componentId: "sc-c4dl64-1"
+})([
+    "padding:0 350px 50px 350px;position:relative;display:flex;flex-direction:column;justify-content:flex-end;width:100%;height:100%;"
+]);
+const ScoreRow = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "ScoresOnly__ScoreRow",
+    componentId: "sc-c4dl64-2"
+})([
+    "position:relative;display:flex;flex-direction:row;align-items:center;justify-content:space-between;"
+]);
 const root = (0, _client.createRoot)(document.getElementById("root"));
 root.render(/*#__PURE__*/ (0, _reactDefault.default).createElement(ScoresOnly, {
     __source: {
         fileName: "src/graphics/ScoresOnly.tsx",
-        lineNumber: 61,
+        lineNumber: 47,
         columnNumber: 13
     },
     __self: undefined
@@ -261,14 +256,14 @@ const TeamScoreBox = ({ team, score, left })=>{
         $left: left,
         __source: {
             fileName: "src/graphics/components/TeamScoreBox.tsx",
-            lineNumber: 13,
-            columnNumber: 3
+            lineNumber: 14,
+            columnNumber: 10
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(TeamBox, {
         __source: {
             fileName: "src/graphics/components/TeamScoreBox.tsx",
-            lineNumber: 14,
+            lineNumber: 15,
             columnNumber: 4
         },
         __self: undefined
@@ -279,14 +274,14 @@ const TeamScoreBox = ({ team, score, left })=>{
         maxWidth: 470,
         __source: {
             fileName: "src/graphics/components/TeamScoreBox.tsx",
-            lineNumber: 15,
+            lineNumber: 16,
             columnNumber: 5
         },
         __self: undefined
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement(ScoreBox, {
         __source: {
             fileName: "src/graphics/components/TeamScoreBox.tsx",
-            lineNumber: 17,
+            lineNumber: 18,
             columnNumber: 4
         },
         __self: undefined
@@ -297,45 +292,36 @@ const TeamScoreBox = ({ team, score, left })=>{
         maxWidth: 95,
         __source: {
             fileName: "src/graphics/components/TeamScoreBox.tsx",
-            lineNumber: 18,
+            lineNumber: 19,
             columnNumber: 5
         },
         __self: undefined
     })));
 };
-const TeamAndScore = (0, _styledComponentsDefault.default).div`
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	flex-direction: ${({ $left })=>$left ? "row" : "row-reverse"};
-
-	${({ $left })=>$left ? (0, _styledComponents.css)`margin-right: 10px;` : (0, _styledComponents.css)`margin-left: 10px;`}
-	height: 5rem;
-	width: 100%;
-	font-size: 3rem;
-	color: var(--teams-text);
-	background-color: var(--teams-inner);
-	border: 8px solid var(--teams-border);
-	
-	box-sizing: content-box;
-`;
-const TeamBox = (0, _styledComponentsDefault.default).div`
-	padding: 5px;
-
-	box-sizing: border-box;
-`;
-const ScoreBox = (0, _styledComponentsDefault.default).div`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100px;
-	height: 100%;
-
-	font-size: 5rem;
-
-	color: var(--teams-score-text);
-	background-color: var(--teams-score-inner);
-`;
+const TeamAndScore = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "TeamScoreBox__TeamAndScore",
+    componentId: "sc-1lgj0ls-0"
+})([
+    "display:flex;align-items:center;justify-content:flex-end;flex-direction:",
+    ";",
+    " height:5rem;width:100%;font-size:3rem;color:var(--teams-text);background-color:var(--teams-inner);border:8px solid var(--teams-border);box-sizing:content-box;"
+], ({ $left })=>$left ? "row" : "row-reverse", ({ $left })=>$left ? (0, _styledComponents.css)([
+        "margin-right:10px;"
+    ]) : (0, _styledComponents.css)([
+        "margin-left:10px;"
+    ]));
+const TeamBox = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "TeamScoreBox__TeamBox",
+    componentId: "sc-1lgj0ls-1"
+})([
+    "padding:5px;box-sizing:border-box;"
+]);
+const ScoreBox = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "TeamScoreBox__ScoreBox",
+    componentId: "sc-1lgj0ls-2"
+})([
+    "display:flex;align-items:center;justify-content:center;width:100px;height:100%;font-size:5rem;color:var(--teams-score-text);background-color:var(--teams-score-inner);"
+]);
 
 },{"react":"bH1AQ","styled-components":"9xpRL","./FittedText":"f5NVk","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"f5NVk":[function(require,module,exports) {
 /**
@@ -388,8 +374,8 @@ const FittedText = ({ text, maxWidth, align, font })=>{
         $align: align,
         __source: {
             fileName: "src/graphics/components/FittedText.tsx",
-            lineNumber: 53,
-            columnNumber: 3
+            lineNumber: 50,
+            columnNumber: 10
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(TextFit, {
@@ -399,28 +385,30 @@ const FittedText = ({ text, maxWidth, align, font })=>{
         $align: align,
         __source: {
             fileName: "src/graphics/components/FittedText.tsx",
-            lineNumber: 57,
+            lineNumber: 51,
             columnNumber: 4
         },
         __self: undefined
     }, text));
 };
-const TextSpace = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	display: flex;
-
-	justify-content: ${({ $align })=>justifyAlign($align)};
-	
-	white-space: nowrap;
-	max-width: ${({ $maxWidth })=>$maxWidth > 0 ? `${$maxWidth}px` : `unset`};
-`;
-const TextFit = (0, _styledComponentsDefault.default).div`
-	text-align: ${({ $align })=>$align};
-	transform-origin: ${({ $align })=>`${$align} center`};
-	width: max-content;
-	transform: scaleX(${({ $scale })=>$scale});
-	font-family: ${({ $font })=>$font};
-`;
+const TextSpace = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "FittedText__TextSpace",
+    componentId: "sc-te1i8m-0"
+})([
+    "position:relative;display:flex;justify-content:",
+    ";white-space:nowrap;max-width:",
+    ";"
+], ({ $align })=>justifyAlign($align), ({ $maxWidth })=>$maxWidth > 0 ? `${$maxWidth}px` : `unset`);
+const TextFit = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "FittedText__TextFit",
+    componentId: "sc-te1i8m-1"
+})([
+    "text-align:",
+    ";transform-origin:",
+    ";width:max-content;transform:scaleX(",
+    ");font-family:",
+    ";"
+], ({ $align })=>$align, ({ $align })=>`${$align} center`, ({ $scale })=>$scale, ({ $font })=>$font);
 
 },{"react":"bH1AQ","fontfaceobserver":"6uSsZ","styled-components":"9xpRL","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"6uSsZ":[function(require,module,exports) {
 /* Font Face Observer v2.3.0 - © Bram Stein. License: BSD-3-Clause */ (function() {

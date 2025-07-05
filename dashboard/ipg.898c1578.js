@@ -161,72 +161,75 @@ function IPG() {
     return /*#__PURE__*/ (0, _reactDefault.default).createElement(PanelContainer, {
         __source: {
             fileName: "src/dashboard/IPG.tsx",
-            lineNumber: 17,
-            columnNumber: 3
+            lineNumber: 12,
+            columnNumber: 10
         },
         __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(InputButton, {
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(GridRow, {
+        $height: "56px",
+        __source: {
+            fileName: "src/dashboard/IPG.tsx",
+            lineNumber: 13,
+            columnNumber: 4
+        },
+        __self: this
+    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(Button, {
+        $expand: true,
         onClick: ()=>{
             showSponsor();
         },
         __source: {
             fileName: "src/dashboard/IPG.tsx",
-            lineNumber: 18,
-            columnNumber: 4
+            lineNumber: 14,
+            columnNumber: 5
         },
         __self: this
-    }, "Show Sponsor"), /*#__PURE__*/ (0, _reactDefault.default).createElement(InputButton, {
+    }, "Show Sponsor"), /*#__PURE__*/ (0, _reactDefault.default).createElement(Button, {
+        $expand: true,
         onClick: ()=>{
             hideSponsor();
         },
         __source: {
             fileName: "src/dashboard/IPG.tsx",
-            lineNumber: 19,
-            columnNumber: 4
+            lineNumber: 17,
+            columnNumber: 5
         },
         __self: this
-    }, "Hide Sponsor"));
+    }, "Hide Sponsor")));
 }
-const PanelContainer = (0, _styledComponentsDefault.default).div`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-`;
-const InputButton = (0, _styledComponentsDefault.default).button`
-	margin: 10px;
-	padding: 10px 50px;
-	font-size: 1.5rem;
-	font-weight: bold;
-	border: none;
-	border-radius: 0.5rem;
-	color: #ffffff;
-	background-color: #d346fe;
-
-	&:not(:disabled):hover {
-		background-color: #5f2573;
-	}
-
-	&:not(:disabled):active {
-		background-color: #4c1d5c;
-	}
-
-	&:disabled {
-		opacity: 0.5;
-	}
-`;
+const PanelContainer = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "IPG__PanelContainer",
+    componentId: "sc-en98j6-0"
+})([
+    "position:relative;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;padding:5px 10px 12px;"
+]);
+const GridRow = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "IPG__GridRow",
+    componentId: "sc-en98j6-1"
+})([
+    "position:relative;margin:5px 0;display:grid;width:100%;gap:5px;height:",
+    ";grid-auto-columns:1fr;grid-auto-flow:column;align-items:center;"
+], ({ $height })=>$height ? $height : "auto");
+const Button = (0, _styledComponentsDefault.default).button.withConfig({
+    displayName: "IPG__Button",
+    componentId: "sc-en98j6-2"
+})([
+    "position:relative;padding:6px 10px;font-size:1.1rem;font-weight:bold;border-radius:0.25rem;margin:0;color:var(--text);background-color:#a25dcf;border:none;height:",
+    ";width:",
+    ";display:flex;justify-content:center;align-items:center;&:not(:disabled):hover{background-color:#753b9c;}&:not(:disabled):active{background-color:#50246d;}&:disabled{opacity:0.5;}"
+], ({ $expand })=>$expand ? "100%" : "auto", ({ $expand })=>$expand ? "100%" : "auto");
 const root = (0, _client.createRoot)(document.getElementById("root"));
 root.render(/*#__PURE__*/ (0, _reactDefault.default).createElement((0, _reactDefault.default).StrictMode, {
     __source: {
         fileName: "src/dashboard/IPG.tsx",
-        lineNumber: 55,
+        lineNumber: 42,
         columnNumber: 13
     },
     __self: undefined
 }, /*#__PURE__*/ (0, _reactDefault.default).createElement(IPG, {
     __source: {
         fileName: "src/dashboard/IPG.tsx",
-        lineNumber: 55,
+        lineNumber: 42,
         columnNumber: 31
     },
     __self: undefined

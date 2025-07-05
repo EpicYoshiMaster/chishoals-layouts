@@ -159,44 +159,31 @@ var LoadState;
     LoadState[LoadState["LS_Loaded"] = 1] = "LS_Loaded";
     LoadState[LoadState["LS_Done"] = 2] = "LS_Done";
 })(LoadState || (LoadState = {}));
-const defaultCommentator = {
-    name: "Commentator Name",
-    pronouns: "any/all",
-    tag: "@TagName"
-};
 const AnimationDuration = 1000;
 function Commentators() {
     const [show, setShow] = (0, _react.useState)(false);
     const [loaded, setLoaded] = (0, _react.useState)(0);
-    const [comms, setComms] = (0, _reactHooks.useReplicant)("commentators", {
+    const [commentatorList] = (0, _reactHooks.useReplicant)("commentatorList", {
+        bundle: "squidwest-layout-controls",
+        defaultValue: []
+    });
+    const [settings] = (0, _reactHooks.useReplicant)("commentatorSettings", {
         bundle: "squidwest-layout-controls",
         defaultValue: {
-            commentatorOne: defaultCommentator,
-            commentatorTwo: defaultCommentator,
             autoShow: true,
             delay: 3000,
             autoHide: true,
             lifetime: 5000
         }
     });
-    const [commentatorOne, setCommentatorOne] = (0, _react.useState)(defaultCommentator);
-    const [commentatorTwo, setCommentatorTwo] = (0, _react.useState)(defaultCommentator);
-    const [autoShow, setAutoShow] = (0, _react.useState)(false);
-    const [delay, setDelay] = (0, _react.useState)(3000);
-    const [autoHide, setAutoHide] = (0, _react.useState)(false);
-    const [lifetime, setLifetime] = (0, _react.useState)(5000);
     const [showSponsor, setShowSponsor] = (0, _react.useState)(false);
     (0, _react.useEffect)(()=>{
-        if (!comms) return;
-        setCommentatorOne(comms.commentatorOne);
-        setCommentatorTwo(comms.commentatorTwo);
-        setAutoShow(comms.autoShow);
-        setDelay(comms.delay);
-        setAutoHide(comms.autoHide);
-        setLifetime(comms.lifetime);
+        if (!commentatorList) return;
+        if (!settings) return;
         if (loaded === 0) setLoaded(1);
     }, [
-        comms
+        commentatorList,
+        settings
     ]);
     const onAutoHide = (0, _react.useCallback)(()=>{
         setShow(false);
@@ -204,13 +191,13 @@ function Commentators() {
         setShow
     ]);
     const setCurrentShow = (0, _react.useCallback)((newShow)=>{
-        if (newShow && autoHide) window.setTimeout(onAutoHide, Math.max(AnimationDuration + lifetime, AnimationDuration));
+        if (!settings) return;
+        if (newShow && settings.autoHide) window.setTimeout(onAutoHide, Math.max(AnimationDuration + settings.lifetime, AnimationDuration));
         setShow(newShow);
     }, [
         setShow,
         onAutoHide,
-        autoHide,
-        lifetime
+        settings
     ]);
     const onAutoShow = (0, _react.useCallback)(()=>{
         setCurrentShow(true);
@@ -234,27 +221,26 @@ function Commentators() {
         bundle: "chishoals-layouts"
     });
     (0, _react.useEffect)(()=>{
-        if (loaded === 1) {
-            if (autoShow) window.setTimeout(onAutoShow, Math.max(delay, 0));
+        if (settings && loaded === 1) {
+            if (settings.autoShow) window.setTimeout(onAutoShow, Math.max(settings.delay, 0));
             setLoaded(2);
         }
     }, [
         loaded,
-        autoShow,
-        delay,
+        settings,
         onAutoShow
     ]);
     return /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledCommentators, {
         __source: {
             fileName: "src/graphics/Commentators.tsx",
-            lineNumber: 96,
-            columnNumber: 3
+            lineNumber: 73,
+            columnNumber: 10
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(Content, {
         __source: {
             fileName: "src/graphics/Commentators.tsx",
-            lineNumber: 97,
+            lineNumber: 74,
             columnNumber: 4
         },
         __self: this
@@ -264,100 +250,75 @@ function Commentators() {
         alt: "I Play Games Logo",
         __source: {
             fileName: "src/graphics/Commentators.tsx",
-            lineNumber: 98,
+            lineNumber: 75,
             columnNumber: 5
         },
         __self: this
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement(LowerThirds, {
         __source: {
             fileName: "src/graphics/Commentators.tsx",
-            lineNumber: 99,
+            lineNumber: 76,
             columnNumber: 5
         },
         __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(NameplateLeft, {
-        __source: {
-            fileName: "src/graphics/Commentators.tsx",
-            lineNumber: 100,
-            columnNumber: 6
-        },
-        __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _nameplate.Nameplate), {
-        show: show,
-        name: commentatorOne.name,
-        pronouns: commentatorOne.pronouns,
-        tag: commentatorOne.tag,
-        animationLength: AnimationDuration,
-        __source: {
-            fileName: "src/graphics/Commentators.tsx",
-            lineNumber: 101,
-            columnNumber: 7
-        },
-        __self: this
-    })), /*#__PURE__*/ (0, _reactDefault.default).createElement(NameplateRight, {
-        __source: {
-            fileName: "src/graphics/Commentators.tsx",
-            lineNumber: 108,
-            columnNumber: 6
-        },
-        __self: this
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _nameplate.Nameplate), {
-        show: show,
-        name: commentatorTwo.name,
-        pronouns: commentatorTwo.pronouns,
-        tag: commentatorTwo.tag,
-        animationLength: AnimationDuration,
-        __source: {
-            fileName: "src/graphics/Commentators.tsx",
-            lineNumber: 109,
-            columnNumber: 7
-        },
-        __self: this
-    })))));
+    }, commentatorList && commentatorList.map((commentator, index)=>/*#__PURE__*/ (0, _reactDefault.default).createElement(NameplateWrapper, {
+            key: index,
+            __source: {
+                fileName: "src/graphics/Commentators.tsx",
+                lineNumber: 77,
+                columnNumber: 70
+            },
+            __self: this
+        }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _nameplate.Nameplate), {
+            show: show,
+            name: commentator.name,
+            pronouns: commentator.pronouns,
+            tag: commentator.tag,
+            animationLength: AnimationDuration,
+            __source: {
+                fileName: "src/graphics/Commentators.tsx",
+                lineNumber: 78,
+                columnNumber: 8
+            },
+            __self: this
+        }))))));
 }
-const StyledCommentators = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	width: 1920px;
-	height: 1080px;
-	background-color: transparent;
-`;
-const Content = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	width: 100%;
-	height: 100%;
-	
-	display: flex;
-	flex-direction: column-reverse;
-`;
-const LowerThirds = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	margin-bottom: 50px;
-
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-`;
-const NameplateLeft = (0, _styledComponentsDefault.default).div`
-	margin: 20px 100px 20px 200px;
-`;
-const NameplateRight = (0, _styledComponentsDefault.default).div`
-	margin: 20px 200px 20px 100px;
-`;
-const IpgLogo = (0, _styledComponentsDefault.default).img`
-	position: absolute;
-	margin-bottom: 25px;
-	margin-left: 25px;
-
-	width: 700px;
-	object-fit: contain;
-
-	opacity: ${({ $show })=>$show ? 1 : 0};
-	transition: opacity 1s linear;
-`;
+const StyledCommentators = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Commentators__StyledCommentators",
+    componentId: "sc-1jwennl-0"
+})([
+    "position:relative;width:1920px;height:1080px;background-color:transparent;"
+]);
+const Content = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Commentators__Content",
+    componentId: "sc-1jwennl-1"
+})([
+    "position:relative;width:100%;height:100%;display:flex;flex-direction:column-reverse;"
+]);
+const LowerThirds = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Commentators__LowerThirds",
+    componentId: "sc-1jwennl-2"
+})([
+    "position:relative;margin-bottom:50px;display:flex;justify-content:space-evenly;"
+]);
+const NameplateWrapper = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Commentators__NameplateWrapper",
+    componentId: "sc-1jwennl-3"
+})([
+    "margin:20px 0;"
+]);
+const IpgLogo = (0, _styledComponentsDefault.default).img.withConfig({
+    displayName: "Commentators__IpgLogo",
+    componentId: "sc-1jwennl-4"
+})([
+    "position:absolute;margin-bottom:25px;margin-left:25px;width:700px;object-fit:contain;opacity:",
+    ";transition:opacity 1s linear;"
+], ({ $show })=>$show ? 1 : 0);
 const root = (0, _client.createRoot)(document.getElementById("root"));
 root.render(/*#__PURE__*/ (0, _reactDefault.default).createElement(Commentators, {
     __source: {
         fileName: "src/graphics/Commentators.tsx",
-        lineNumber: 167,
+        lineNumber: 107,
         columnNumber: 13
     },
     __self: undefined
@@ -416,14 +377,14 @@ const Nameplate = ({ show, name, pronouns, tag, animationLength })=>{
         },
         __source: {
             fileName: "src/graphics/components/Nameplate.tsx",
-            lineNumber: 57,
-            columnNumber: 3
+            lineNumber: 48,
+            columnNumber: 10
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(Name, {
         __source: {
             fileName: "src/graphics/components/Nameplate.tsx",
-            lineNumber: 63,
+            lineNumber: 51,
             columnNumber: 4
         },
         __self: undefined
@@ -434,14 +395,14 @@ const Nameplate = ({ show, name, pronouns, tag, animationLength })=>{
         maxWidth: 580,
         __source: {
             fileName: "src/graphics/components/Nameplate.tsx",
-            lineNumber: 64,
+            lineNumber: 52,
             columnNumber: 5
         },
         __self: undefined
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement(Tag, {
         __source: {
             fileName: "src/graphics/components/Nameplate.tsx",
-            lineNumber: 66,
+            lineNumber: 54,
             columnNumber: 4
         },
         __self: undefined
@@ -452,15 +413,15 @@ const Nameplate = ({ show, name, pronouns, tag, animationLength })=>{
         maxWidth: 500,
         __source: {
             fileName: "src/graphics/components/Nameplate.tsx",
-            lineNumber: 67,
+            lineNumber: 55,
             columnNumber: 5
         },
         __self: undefined
     })), pronouns !== "" && /*#__PURE__*/ (0, _reactDefault.default).createElement(Pronouns, {
         __source: {
             fileName: "src/graphics/components/Nameplate.tsx",
-            lineNumber: 70,
-            columnNumber: 4
+            lineNumber: 57,
+            columnNumber: 24
         },
         __self: undefined
     }, pronounsSplit.map((item, index)=>{
@@ -468,8 +429,8 @@ const Nameplate = ({ show, name, pronouns, tag, animationLength })=>{
             key: index,
             __source: {
                 fileName: "src/graphics/components/Nameplate.tsx",
-                lineNumber: 73,
-                columnNumber: 13
+                lineNumber: 59,
+                columnNumber: 16
             },
             __self: undefined
         }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _fittedText.FittedText), {
@@ -479,116 +440,64 @@ const Nameplate = ({ show, name, pronouns, tag, animationLength })=>{
             maxWidth: 75,
             __source: {
                 fileName: "src/graphics/components/Nameplate.tsx",
-                lineNumber: 74,
+                lineNumber: 60,
                 columnNumber: 7
             },
             __self: undefined
         }));
     })));
 };
-const ShowNameplate = (0, _styledComponents.keyframes)`
-	0% {
-		opacity: 1;
-		clip-path: polygon(
-			50% -40%,
-			50% -40%,
-			50% 140%,
-			50% 140%
-		);
-	}
-
-	100% {
-		opacity: 1;
-		clip-path: polygon(
-			-40% -40%,
-			140% -40%,
-			140% 140%,
-			-40% 140%
-		)
-	}
-`;
-const HideNameplate = (0, _styledComponents.keyframes)`
-	0% {
-		opacity: 1;
-		clip-path: polygon(
-			-40% -40%,
-			140% -40%,
-			140% 140%,
-			-40% 140%
-		)
-	}
-
-	100% {
-		opacity: 1;
-		clip-path: polygon(
-			50% -40%,
-			50% -40%,
-			50% 140%,
-			50% 140%
-		);
-	}
-`;
-const NameplateBox = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	display: flex;
-	flex-direction: column;
-
-	padding: 10px;
-	height: 160px;
-	width: 600px;
-
-	align-items: center;
-	justify-content: space-evenly;
-	text-align: center;
-
-	background-image: url('/bundles/chishoals-layouts/images/Chi_Banner.png');
-	background-size: contain;
-	background-repeat: no-repeat;
-	color: var(--commentary-text);
-
-	${({ $visible })=>$visible ? (0, _styledComponents.css)`opacity: 1;` : (0, _styledComponents.css)`opacity: 0;`};
-
-	${(props)=>{
-    if (props.$active) return (0, _styledComponents.css)`animation: ${props.$animLength}ms linear 0s ${props.$show ? ShowNameplate : HideNameplate} forwards;`;
-    else return (0, _styledComponents.css)`animation: none;`;
-}}
-`;
-const Name = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	width: 100%;
-	font-size: 3rem;
-`;
-const Pronouns = (0, _styledComponentsDefault.default).div`
-	position: absolute;
-	display: flex;
-	flex-direction: column;
-
-	padding: 5px;
-
-	bottom: -50px;
-	right: -80px;
-	
-	justify-content: center;
-	align-items: center;
-
-	width: 167px;
-	height: 135px;
-	background-image: url('/bundles/chishoals-layouts/images/Splatter.png');
-	background-size: contain;
-	background-repeat: no-repeat;
-	color: var(--commentary-pronouns);
-	font-size: 1.6rem;
-`;
-const Tag = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	width: 100%;
-	text-align: left;
-	font-size: 2.25rem;
-	height: 2.25rem;
-	color: var(--commentary-tag);
-`;
-const PronounsText = (0, _styledComponentsDefault.default).div`
-`;
+const ShowNameplate = (0, _styledComponents.keyframes)([
+    "0%{opacity:1;clip-path:polygon( 50% -40%,50% -40%,50% 140%,50% 140% );}100%{opacity:1;clip-path:polygon( -40% -40%,140% -40%,140% 140%,-40% 140% )}"
+]);
+const HideNameplate = (0, _styledComponents.keyframes)([
+    "0%{opacity:1;clip-path:polygon( -40% -40%,140% -40%,140% 140%,-40% 140% )}100%{opacity:1;clip-path:polygon( 50% -40%,50% -40%,50% 140%,50% 140% );}"
+]);
+const NameplateBox = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Nameplate__NameplateBox",
+    componentId: "sc-1l2zzje-0"
+})([
+    "position:relative;display:flex;flex-direction:column;padding:10px;height:160px;width:600px;align-items:center;justify-content:space-evenly;text-align:center;background-image:url('/bundles/chishoals-layouts/images/Chi_Banner.png');background-size:contain;background-repeat:no-repeat;color:var(--commentary-text);",
+    ";",
+    ""
+], ({ $visible })=>$visible ? (0, _styledComponents.css)([
+        "opacity:1;"
+    ]) : (0, _styledComponents.css)([
+        "opacity:0;"
+    ]), (props)=>{
+    if (props.$active) return (0, _styledComponents.css)([
+        "animation:",
+        "ms linear 0s ",
+        " forwards;"
+    ], props.$animLength, props.$show ? ShowNameplate : HideNameplate);
+    else return (0, _styledComponents.css)([
+        "animation:none;"
+    ]);
+});
+const Name = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Nameplate__Name",
+    componentId: "sc-1l2zzje-1"
+})([
+    "position:relative;width:100%;font-size:3rem;"
+]);
+const Pronouns = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Nameplate__Pronouns",
+    componentId: "sc-1l2zzje-2"
+})([
+    "position:absolute;display:flex;flex-direction:column;padding:5px;bottom:-50px;right:-80px;justify-content:center;align-items:center;width:167px;height:135px;background-image:url('/bundles/chishoals-layouts/images/Splatter.png');background-size:contain;background-repeat:no-repeat;color:var(--commentary-pronouns);font-size:1.6rem;"
+]);
+const Tag = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Nameplate__Tag",
+    componentId: "sc-1l2zzje-3"
+})([
+    "position:relative;width:100%;text-align:left;font-size:2.25rem;height:2.25rem;color:var(--commentary-tag);"
+]);
+const PronounsText = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Nameplate__PronounsText",
+    componentId: "sc-1l2zzje-4"
+})([
+    ""
+]);
 
 },{"styled-components":"9xpRL","react":"bH1AQ","./FittedText":"f5NVk","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"f5NVk":[function(require,module,exports) {
 /**
@@ -641,8 +550,8 @@ const FittedText = ({ text, maxWidth, align, font })=>{
         $align: align,
         __source: {
             fileName: "src/graphics/components/FittedText.tsx",
-            lineNumber: 53,
-            columnNumber: 3
+            lineNumber: 50,
+            columnNumber: 10
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(TextFit, {
@@ -652,28 +561,30 @@ const FittedText = ({ text, maxWidth, align, font })=>{
         $align: align,
         __source: {
             fileName: "src/graphics/components/FittedText.tsx",
-            lineNumber: 57,
+            lineNumber: 51,
             columnNumber: 4
         },
         __self: undefined
     }, text));
 };
-const TextSpace = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	display: flex;
-
-	justify-content: ${({ $align })=>justifyAlign($align)};
-	
-	white-space: nowrap;
-	max-width: ${({ $maxWidth })=>$maxWidth > 0 ? `${$maxWidth}px` : `unset`};
-`;
-const TextFit = (0, _styledComponentsDefault.default).div`
-	text-align: ${({ $align })=>$align};
-	transform-origin: ${({ $align })=>`${$align} center`};
-	width: max-content;
-	transform: scaleX(${({ $scale })=>$scale});
-	font-family: ${({ $font })=>$font};
-`;
+const TextSpace = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "FittedText__TextSpace",
+    componentId: "sc-te1i8m-0"
+})([
+    "position:relative;display:flex;justify-content:",
+    ";white-space:nowrap;max-width:",
+    ";"
+], ({ $align })=>justifyAlign($align), ({ $maxWidth })=>$maxWidth > 0 ? `${$maxWidth}px` : `unset`);
+const TextFit = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "FittedText__TextFit",
+    componentId: "sc-te1i8m-1"
+})([
+    "text-align:",
+    ";transform-origin:",
+    ";width:max-content;transform:scaleX(",
+    ");font-family:",
+    ";"
+], ({ $align })=>$align, ({ $align })=>`${$align} center`, ({ $scale })=>$scale, ({ $font })=>$font);
 
 },{"react":"bH1AQ","fontfaceobserver":"6uSsZ","styled-components":"9xpRL","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"6uSsZ":[function(require,module,exports) {
 /* Font Face Observer v2.3.0 - © Bram Stein. License: BSD-3-Clause */ (function() {

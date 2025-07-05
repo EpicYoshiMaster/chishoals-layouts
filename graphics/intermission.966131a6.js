@@ -176,49 +176,49 @@ function Intermission() {
     return /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledIntermission, {
         __source: {
             fileName: "src/graphics/Intermission.tsx",
-            lineNumber: 26,
-            columnNumber: 3
+            lineNumber: 28,
+            columnNumber: 10
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _background.Background), {
         __source: {
             fileName: "src/graphics/Intermission.tsx",
-            lineNumber: 27,
+            lineNumber: 29,
             columnNumber: 4
         },
         __self: this
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement(Content, {
         __source: {
             fileName: "src/graphics/Intermission.tsx",
-            lineNumber: 28,
+            lineNumber: 30,
             columnNumber: 4
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(TopRow, {
         __source: {
             fileName: "src/graphics/Intermission.tsx",
-            lineNumber: 29,
+            lineNumber: 31,
             columnNumber: 5
         },
         __self: this
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(LargeFeed, {
         __source: {
             fileName: "src/graphics/Intermission.tsx",
-            lineNumber: 30,
+            lineNumber: 32,
             columnNumber: 6
         },
         __self: this
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement(LargeFeed, {
         __source: {
             fileName: "src/graphics/Intermission.tsx",
-            lineNumber: 31,
+            lineNumber: 33,
             columnNumber: 6
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement(MiddleRow, {
         __source: {
             fileName: "src/graphics/Intermission.tsx",
-            lineNumber: 33,
+            lineNumber: 35,
             columnNumber: 5
         },
         __self: this
@@ -228,14 +228,14 @@ function Intermission() {
         left: true,
         __source: {
             fileName: "src/graphics/Intermission.tsx",
-            lineNumber: 34,
+            lineNumber: 36,
             columnNumber: 6
         },
         __self: this
     }), /*#__PURE__*/ (0, _reactDefault.default).createElement(SmallFeed, {
         __source: {
             fileName: "src/graphics/Intermission.tsx",
-            lineNumber: 35,
+            lineNumber: 37,
             columnNumber: 6
         },
         __self: this
@@ -245,69 +245,60 @@ function Intermission() {
         left: false,
         __source: {
             fileName: "src/graphics/Intermission.tsx",
-            lineNumber: 36,
+            lineNumber: 38,
             columnNumber: 6
         },
         __self: this
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement((0, _omnibar.Omnibar), {
         __source: {
             fileName: "src/graphics/Intermission.tsx",
-            lineNumber: 38,
+            lineNumber: 40,
             columnNumber: 5
         },
         __self: this
     })));
 }
-const StyledIntermission = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	width: 1920px;
-	height: 1080px;
-`;
-const Content = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	width: 100%;
-	height: 100%;
-
-	display: flex;
-	flex-direction: column;
-`;
-const TopRow = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	display: flex;
-	justify-content: space-between;
-	margin: 0;
-	padding: 20px 40px 5px;
-
-	box-sizing: border-box;
-`;
-const MiddleRow = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: flex-end;
-	padding: 5px 20px;
-`;
-const LargeFeed = (0, _styledComponentsDefault.default).div`
-	height: 500px;
-	aspect-ratio: 16/9;
-	box-sizing: content-box;
-
-	background-color: var(--feed-large-color);
-	border: 8px solid var(--feed-large-border);
-`;
-const SmallFeed = (0, _styledComponentsDefault.default).div`
-	height: 360px;
-	aspect-ratio: 16/9;
-	box-sizing: content-box;
-
-	background-color: var(--feed-small-color);
-	border: 8px solid var(--feed-small-border);
-`;
+const StyledIntermission = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Intermission__StyledIntermission",
+    componentId: "sc-1nsoqnl-0"
+})([
+    "position:relative;width:1920px;height:1080px;"
+]);
+const Content = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Intermission__Content",
+    componentId: "sc-1nsoqnl-1"
+})([
+    "position:relative;width:100%;height:100%;display:flex;flex-direction:column;"
+]);
+const TopRow = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Intermission__TopRow",
+    componentId: "sc-1nsoqnl-2"
+})([
+    "position:relative;display:flex;justify-content:space-between;margin:0;padding:20px 40px 5px;box-sizing:border-box;"
+]);
+const MiddleRow = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Intermission__MiddleRow",
+    componentId: "sc-1nsoqnl-3"
+})([
+    "position:relative;display:flex;justify-content:center;align-items:flex-end;padding:5px 20px;"
+]);
+const LargeFeed = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Intermission__LargeFeed",
+    componentId: "sc-1nsoqnl-4"
+})([
+    "height:500px;aspect-ratio:16/9;box-sizing:content-box;background-color:var(--feed-large-color);border:8px solid var(--feed-large-border);"
+]);
+const SmallFeed = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Intermission__SmallFeed",
+    componentId: "sc-1nsoqnl-5"
+})([
+    "height:360px;aspect-ratio:16/9;box-sizing:content-box;background-color:var(--feed-small-color);border:8px solid var(--feed-small-border);"
+]);
 const root = (0, _client.createRoot)(document.getElementById("root"));
 root.render(/*#__PURE__*/ (0, _reactDefault.default).createElement(Intermission, {
     __source: {
         fileName: "src/graphics/Intermission.tsx",
-        lineNumber: 96,
+        lineNumber: 69,
         columnNumber: 13
     },
     __self: undefined
@@ -322,11 +313,10 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _styledComponents = require("styled-components");
 var _styledComponentsDefault = parcelHelpers.interopDefault(_styledComponents);
 var _carouselComponent = require("./CarouselComponent");
-var _react1 = require("@phosphor-icons/react");
 var _reactHooks = require("@nodecg/react-hooks");
 var _utils = require("../../helpers/utils");
 const Omnibar = ()=>{
-    const [eventData, setEventData] = (0, _reactHooks.useReplicant)("eventData", {
+    const [eventData] = (0, _reactHooks.useReplicant)("eventData", {
         bundle: "squidwest-layout-controls"
     });
     const [socials] = (0, _reactHooks.useReplicant)("socials", {
@@ -364,15 +354,15 @@ const Omnibar = ()=>{
     return /*#__PURE__*/ (0, _reactDefault.default).createElement(OmnibarWrapper, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 39,
-            columnNumber: 9
+            lineNumber: 42,
+            columnNumber: 10
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(OmnibarItem, {
         $show: intermissionData ? intermissionData.showTime : true,
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 40,
+            lineNumber: 43,
             columnNumber: 4
         },
         __self: undefined
@@ -380,21 +370,21 @@ const Omnibar = ()=>{
         $border: true,
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 41,
+            lineNumber: 44,
             columnNumber: 5
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(TimeDisplay, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 42,
+            lineNumber: 45,
             columnNumber: 6
         },
         __self: undefined
     }, (0, _utils.formatDateHM)(memoTime)), /*#__PURE__*/ (0, _reactDefault.default).createElement(DateDisplay, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 45,
+            lineNumber: 48,
             columnNumber: 6
         },
         __self: undefined
@@ -402,7 +392,7 @@ const Omnibar = ()=>{
         $show: intermissionData ? intermissionData.showEvent : true,
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 50,
+            lineNumber: 53,
             columnNumber: 4
         },
         __self: undefined
@@ -410,7 +400,7 @@ const Omnibar = ()=>{
         $border: true,
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 51,
+            lineNumber: 54,
             columnNumber: 5
         },
         __self: undefined
@@ -419,15 +409,15 @@ const Omnibar = ()=>{
         alt: "Chi-Shoals Logo",
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 52,
+            lineNumber: 55,
             columnNumber: 6
         },
         __self: undefined
     }), currentEvent.number > 0 && /*#__PURE__*/ (0, _reactDefault.default).createElement(EventNumberText, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 54,
-            columnNumber: 6
+            lineNumber: 56,
+            columnNumber: 34
         },
         __self: undefined
     }, "#", currentEvent.number))), /*#__PURE__*/ (0, _reactDefault.default).createElement(TextOmnibarItem, {
@@ -435,7 +425,7 @@ const Omnibar = ()=>{
         $maxWidth: "24rem",
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 59,
+            lineNumber: 61,
             columnNumber: 4
         },
         __self: undefined
@@ -443,14 +433,14 @@ const Omnibar = ()=>{
         $border: true,
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 61,
-            columnNumber: 5
+            lineNumber: 62,
+            columnNumber: 38
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(LocationText, {
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 62,
+            lineNumber: 63,
             columnNumber: 6
         },
         __self: undefined
@@ -495,223 +485,160 @@ const Omnibar = ()=>{
             columnNumber: 5
         },
         __self: undefined
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(CarouselRow, {
-        __source: {
-            fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 77,
-            columnNumber: 6
-        },
-        __self: undefined
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledYoutubeLogo, {
-        __source: {
-            fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 78,
-            columnNumber: 25
-        },
-        __self: undefined
-    }), /*#__PURE__*/ (0, _reactDefault.default).createElement(LogoText, {
-        __source: {
-            fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 79,
-            columnNumber: 25
-        },
-        __self: undefined
-    }, socials ? socials.youtube : "")), /*#__PURE__*/ (0, _reactDefault.default).createElement(CarouselRow, {
-        __source: {
-            fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 81,
-            columnNumber: 6
-        },
-        __self: undefined
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledTwitterLogo, {
-        __source: {
-            fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 82,
-            columnNumber: 25
-        },
-        __self: undefined
-    }), /*#__PURE__*/ (0, _reactDefault.default).createElement(LogoText, {
-        __source: {
-            fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 83,
-            columnNumber: 25
-        },
-        __self: undefined
-    }, socials ? socials.twitter : "")), /*#__PURE__*/ (0, _reactDefault.default).createElement(CarouselRow, {
-        __source: {
-            fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 85,
-            columnNumber: 6
-        },
-        __self: undefined
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledButterfly, {
-        __source: {
-            fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 86,
-            columnNumber: 25
-        },
-        __self: undefined
-    }), /*#__PURE__*/ (0, _reactDefault.default).createElement(LogoText, {
-        __source: {
-            fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 87,
-            columnNumber: 25
-        },
-        __self: undefined
-    }, socials ? socials.bluesky : "")), /*#__PURE__*/ (0, _reactDefault.default).createElement(CarouselRow, {
-        __source: {
-            fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 89,
-            columnNumber: 6
-        },
-        __self: undefined
-    }, /*#__PURE__*/ (0, _reactDefault.default).createElement(StyledDiscordLogo, {
-        __source: {
-            fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 90,
-            columnNumber: 25
-        },
-        __self: undefined
-    }), /*#__PURE__*/ (0, _reactDefault.default).createElement(LogoText, {
-        __source: {
-            fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 91,
-            columnNumber: 25
-        },
-        __self: undefined
-    }, socials ? socials.discord : "")))), /*#__PURE__*/ (0, _reactDefault.default).createElement(OmnibarElement, {
+    }, socials && socials.flatMap((group, groupIndex)=>{
+        return [
+            /*#__PURE__*/ (0, _reactDefault.default).createElement(CarouselRow, {
+                key: groupIndex,
+                __source: {
+                    fileName: "src/graphics/components/Omnibar.tsx",
+                    lineNumber: 78,
+                    columnNumber: 19
+                },
+                __self: undefined
+            }, /*#__PURE__*/ (0, _reactDefault.default).createElement(LogoText, {
+                __source: {
+                    fileName: "src/graphics/components/Omnibar.tsx",
+                    lineNumber: 78,
+                    columnNumber: 49
+                },
+                __self: undefined
+            }, `Follow ${group.name}!`)),
+            group.items.map((entry, entryIndex)=>/*#__PURE__*/ (0, _reactDefault.default).createElement(CarouselRow, {
+                    key: `${groupIndex} ${entryIndex}`,
+                    __source: {
+                        fileName: "src/graphics/components/Omnibar.tsx",
+                        lineNumber: 78,
+                        columnNumber: 150
+                    },
+                    __self: undefined
+                }, (0, _utils.getSocialPlatformIcon)(entry.platform), /*#__PURE__*/ (0, _reactDefault.default).createElement(LogoText, {
+                    __source: {
+                        fileName: "src/graphics/components/Omnibar.tsx",
+                        lineNumber: 80,
+                        columnNumber: 10
+                    },
+                    __self: undefined
+                }, entry.social)))
+        ];
+    }))), /*#__PURE__*/ (0, _reactDefault.default).createElement(OmnibarElement, {
         as: "img",
         src: "/bundles/chishoals-layouts/images/SW_Logo.png",
         alt: "SquidWest Logo",
         __source: {
             fileName: "src/graphics/components/Omnibar.tsx",
-            lineNumber: 95,
+            lineNumber: 85,
             columnNumber: 13
         },
         __self: undefined
     }));
 };
-const OmnibarWrapper = (0, _styledComponentsDefault.default).div`
-	position: relative;
-  	display: flex;
-  	flex-direction: row;
-  	width: calc(100% - 40px);
-  	background-color: var(--omnibar-color);
-  	height: 122px;
-  	margin: 10px 20px;
-`;
-const OmnibarItem = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	display: ${({ $show })=>$show ? "block" : "none"};
-`;
-const TextOmnibarItem = (0, _styledComponentsDefault.default)(OmnibarItem)`
-	max-width: ${({ $maxWidth })=>$maxWidth};
-`;
-const OmnibarElement = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	padding: 10px;
-	color: var(--omnibar-text);
-	font-size: 20pt;
-	border-right: ${(props)=>props.$border ? "5px solid var(--omnibar-divider)" : ""};
-`;
-const TimeDate = (0, _styledComponentsDefault.default)(OmnibarElement)`
-	position: relative;
-	width: 100%;
-	height: 100%;
+const OmnibarWrapper = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Omnibar__OmnibarWrapper",
+    componentId: "sc-1gs3hjm-0"
+})([
+    "position:relative;display:flex;flex-direction:row;width:calc(100% - 40px);background-color:var(--omnibar-color);height:122px;margin:10px 20px;"
+]);
+const OmnibarItem = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Omnibar__OmnibarItem",
+    componentId: "sc-1gs3hjm-1"
+})([
+    "position:relative;display:",
+    ";"
+], ({ $show })=>$show ? "block" : "none");
+const TextOmnibarItem = (0, _styledComponentsDefault.default)(OmnibarItem).withConfig({
+    displayName: "Omnibar__TextOmnibarItem",
+    componentId: "sc-1gs3hjm-2"
+})([
+    "max-width:",
+    ";"
+], ({ $maxWidth })=>$maxWidth);
+const OmnibarElement = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Omnibar__OmnibarElement",
+    componentId: "sc-1gs3hjm-3"
+})([
+    "position:relative;padding:10px;color:var(--omnibar-text);font-size:20pt;border-right:",
+    ";"
+], (props)=>props.$border ? "5px solid var(--omnibar-divider)" : "");
+const TimeDate = (0, _styledComponentsDefault.default)(OmnibarElement).withConfig({
+    displayName: "Omnibar__TimeDate",
+    componentId: "sc-1gs3hjm-4"
+})([
+    "position:relative;width:100%;height:100%;display:flex;flex-direction:column;justify-content:center;"
+]);
+const TimeDisplay = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Omnibar__TimeDisplay",
+    componentId: "sc-1gs3hjm-5"
+})([
+    "position:relative;margin:auto;color:var(--omnibar-text);font-size:35pt;"
+]);
+const DateDisplay = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Omnibar__DateDisplay",
+    componentId: "sc-1gs3hjm-6"
+})([
+    "position:relative;margin:auto;color:var(--omnibar-text);font-size:20pt;"
+]);
+const EventSection = (0, _styledComponentsDefault.default)(OmnibarElement).withConfig({
+    displayName: "Omnibar__EventSection",
+    componentId: "sc-1gs3hjm-7"
+})([
+    "position:relative;display:flex;flex-direction:row;align-items:center;height:100%;"
+]);
+const EventNumberText = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Omnibar__EventNumberText",
+    componentId: "sc-1gs3hjm-8"
+})([
+    "margin:8px;font-size:30pt;"
+]);
+const Logo = (0, _styledComponentsDefault.default).img.withConfig({
+    displayName: "Omnibar__Logo",
+    componentId: "sc-1gs3hjm-9"
+})([
+    "height:7rem;object-fit:contain;"
+]);
+const LocationWrapper = (0, _styledComponentsDefault.default)(OmnibarElement).withConfig({
+    displayName: "Omnibar__LocationWrapper",
+    componentId: "sc-1gs3hjm-10"
+})([
+    "display:flex;flex-direction:column;width:100%;height:100%;align-items:center;"
+]);
+const LocationText = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Omnibar__LocationText",
+    componentId: "sc-1gs3hjm-11"
+})([
+    "margin:auto 8px;font-size:25pt;"
+]);
+const TourneyWrapper = (0, _styledComponentsDefault.default)(OmnibarElement).withConfig({
+    displayName: "Omnibar__TourneyWrapper",
+    componentId: "sc-1gs3hjm-12"
+})([
+    "display:flex;flex-direction:column;justify-content:center;align-items:center;width:100%;height:100%;"
+]);
+const TourneyPlaceholder = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Omnibar__TourneyPlaceholder",
+    componentId: "sc-1gs3hjm-13"
+})([
+    "font-size:25pt;"
+]);
+const CarouselWrapper = (0, _styledComponentsDefault.default)(OmnibarElement).withConfig({
+    displayName: "Omnibar__CarouselWrapper",
+    componentId: "sc-1gs3hjm-14"
+})([
+    "position:relative;height:100%;flex-grow:1;"
+]);
+const CarouselRow = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Omnibar__CarouselRow",
+    componentId: "sc-1gs3hjm-15"
+})([
+    "position:relative;display:flex;flex-direction:row;align-items:center;justify-content:center;max-height:100%;height:100%;font-size:40pt;svg{width:1em;object-fit:contain;margin-right:10px;}"
+]);
+const LogoText = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Omnibar__LogoText",
+    componentId: "sc-1gs3hjm-16"
+})([
+    "font-size:35pt;"
+]);
 
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-`;
-const TimeDisplay = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	margin: auto;
-	color: var(--omnibar-text);
-	font-size: 35pt;
-`;
-const DateDisplay = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	margin: auto;
-	color: var(--omnibar-text);
-	font-size: 20pt;
-`;
-const EventSection = (0, _styledComponentsDefault.default)(OmnibarElement)`
-	position: relative;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-	height: 100%;
-`;
-const EventNumberText = (0, _styledComponentsDefault.default).div`
-	margin: 8px;
-	font-size: 30pt;
-`;
-const Logo = (0, _styledComponentsDefault.default).img`
-    height: 7rem;
-    object-fit: contain;
-`;
-const LocationWrapper = (0, _styledComponentsDefault.default)(OmnibarElement)`
-	display: flex;
-	flex-direction: column;
-	width: 100%;
-	height: 100%;
-	align-items: center;
-`;
-const LocationText = (0, _styledComponentsDefault.default).div`
-	margin: auto 8px;
-	font-size: 25pt;
-`;
-const TourneyWrapper = (0, _styledComponentsDefault.default)(OmnibarElement)`
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	height: 100%;
-`;
-const TourneyPlaceholder = (0, _styledComponentsDefault.default).div`
-	font-size: 25pt;
-`;
-const CarouselWrapper = (0, _styledComponentsDefault.default)(OmnibarElement)`
-	position: relative;
-	height: 100%;
-	flex-grow: 1;
-`;
-const CarouselRow = (0, _styledComponentsDefault.default).div`
-	position: relative;
-    display: flex;
-    flex-direction: row;
-	align-items: center;
-    justify-content: center;
-    max-height: 100%;
-    height: 100%;
-	font-size: 40pt;
-`;
-const StyledYoutubeLogo = (0, _styledComponentsDefault.default)((0, _react1.YoutubeLogo))`
-	width: 1em;
-    object-fit: contain;
-	margin-right: 20px;
-`;
-const StyledTwitterLogo = (0, _styledComponentsDefault.default)((0, _react1.TwitterLogo))`
-	width: 1em;
-    object-fit: contain;
-	margin-right: 20px;
-`;
-const StyledButterfly = (0, _styledComponentsDefault.default)((0, _react1.Butterfly))`
-	width: 1em;
-    object-fit: contain;
-	margin-right: 20px;
-`;
-const StyledDiscordLogo = (0, _styledComponentsDefault.default)((0, _react1.DiscordLogo))`
-	width: 1em;
-    object-fit: contain;
-	margin-right: 20px;
-`;
-const LogoText = (0, _styledComponentsDefault.default).div`
-	font-size: 35pt;
-`;
-
-},{"react":"bH1AQ","styled-components":"9xpRL","./CarouselComponent":"3ZV6n","@phosphor-icons/react":"h9z2e","@nodecg/react-hooks":"audz3","../../helpers/utils":"2gdT3","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"3ZV6n":[function(require,module,exports) {
+},{"react":"bH1AQ","styled-components":"9xpRL","./CarouselComponent":"3ZV6n","@nodecg/react-hooks":"audz3","../../helpers/utils":"9zR4Y","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"3ZV6n":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "CarouselComponent", ()=>CarouselComponent);
@@ -762,8 +689,8 @@ const CarouselComponent = ({ children, playing = true, speed, transitionSpeed, o
     return /*#__PURE__*/ (0, _reactDefault.default).createElement(CarouselContainer, {
         __source: {
             fileName: "src/graphics/components/CarouselComponent.tsx",
-            lineNumber: 60,
-            columnNumber: 9
+            lineNumber: 54,
+            columnNumber: 10
         },
         __self: undefined
     }, childElements.map((child, index, array)=>/*#__PURE__*/ (0, _reactDefault.default).createElement(CarouselItem, {
@@ -773,54 +700,30 @@ const CarouselComponent = ({ children, playing = true, speed, transitionSpeed, o
             speed: (transitionSpeed ? transitionSpeed : DEFAULT_TRANSITION_SPEED) / 2,
             __source: {
                 fileName: "src/graphics/components/CarouselComponent.tsx",
-                lineNumber: 62,
-                columnNumber: 17
+                lineNumber: 55,
+                columnNumber: 57
             },
             __self: undefined
         }, child)));
 };
-const CarouselContainer = (0, _styledComponentsDefault.default).div`
-    position: relative;
-    width: 100%;
-    height: 100%;
-`;
-const CarouselItem = (0, _styledComponentsDefault.default).div`
-    position: ${(props)=>props.$isRelative ? `relative` : `absolute`};
-    max-height: 100%;
+const CarouselContainer = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "CarouselComponent__CarouselContainer",
+    componentId: "sc-94xrx4-0"
+})([
+    "position:relative;width:100%;height:100%;"
+]);
+const CarouselItem = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "CarouselComponent__CarouselItem",
+    componentId: "sc-94xrx4-1"
+})([
+    "position:",
+    ";max-height:100%;width:100%;height:100%;opacity:",
+    ";transition:opacity ",
+    "ms linear;transition-delay:",
+    "ms;"
+], (props)=>props.$isRelative ? `relative` : `absolute`, (props)=>props.$active ? 1 : 0, (props)=>props.speed, (props)=>props.$active ? props.speed : 0);
 
-    width: 100%;
-    height: 100%;
-
-    opacity: ${(props)=>props.$active ? 1 : 0};
-    transition: opacity ${(props)=>props.speed}ms linear;
-    transition-delay: ${(props)=>props.$active ? props.speed : 0}ms;
-`;
-
-},{"react":"bH1AQ","styled-components":"9xpRL","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"2gdT3":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "formatTimeHMSC", ()=>formatTimeHMSC);
-parcelHelpers.export(exports, "formatDateHM", ()=>formatDateHM);
-parcelHelpers.export(exports, "formatDateMDY", ()=>formatDateMDY);
-const formatTimeHMSC = (ms)=>{
-    ms = ms > 0 ? ms : 0;
-    const hour = Math.floor(ms / 60 / 60 / 1000);
-    ms = ms % 3600000;
-    const minute = Math.floor(ms / 60 / 1000);
-    ms = ms % 60000;
-    const second = Math.floor(ms / 1000);
-    ms = ms % 1000;
-    const centiseconds = Math.floor(ms / 10);
-    return `${hour}:${minute < 10 ? `0${minute}` : minute}:${second < 10 ? `0${second}` : second}.${centiseconds < 10 ? `0${centiseconds}` : centiseconds}`;
-};
-const formatDateHM = (date)=>{
-    return date.getHours() + ":" + (date.getMinutes() < 10 ? "0" : "") + date.getMinutes();
-};
-const formatDateMDY = (date)=>{
-    return date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
-};
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"n2E1c":[function(require,module,exports) {
+},{"react":"bH1AQ","styled-components":"9xpRL","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"n2E1c":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Background", ()=>Background);
@@ -925,35 +828,21 @@ const Background = ({ backgroundColor })=>{
         $size: randomBackground.size,
         __source: {
             fileName: "src/graphics/components/Background.tsx",
-            lineNumber: 66,
-            columnNumber: 3
+            lineNumber: 89,
+            columnNumber: 10
         },
         __self: undefined
     });
 };
-const StyledBackground = (0, _styledComponentsDefault.default).div`
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	padding: 0px;
-
-	background-size: ${({ $size })=>$size ? $size : "10%"};
-	background-repeat: repeat;
-	background-image: url(${(props)=>props.src});
-	background-color: ${({ $backgroundColor })=>$backgroundColor};
-	background-attachment: scroll;
-	
-    animation: scrolling 90s linear infinite;
-
-	@keyframes scrolling {
-  	from{
-      	background-position: 1920px 1920px;
-  	}
-  	to{
-      	background-position: 0 0;
-  	}
-	}
-`;
+const StyledBackground = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "Background__StyledBackground",
+    componentId: "sc-r6w7-0"
+})([
+    "position:absolute;width:100%;height:100%;padding:0px;background-size:",
+    ";background-repeat:repeat;background-image:url(",
+    ");background-color:",
+    ";background-attachment:scroll;animation:scrolling 90s linear infinite;@keyframes scrolling{from{background-position:1920px 1920px;}to{background-position:0 0;}}"
+], ({ $size })=>$size ? $size : "10%", (props)=>props.src, ({ $backgroundColor })=>$backgroundColor);
 
 },{"react":"bH1AQ","styled-components":"9xpRL","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"6sL9p":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -969,14 +858,14 @@ const TeamScoreBox = ({ team, score, left })=>{
         $left: left,
         __source: {
             fileName: "src/graphics/components/TeamScoreBox.tsx",
-            lineNumber: 13,
-            columnNumber: 3
+            lineNumber: 14,
+            columnNumber: 10
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(TeamBox, {
         __source: {
             fileName: "src/graphics/components/TeamScoreBox.tsx",
-            lineNumber: 14,
+            lineNumber: 15,
             columnNumber: 4
         },
         __self: undefined
@@ -987,14 +876,14 @@ const TeamScoreBox = ({ team, score, left })=>{
         maxWidth: 470,
         __source: {
             fileName: "src/graphics/components/TeamScoreBox.tsx",
-            lineNumber: 15,
+            lineNumber: 16,
             columnNumber: 5
         },
         __self: undefined
     })), /*#__PURE__*/ (0, _reactDefault.default).createElement(ScoreBox, {
         __source: {
             fileName: "src/graphics/components/TeamScoreBox.tsx",
-            lineNumber: 17,
+            lineNumber: 18,
             columnNumber: 4
         },
         __self: undefined
@@ -1005,45 +894,36 @@ const TeamScoreBox = ({ team, score, left })=>{
         maxWidth: 95,
         __source: {
             fileName: "src/graphics/components/TeamScoreBox.tsx",
-            lineNumber: 18,
+            lineNumber: 19,
             columnNumber: 5
         },
         __self: undefined
     })));
 };
-const TeamAndScore = (0, _styledComponentsDefault.default).div`
-	display: flex;
-	align-items: center;
-	justify-content: flex-end;
-	flex-direction: ${({ $left })=>$left ? "row" : "row-reverse"};
-
-	${({ $left })=>$left ? (0, _styledComponents.css)`margin-right: 10px;` : (0, _styledComponents.css)`margin-left: 10px;`}
-	height: 5rem;
-	width: 100%;
-	font-size: 3rem;
-	color: var(--teams-text);
-	background-color: var(--teams-inner);
-	border: 8px solid var(--teams-border);
-	
-	box-sizing: content-box;
-`;
-const TeamBox = (0, _styledComponentsDefault.default).div`
-	padding: 5px;
-
-	box-sizing: border-box;
-`;
-const ScoreBox = (0, _styledComponentsDefault.default).div`
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100px;
-	height: 100%;
-
-	font-size: 5rem;
-
-	color: var(--teams-score-text);
-	background-color: var(--teams-score-inner);
-`;
+const TeamAndScore = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "TeamScoreBox__TeamAndScore",
+    componentId: "sc-1lgj0ls-0"
+})([
+    "display:flex;align-items:center;justify-content:flex-end;flex-direction:",
+    ";",
+    " height:5rem;width:100%;font-size:3rem;color:var(--teams-text);background-color:var(--teams-inner);border:8px solid var(--teams-border);box-sizing:content-box;"
+], ({ $left })=>$left ? "row" : "row-reverse", ({ $left })=>$left ? (0, _styledComponents.css)([
+        "margin-right:10px;"
+    ]) : (0, _styledComponents.css)([
+        "margin-left:10px;"
+    ]));
+const TeamBox = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "TeamScoreBox__TeamBox",
+    componentId: "sc-1lgj0ls-1"
+})([
+    "padding:5px;box-sizing:border-box;"
+]);
+const ScoreBox = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "TeamScoreBox__ScoreBox",
+    componentId: "sc-1lgj0ls-2"
+})([
+    "display:flex;align-items:center;justify-content:center;width:100px;height:100%;font-size:5rem;color:var(--teams-score-text);background-color:var(--teams-score-inner);"
+]);
 
 },{"react":"bH1AQ","styled-components":"9xpRL","./FittedText":"f5NVk","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"f5NVk":[function(require,module,exports) {
 /**
@@ -1096,8 +976,8 @@ const FittedText = ({ text, maxWidth, align, font })=>{
         $align: align,
         __source: {
             fileName: "src/graphics/components/FittedText.tsx",
-            lineNumber: 53,
-            columnNumber: 3
+            lineNumber: 50,
+            columnNumber: 10
         },
         __self: undefined
     }, /*#__PURE__*/ (0, _reactDefault.default).createElement(TextFit, {
@@ -1107,28 +987,30 @@ const FittedText = ({ text, maxWidth, align, font })=>{
         $align: align,
         __source: {
             fileName: "src/graphics/components/FittedText.tsx",
-            lineNumber: 57,
+            lineNumber: 51,
             columnNumber: 4
         },
         __self: undefined
     }, text));
 };
-const TextSpace = (0, _styledComponentsDefault.default).div`
-	position: relative;
-	display: flex;
-
-	justify-content: ${({ $align })=>justifyAlign($align)};
-	
-	white-space: nowrap;
-	max-width: ${({ $maxWidth })=>$maxWidth > 0 ? `${$maxWidth}px` : `unset`};
-`;
-const TextFit = (0, _styledComponentsDefault.default).div`
-	text-align: ${({ $align })=>$align};
-	transform-origin: ${({ $align })=>`${$align} center`};
-	width: max-content;
-	transform: scaleX(${({ $scale })=>$scale});
-	font-family: ${({ $font })=>$font};
-`;
+const TextSpace = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "FittedText__TextSpace",
+    componentId: "sc-te1i8m-0"
+})([
+    "position:relative;display:flex;justify-content:",
+    ";white-space:nowrap;max-width:",
+    ";"
+], ({ $align })=>justifyAlign($align), ({ $maxWidth })=>$maxWidth > 0 ? `${$maxWidth}px` : `unset`);
+const TextFit = (0, _styledComponentsDefault.default).div.withConfig({
+    displayName: "FittedText__TextFit",
+    componentId: "sc-te1i8m-1"
+})([
+    "text-align:",
+    ";transform-origin:",
+    ";width:max-content;transform:scaleX(",
+    ");font-family:",
+    ";"
+], ({ $align })=>$align, ({ $align })=>`${$align} center`, ({ $scale })=>$scale, ({ $font })=>$font);
 
 },{"react":"bH1AQ","fontfaceobserver":"6uSsZ","styled-components":"9xpRL","@parcel/transformer-js/src/esmodule-helpers.js":"hvLRG"}],"6uSsZ":[function(require,module,exports) {
 /* Font Face Observer v2.3.0 - © Bram Stein. License: BSD-3-Clause */ (function() {
