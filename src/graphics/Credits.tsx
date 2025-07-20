@@ -9,6 +9,24 @@ import { EventInfo, EventData } from 'schemas/eventData';
 import { getImagePath } from '../helpers/utils';
 import { FittedText } from './components/FittedText';
 
+const namesWidth = 1920 - 400;
+const maxNamesPerColumn = 10;
+
+//Distribute names equally when greater than the max number per column exist
+const namesPerColumn = (numNames: number) => {
+    if(numNames <= maxNamesPerColumn) return numNames;
+
+    const numColumnns = Math.ceil(numNames / maxNamesPerColumn);
+
+    return Math.ceil(numNames / numColumnns);
+}
+
+const nameSpace = (totalWidth: number, numNames: number) => {
+    const numColumnns = Math.ceil(numNames / maxNamesPerColumn);
+
+    return Math.floor(totalWidth / numColumnns) - 10;
+}
+
 export function Credits() {
     const [eventData] = useReplicant<EventData>('eventData', { bundle: 'squidwest-layout-controls'});
 
@@ -96,9 +114,11 @@ export function Credits() {
                                     </LogoRow>
                                 )}
                                <HeaderText><FittedText text={creditsRow.name} align="center" font="Splatoon" maxWidth={1900} /></HeaderText>
-                                {creditsRow.items.map((name, index) => (
-                                    <NameText key={index}><FittedText text={name} align="center" font="Splatoon" maxWidth={1900} /></NameText>
+                               <NamesList $namesPerColumn={namesPerColumn(creditsRow.items.length)}>
+                                {creditsRow.items.map((name, index, array) => (
+                                    <NameText key={index}><FittedText text={name} align="center" font="Splatoon" maxWidth={nameSpace(namesWidth, array.length)} /></NameText>
                                 ))}
+                               </NamesList>
                             </CreditsRow>
                         )
                     })}
@@ -127,7 +147,7 @@ const Content = styled.div`
     overflow: hidden;
 `;
 
-const CreditsRow = styled.div<{}>`
+const CreditsRow = styled.div`
     position: relative;
 
     width: 100%;
@@ -142,8 +162,8 @@ const CreditsRow = styled.div<{}>`
 const LogoRow = styled.div`
     position: relative;
     display: flex;
-    max-height: 500px;
-    max-width: 500px;
+    max-height: 400px;
+    max-width: 400px;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -171,6 +191,19 @@ const HeaderText = styled.div`
 const NameText = styled.div`
     font-weight: normal;
     font-size: 3rem;
+`;
+
+const NamesList = styled.div<{ $namesPerColumn: number }>`
+    position: relative;
+    display: grid;
+    grid-template-rows: repeat(${({ $namesPerColumn }) => $namesPerColumn}, 55px);
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    justify-items: center;
+    padding: 0 200px;
+    
+    width: 100%;
+    max-height: 550px;
 `;
 
 const YoshiRow = styled(LogoRow)`
